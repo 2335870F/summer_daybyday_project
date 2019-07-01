@@ -1,0 +1,27 @@
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Login
+{% endblock %}
+
+{% block name_block %}
+	Welcome to the Neighborhood Cook Book!
+{% endblock %}
+
+{% block body_block %}
+	<div class="login_page">
+		<h2> Login </h2>
+		<form id="login_form" method="post" action={% url 'login' %}>
+			{% csrf_token %}
+			<h3> Username </h3>
+			<input type="text" name="username" placeholder="Username" value="" size="50" />
+			<br />
+			<h3> Password </h3>
+			<input type="password" name="password" placeholder="Password" value="" size="50" />
+			<br />
+			<br />
+			<input type="submit" name="submit" value="Login" class="button" />
+		</form>
+	</div>
+{% endblock %}

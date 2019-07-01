@@ -1,0 +1,97 @@
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block js %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("button").click(function() {
+			alert("Thanks for leaving a review!");
+		});
+	});
+	</script>
+{% endblock %}
+
+{% block title_block %}
+  {{ recipe.name }}
+{% endblock %}
+
+{% block name_block %}
+	{% if recipe %}
+		{{ recipe.name }}
+	{% endif %}
+{% endblock %}
+
+
+{% block body_block %}
+	<div class="recipe_page">
+
+		<div class="other">
+			<div class="chef_info">
+				{% if recipe %}
+					<strong> Chef: </strong><a href="{% url 'userprofile' recipe.chef.username %}">{{ recipe.chef }}</a><br/>
+					<strong> Date: </strong>{{ recipe.date_posted }}<br/>
+					<strong> Overall Rating: </strong>{{ avgRating }}<br/>
+					<strong> Cook time: </strong>{{ recipe.cook_time }} min<br/>
+					<strong> Ingredients:</strong>
+					<pre>{{ recipe.ingredients }}</pre>
+				{% endif %}
+			</div>
+			<div class="cat_bar">
+			<h3>Categories</h3>
+				{% for cat in cats_bar %}
+					<a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br/>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="recipe_info">
+			{% if recipe %}
+				<img src="{{ MEDIA_URL }}{{ recipe.photo }}" alt="Picture of {{ recipe.name }}"/><br/>
+				<div class="steps">
+					{{ recipe.about }}<br/>
+					<br/>
+					Steps:<br/>
+					<pre>{{ recipe.steps }}</pre>
+				</div>
+			{% else %}
+				<strong>This is not a recipe.</strong>
+			{% endif %}
+		</div>
+
+		<div class="reviews">
+			<h3>Reviews</h3>
+			<div class="view">
+			{% if reviews %}
+				{% for review in reviews %}
+					<div class="recipe">
+						<a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
+						<div>
+							<strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
+							{{ review.comment }}
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<strong>There are no reviews left for this recipe.</strong>
+			{% endif %}
+			</div>
+			{% if user.is_authenticated %}
+				{% if recipe %}
+					<div class="give">
+						<h3>Leave a Review</h3>
+						<form id="review_form" method="post" action={% url 'viewrecipe' recipe.slug %}>
+							{% csrf_token %}
+							{% for field in form.visible_fields %}
+								{{ field.errors }}
+								{{ field.label }}<br/>
+								{{ field }}<br/>
+							{% endfor %}
+							<button type="submit" name="submit" value="Submit">Submit</button>
+						</form>
+					</div>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

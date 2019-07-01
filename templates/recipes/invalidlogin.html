@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+   Invalid Login
+{% endblock %}
+
+{% block name_block %}
+	Invalid Login
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+	Username or password was invalid.
+</div>
+<br/>
+<div class="urls">
+	<a href="{% url 'index' %}">Return to Index</a>
+	<a href="{% url 'register' %}">Sign Up</a>
+	<a href="{% url 'login' %}">Try Login Again</a>
+</div>
+{% endblock %}

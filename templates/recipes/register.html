@@ -1,0 +1,32 @@
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block name_block %}
+	Register for the Neighborhood Cookbook!
+{% endblock %}
+
+{% block body_block %}
+  {% if registered %}
+    <strong> Thank You for Registering! </strong>
+    <a href="{% url 'index' %}">Return to the homepage.</a>
+    <br />
+  {% else %}
+
+
+    <div class="register">
+        <h2> Register Below! </h2>
+    <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+
+      {% csrf_token %}
+      {{ user_form.as_p }}
+
+    {{ profile_form.as_p }}
+      <input type="submit" name="submit" value="Register" class="button" />
+    </form>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,219 @@
+
+
+/* to activate, run: python manage.py collectstatic --noinput --clear */
+/* website colors: light bule - 467DA2, dark blue - 09203D,
+				   light brown - 8E7262, medium brown - 773D1B,
+				   dark brown - 3A1003
+*/
+/* GENERIC */
+a {
+	color: #773D1B;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: #8E7262;
+	cursor: pointer;
+}
+
+img.profile {
+	min-width: 4.3em;
+	max-width: 30em;
+}
+
+div.main{
+	height: calc(100vh - 11em);
+	width: 98vw;
+	overflow: scroll;
+	padding-bottom: 0.25em;
+}
+
+/* BASE */
+html {
+	background-color: #ccbeaf;
+	font-family: sans-serif;
+	font-size: 1em;
+	color: #3A1003
+}
+div.header {
+	background-color: #000000;
+	text-align: right;
+	display: grid;
+	grid-template-columns: 10% 85%;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+div.header img{
+	padding: 0.5em;
+}
+div.urls a{
+	background-color: #467DA2;
+	padding: 0.8em;
+	color: #ffffff;
+	text-decoration: none;
+}
+div.urls a:hover{
+	background-color: grey;
+}
+div.page_name {
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	clear: left;
+	text-align: center;
+	font-size: 3em;
+}
+div.footer {
+	clear: both;
+	background-color: #09203D;
+	padding-top: 1.7em;
+	padding-left: 2%;
+	padding-bottom: 1.7em;
+	padding-right: 2%;
+}
+
+/* CATEGORIES PAGES */
+
+div.cat img{
+	min-width: 4.3em;
+	max-width: 20em;
+	width: 18.75em;
+	height: 12.5em;
+}
+div.cat img:hover{
+	opacity: 0.7;
+}
+div.cat_text{
+	padding: 2%;
+	position: relative;
+	background-color: white;
+	text-align: center;
+	bottom: 1em;
+	font-size: 1em;
+}
+div.row {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 4%;
+	justify-content: center;
+	align-items: center;
+	grid-row
+}
+div.show_categories {
+	font-family: sans-serif;
+	display: grid;
+	grid-template-columns: 9em auto;
+	grid-gap: 1%;
+}
+div.cat_bar a{
+	margin-left: 0.9em;
+	font-size: 1em;
+}
+div.cat_bar h3{
+	line-height: 10%;
+	font-weight: bold;
+}
+
+/* RECIPE PAGE */
+
+div.recipe_page{
+	min-width: 10em;
+	padding-left: 1em;
+	padding-right: 1em;
+	display: grid;
+	grid-template-columns: 1fr 55% 1fr;
+	justify-content: left;
+	grid-column-gap: 0.75em;
+}
+div.recipe_info img{
+	width: 100%;
+}
+div.other {
+	height: 77vh;
+	overflow: scroll;
+}
+div.recipe_info {
+	width: 100%;
+	height: 77vh;
+	overflow: scroll;
+	word-wrap: normal;
+}
+div.reviews {
+	width: 100%;
+	height: 77vh;
+	overflow: scroll;
+}
+pre {
+	white-space: pre-wrap;
+	display: block;
+	width: auto;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+/* HOMEPAGE */
+
+div.index_page {
+	padding-left: 2em;
+	padding-right: 2em;
+	display: grid;
+	grid-template-columns: auto 55% auto;
+	justify-content: center;
+	grid-column-gap: 2em;
+	grid-column-end:
+}
+div.index_page img{
+	width: 100%;
+}
+div.index_page img:hover{
+	opacity: 0.7;
+}
+div.latest_posts {
+	height: 77vh;
+	overflow: scroll;
+	text-align: center;
+}
+div.latest_posts img.index-logo{
+	opacity: 1;
+	text-align: center;
+	width: 60%;
+}
+div.pop_cuisines {
+	height: 77vh;
+	overflow: scroll;
+}
+div.top_rated {
+	height: 77vh;
+	overflow: scroll;
+}
+
+/* PROFILE PAGE*/
+div.account {
+	padding-left: 2em;
+	padding-right: 2em;
+	grid-column-gap: 1em;
+	display: grid;
+	grid-template-columns: 35% auto;
+	justify-content: left;
+}
+div.user_info img{
+	width: 100%;
+}
+div.user_recipes {
+	height: 77vh;
+	overflow: scroll;
+}
+div.recipe {
+	line-height: 1.2em;
+	margin-bottom: 8px;
+	height: 60px;
+	background-color: white;
+	overflow: scroll;
+	font-size: 0.9em;
+}
+div.recipe img{
+	padding-right: 0.25em;
+	float: left;
+}
+div.recipe img:hover{
+	opacity: 0.7;
+}

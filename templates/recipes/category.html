@@ -1,0 +1,54 @@
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	{% if cat %}
+		{{ cat.name }}
+	{% endif %}
+{% endblock %}
+
+{% block name_block %}
+	{% if cat %}
+		{{ cat.name }}
+	{% endif %}
+{% endblock %}
+
+{% block body_block %}
+<div class="show_categories">
+	<div class="cat_bar">
+		<h3>Categories</h3>
+		{% for cat in cats_bar %}
+			<a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br>
+		{% endfor %}
+	</div>
+	<div>
+		{% if cat %}
+			{% if subcats %}
+				<div class="row">
+					{% for subcat in subcats %}
+						<div class="cat">
+								<a href="{% url 'show_category' subcat.slug %}"><img src="{{ MEDIA_URL }}{{ subcat.photo }}" alt="Picture of {{ subcat.photo }}"/></a>
+								<div class="cat_text">{{ subcat.name }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% else %}
+				{% if recipes %}
+					<div class="row">
+						{% for recipe in recipes %}
+							<div class="cat">
+								<a href="{% url 'viewrecipe' recipe.slug %}"><img src="{{ MEDIA_URL }}{{ recipe.photo }}" alt="Picture of {{ recipe.photo }}"/></a>
+								<div class="cat_text">{{ recipe.name }}</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<strong>No recipes currently in category.</strong>
+				{% endif %}
+			{% endif %}
+		{% else %}
+			<strong>The specified category does not exist!</strong>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
