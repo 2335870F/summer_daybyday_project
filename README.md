@@ -1,16 +1,16 @@
-# summer_myjournal_project
+# summer_daybyday_project
 
 Summer project to further develop skills learned in Web Application Development class:
 
 
-This web application is called My Journal. Its purpose is to allow users to upload 
+This web application is called Day By Day. Its purpose is to allow users to upload 
 information about their courses at university all in one place. Unlike moodle, 
 this is a place to store all of your current plans, from university work to plans at the 
 weekend to grocery lists. users can create 'entries' which are pages which are forms
 the user can edit. Users typically make an 'entry' and put it into one of 5 categories:
 Current Courses, Personal To-Do, and Well-being Plans, to highlight the balance of the 3
 most important things a student must balance: work, living on your own, and relaxation. 
-Users can register for My Journal, allowing them to create a username, add entries, and 
+Users can register for Day By Day, allowing them to create a username, add entries, and 
 add reviews and ratings to their own entries to measure how well they are keeping up with
 their tasks, as well as suggest a category to us that they feel is missing! Users are 
 able to customise their profile by uploading a personalised bio to make the page more 
