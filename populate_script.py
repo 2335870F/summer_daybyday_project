@@ -2,25 +2,25 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'summer_daybyday_project.settings')
 import django
 django.setup()
-from recipes.models import *
+from entries.models import *
 from django.contrib.auth.models import User
 
 cat_objects = {}
 admin_objects = {}
-bio = "Hello! I enjoy making food the opportunity to upload recipes, share tips, and explore recipes on this website!"
+bio = "Hello! I enjoy making food the opportunity to upload entries, create reminders, and explore my entries on this website!"
 def populate():
-	reviews = {"Best pancakes" : {"author" : "q_smart", "recipe" : "Pancakes", "chef" : "lynda_faller", "rating" : 4.25, "comment":"These pancakes are so light and fulffy!"},
-		"FABULOUS" : {"author" : "eve_ohagan", "recipe" : "Spaghetti Carbonara", "chef" : "amy_hynes", "rating" : 5 , "comment":" Best i have ever had!"},
-		"Quick and effective": {"author" : "eve_ohagan", "recipe" : "Classic Hot Dogs", "chef" : "lynda_faller", "rating" : 4.8, "comment":" Would highly recommend!"},
-		"Perfect for the occasion" : {"author" : "eve_ohagan", "recipe" : "All-American Burger", "chef" : "q_smart", "rating" : 4.1, "comment":"a bit too much cheese! "},
-		"Hard work but worth it" : {"author" : "amy_hynes", "recipe" : "Chicken Curry", "chef" : "eve_ohagan", "rating" : 3.0, "comment":"This recipe is time consuming but so delicious"},
-		"Festive!" : {"author" : "amy_hynes", "recipe" : "St Paddy's Cupcakes", "chef" : "q_smart", "rating" : 4.75, "comment":"These cupcakes are so cute! Kids love them"},
-		"Yum!" : {"author" : "amy_hynes", "recipe" : "California Rolls", "chef" : "q_smart", "rating" : 4.5, "comment":"Authentic and delicious"},
-		"Authentic!" : {"author" : "q_smart", "recipe" : "Traditional Tiramisu", "chef" : "amy_hynes", "rating" : 5, "comment":"Lovely, reminds me of Italy!"},
-		"So creative!" : {"author" : "q_smart", "recipe" : "Easy Chicken Chow Mein", "chef" : "lynda_faller", "rating" : 3.5, "comment":"Not quite China but very close. lovely and quick!"},
-		"The best tiramisu": {"author" : "lynda_faller", "recipe" : "Traditional Tiramisu", "chef" : "amy_hynes", "rating" : 5.0, "comment":"This tiramisu reminds me of the one I had in Italy!"},
-		"Fabulous Chicken Curry": {"author" : "lynda_faller", "recipe" : "Chicken Curry", "chef" : "eve_ohagan", "rating" : 4.0, "comment":"Really good recipe- would definitely make again. I love the flavours in this!"},
-		"You need to try these!": {"author" : "lynda_faller", "recipe" : "St Paddy's Cupcakes", "chef" : "q_smart", "rating" : 4.5, "comment":"I never thought I liked chocolate cupcakes until I ate these. I prefer to use a little less sugar than the recipe calls for, and they still taste amazing."},
+	reviews = {"Best pancakes" : {"author" : "q_smart", "entry" : "Pancakes", "chef" : "lynda_faller", "rating" : 4.25, "comment":"These pancakes are so light and fulffy!"},
+		"FABULOUS" : {"author" : "eve_ohagan", "entry" : "Spaghetti Carbonara", "chef" : "amy_hynes", "rating" : 5 , "comment":" Best i have ever had!"},
+		"Quick and effective": {"author" : "eve_ohagan", "entry" : "Classic Hot Dogs", "chef" : "lynda_faller", "rating" : 4.8, "comment":" Would highly recommend!"},
+		"Perfect for the occasion" : {"author" : "eve_ohagan", "entry" : "All-American Burger", "chef" : "q_smart", "rating" : 4.1, "comment":"a bit too much cheese! "},
+		"Hard work but worth it" : {"author" : "amy_hynes", "entry" : "Chicken Curry", "chef" : "eve_ohagan", "rating" : 3.0, "comment":"This entry is time consuming but so delicious"},
+		"Festive!" : {"author" : "amy_hynes", "entry" : "St Paddy's Cupcakes", "chef" : "q_smart", "rating" : 4.75, "comment":"These cupcakes are so cute! Kids love them"},
+		"Yum!" : {"author" : "amy_hynes", "entry" : "California Rolls", "chef" : "q_smart", "rating" : 4.5, "comment":"Authentic and delicious"},
+		"Authentic!" : {"author" : "q_smart", "entry" : "Traditional Tiramisu", "chef" : "amy_hynes", "rating" : 5, "comment":"Lovely, reminds me of Italy!"},
+		"So creative!" : {"author" : "q_smart", "entry" : "Easy Chicken Chow Mein", "chef" : "lynda_faller", "rating" : 3.5, "comment":"Not quite China but very close. lovely and quick!"},
+		"The best tiramisu": {"author" : "lynda_faller", "entry" : "Traditional Tiramisu", "chef" : "amy_hynes", "rating" : 5.0, "comment":"This tiramisu reminds me of the one I had in Italy!"},
+		"Fabulous Chicken Curry": {"author" : "lynda_faller", "entry" : "Chicken Curry", "chef" : "eve_ohagan", "rating" : 4.0, "comment":"Really good entry- would definitely make again. I love the flavours in this!"},
+		"You need to try these!": {"author" : "lynda_faller", "entry" : "St Paddy's Cupcakes", "chef" : "q_smart", "rating" : 4.5, "comment":"I never thought I liked chocolate cupcakes until I ate these. I prefer to use a little less sugar than the entry calls for, and they still taste amazing."},
 	}
 	admins = {
 		"lynda_faller" : {"email":"lynda@gmail.com", "password":"lyndafaller", "fname":"Lynda", "lname":"Faller", "chef":True, "photo":"profile_pics/lynda.png",},
@@ -28,13 +28,13 @@ def populate():
 		"eve_ohagan" : {"email":"eve@gmail.com", "password":"eveohagan", "fname":"Eve", "lname":"O'Hagan", "chef":True, "photo":"profile_pics/eve.png",},
 		"q_smart" : {"email":"q@gmail.com", "password":"qiufeismart", "fname":"Q", "lname":"Smart", "chef":True, "photo":"profile_pics/q.png",},}
 	#EVERY TIME THERE IS A RETURN STATEMENT IN ABOUT/INGREDIENTS/STEPS USE \r\n
-	recipes = [
+	entries = [
 		{"name": "Pancakes",
 		"cook_time" : 15,
 		"cats" : "Breakfast, American",
 		"chef" : "lynda_faller",
 		"photo" : "pancakes.jpeg",
-		"about": "The fluffiest American pancakes around! Whip these pancakes up in no time for an impromptu pud or an indulgent breakfast treat! Source: http://allrecipes.co.uk/recipe/27002/fluffy-american-pancakes.aspx",
+		"about": "The fluffiest American pancakes around! Whip these pancakes up in no time for an impromptu pud or an indulgent breakfast treat! Source: http://allentries.co.uk/entry/27002/fluffy-american-pancakes.aspx",
 		"ingredients":"150g plain flour\r\n1/2 teaspoon salt\r\n1 tablespoon baking powder\r\n1 teaspoon caster sugar\r\n225ml milk\r\n1 egg\r\n1 knob of butter, melted\r\nbutter or oil for frying",
 		"steps":"1. Sift together the flour, salt, baking powder and sugar. Make a well in the centre. Pour in the milk, then add the egg and melted butter. Beat well till the pancake batter is smooth.\r\n2. Heat a frying pan over medium heat. Lightly grease with butter or vegetable oil. To test to see if the pan is hot enough, flick a bit of water on the pan. If it sizzles, it is ready. Ladle the pancake batter into the pan.\r\n3. Cook each pancake till bubbles appear on the surface and the edges have gone slightly dry. Flip each pancake and cook for a minute or two on the reverse side, till golden brown.\r\n4. Serve hot with your favourite toppings, such as maple syrup and fresh berries. Enjoy!",
 		},
@@ -43,7 +43,7 @@ def populate():
 		"cats" : "Lunch, American",
 		"chef" : "eve_ohagan",
 		"photo" : "panini.jpeg",
-		"about": "A delicious combination for a chicken sandwich: roast chicken, pesto, veggies and cheese sandwiched between focaccia. Simple, fast and tasty. Source: http://allrecipes.co.uk/recipe/9367/pesto-chicken-panini.aspx",
+		"about": "A delicious combination for a chicken sandwich: roast chicken, pesto, veggies and cheese sandwiched between focaccia. Simple, fast and tasty. Source: http://allentries.co.uk/entry/9367/pesto-chicken-panini.aspx",
 		"ingredients":"1 focaccia bread, quartered\r\n8 tablespoons prepared basil pesto\r\n150g diced cooked chicken\r\n1/2 green pepper, diced\r\n4 tablespoons diced red onion\r\n120g grated Cheddar, mozzarella or Monterey Jack cheese",
 		"steps":"1. Preheat a panini press.\r\n2. Slice each quarter of focaccia bread in half horizontally. Spread each half with pesto. Layer bottom halves with equal amounts chicken, green pepper, onion and cheese. Top with remaining focaccia halves, forming 4 sandwiches.\r\n3. Grill panini 5 minutes in the preheated press, or until focaccia is golden brown and cheese is melted.",
 		},
@@ -52,7 +52,7 @@ def populate():
 		"cats" : "Dinner, American, 4th of July",
 		"chef" : "q_smart",
 		"photo" : "burger.png",
-		"about": "The best-tasting burger is always made using the finest, leanest beef, like this recipe. This really has to be tried - burgers are rarely made like this any more. Try serving with tomato salsa. Source: https://www.saga.co.uk/magazine/food/recipes/meat/beef/lower-cholesterol-classic-american-burger",
+		"about": "The best-tasting burger is always made using the finest, leanest beef, like this entry. This really has to be tried - burgers are rarely made like this any more. Try serving with tomato salsa. Source: https://www.saga.co.uk/magazine/food/entries/meat/beef/lower-cholesterol-classic-american-burger",
 		"ingredients":"1 slice brown bread\r\n1kg lean minced Angus beef\r\n1 garlic clove, crushed\r\n1 teaspoon finely chopped fresh thyme\r\n1 tablespoon tomato paste\r\n1 tablespoon Dijon mustard\r\n1 egg\r\nFreshly ground black pepper\r\nDash of Tabasco sauce\r\nSplash of vegetable (rapeseed) oil\r\nToasted sesame-seed burger buns, to serve",
 		"steps":"1. Whizz the brown bread in a blender to make crumbs.\r\n2. Place all the remaining ingredients (except for the oil and the buns) in a large mixing bowl and, adding the breadcrumbs, mix with your hands so it all comes together. Make into patties.\r\n3. Heat a little oil in a pan and cook the patties for 2–3 minutes on each side; keep on the medium-rare side.\r\n4. Serve on toasted sesame-seed buns.",
 		},
@@ -70,7 +70,7 @@ def populate():
 		"cats" : "Dessert, St Patrick's Day",
 		"chef" : "eve_ohagan",
 		"photo" : "shake.jpeg",
-		"about": "Make your own homemade spin on the beloved fast food Shamrock Shake with this quick and easy recipe. Source: https://www.epicurious.com/recipes/food/views/shamrock-shake-51226410",
+		"about": "Make your own homemade spin on the beloved fast food Shamrock Shake with this quick and easy entry. Source: https://www.epicurious.com/entries/food/views/shamrock-shake-51226410",
 		"ingredients":"1 1/2 cups vanilla ice cream\r\n1/2 cup whole milk \r\n10 drops green food coloring \r\n1 teaspoon peppermint extract \r\nWhipped cream (optional) \r\n1 maraschino cherry (optional)",
 		"steps":"1. In a blender, combine the vanilla ice cream, milk, green food coloring, and peppermint extract, and process until smooth, about 30 seconds \r\n2. Pour the shake into a glass and top with the whipped cream and maraschino cherry. \r\n",
 		},
@@ -88,7 +88,7 @@ def populate():
 		"cats" : "Lunch, American, 4th of July",
 		"chef" : "lynda_faller",
 		"photo" : "hotdog.jpeg",
-		"about": "These hot dogs will be a crowd pleaser at your summer barbecue! Source: https://potatorolls.com/recipes/classic-hot-dog/",
+		"about": "These hot dogs will be a crowd pleaser at your summer barbecue! Source: https://potatorolls.com/entries/classic-hot-dog/",
 		"ingredients":"Hot Dogs\r\nBuns\r\nCondiments of Choice\r\nToppings of Choice",
 		"steps":"1. Cook hot dogs using preferred method:\r\nGrilling Method: Heat hot dogs over medium (or indirect) heat on grill, turning occasionally. Cook until fully heated internally and there is a nice, even char on all sides, being careful not to burn them.\r\nBoiling Method: Fill a saucepan with about 4 cups of water. Bring to a boil. Once boiling, turn heat to low and add hot dogs. Simmer for about 5 minutes, or until hotdogs are fully heated.\r\n2. Once hot dogs are fully heated, remove from heat and set aside, drying them off if necessary.\r\n3. Place each hot dog in a bun and top with desired toppings and condiments, such as cheese, mustard, ketchup, relish, onions, chili, etc.",
 		},
@@ -97,7 +97,7 @@ def populate():
 		"cats" : "Dinner, Mexican",
 		"chef" : "amy_hynes",
 		"photo" : "tacos.jpeg",
-		"about": "These crispy ground beef tacos are filled with seasoned meat, lettuce, cheese, and tomatoes. An easy dinner recipe that the whole family will enjoy, even your pickiest eaters! Source: https://www.dinneratthezoo.com/ground-beef-tacos/",
+		"about": "These crispy ground beef tacos are filled with seasoned meat, lettuce, cheese, and tomatoes. An easy dinner entry that the whole family will enjoy, even your pickiest eaters! Source: https://www.dinneratthezoo.com/ground-beef-tacos/",
 		"ingredients":"2 teaspoons vegetable oil\r\n1 pound lean ground beef I use 90% lean\r\n1/2 cup onion finely chopped\r\n1 tablespoon chili powder\r\n1/4 teaspoon garlic powder\r\n1/4 teaspoon onion powder\r\1/4 teaspoon crushed red pepper flakes optional\r\n1/4 teaspoon dried oregano\r\n1/2 teaspoon smoked paprika\r\n1 teaspoon ground cumin\r\n1 teaspoon salt\r\n1/2 teaspoon pepper\r\n1 14 ounce can petite diced tomatoes drained\r\n8 taco shells\r\nassorted toppings such as lettuce, tomato, onion and shredded cheese",
 		"steps":"1. Heat the oil in a large pan over medium high heat.\r\n2. Add the ground beef and break up with a spatula.\r\n3. Add the onion to the pan.\r\n4. Cook, stirring occasionally, until beef is done and onion is soft, 5-6 minutes. Drain off any excess fat.\r\n5. Add the chili powder, garlic powder, onion powder, red pepper flakes, oregano, smoked paprika, cumin, salt and pepper to the pan. Stir to coat the meat in the seasonings.\r\n6. Add the tomatoes to the pan and simmer for 2-3 minutes.\r\n7. Spoon the beef into the taco shells and add toppings such as lettuce, tomatoes and cheese. Serve immediately.",
 		},
@@ -106,7 +106,7 @@ def populate():
 		"cats" : "Dinner, Chinese",
 		"chef" : "lynda_faller",
 		"photo" : "chowmein.jpeg",
-		"about": "This quick and easy chow mein recipe will curb your takeaway cravings! Source: http://iamafoodblog.com/15-minute-easy-chicken-chow-mein-recipe/",
+		"about": "This quick and easy chow mein entry will curb your takeaway cravings! Source: http://iamafoodblog.com/15-minute-easy-chicken-chow-mein-entry/",
 		"ingredients":"8 ounces chow mein egg noodles\r\n1 boneless, skinless chicken thigh cut into small strips\r\n1 teaspoon cornstarch\r\n2 teaspoons light soy sauce\r\n1 teaspoon shaoxing wine\r\noil, for the wok\r\n2 large eggs\r\nsalt and freshly ground pepper\r\n1/2 red onion, sliced\r\n3 green onions, cut into 2 inch lengths\r\n1-2 tablespoons light soy sauce, or to taste\r\n1 tablespoon dark soy sauce, or to taste",
 		"steps":"1. Soak the noodles in hot tap water. In a small bowl, mix the chicken with the cornstarch, soy sauce, and shaoxing wine. Set aside.\r\n2. Heat up the oil in a wok or frying pan over medium high heat. When hot and shimmery, crack the eggs into the pan and scramble until cooked but still soft. Season with salt and pepper to taste then scoop out the eggs. The pan should still have a bit of oil in it, but if it’s dry, add a touch more.\r\n3. Add the onions and cook, over medium high heat, until slightly soft – you want them to have some bite to them still. Add the chicken, along with the marinade in the bowl and cook, stirring, until brown and cooked through.\r\n4. Drain the noodles and add them into the pan and toss everything together. Add the eggs back in, along with the green onions. Add the dark and light soy sauce and toss well, frying. Taste, adjust the seasoning, then enjoy!",
 		},
@@ -115,7 +115,7 @@ def populate():
 		"cats" : "Dinner, Indian",
 		"chef" : "eve_ohagan",
 		"photo" : "curry.jpeg",
-		"about": "This is a traditional North Indian (Punjabi) chicken curry dish. Serve with basmati rice or fresh Indian roti or naan\r\nSource: https://www.allrecipes.com/recipe/80683/traditional-chicken-curry/",
+		"about": "This is a traditional North Indian (Punjabi) chicken curry dish. Serve with basmati rice or fresh Indian roti or naan\r\nSource: https://www.allentries.com/entry/80683/traditional-chicken-curry/",
 		"ingredients":"1 pound skinless, boneless chicken breast halves - cut into bite-size pieces\r\n1 tablespoon fresh lemon juice\r\nSalt and pepper to taste\r\n3 tablespoons olive oil\r\n1 teaspoon cumin seed\r\n1 large onion, finely chopped\r\n2 cloves garlic, minced\r\n1 teaspoon minced fresh ginger\r\n1 (8 ounce) can peeled, chopped tomatoes\r\n1 teaspoon chili powder\r\n1/2 teaspoon ground turmeric\r\n1 teaspoon garam masala\r\n1/2 teaspoon ground cumin\r\n1 pinch ground coriander\r\n1/2 teaspoon paprika\r\n3 tablespoons plain yogurt\r\n2 medium potatoes, peeled and cut into 1 inch cubes\r\n1 1/2 cups water\r\n1 (5.5 ounce) can tomato juice",
 		"steps":"1. In a large bowl, toss the chicken pieces with lemon juice, salt, and pepper to coat. Set aside.\r\n2. Heat oil in a large, heavy saucepan over medium heat. Stir in cumin seed and cook 1 minute, until lightly toasted. Mix in onion, garlic, and ginger. Cook until onion is tender. Add tomatoes, and season with chili powder, turmeric, garam masala, ground cumin, coriander, and paprika. Continue to cook and stir 2 minutes.\r\n3. Mix yogurt into the saucepan until well blended. Add chicken pieces, and potatoes. Mix in water and tomato juice. Reduce heat to medium-low. Cover and simmer about 40 minutes. Adjust seasonings to taste and garnish with fresh cilantro before serving.",
 		},
@@ -124,7 +124,7 @@ def populate():
 		"cats" : "Dessert, St Patrick's Day",
 		"chef" : "q_smart",
 		"photo" : "cupcakes.jpeg",
-		"about": "These cute Irish-themed cupcakes are perfect for sharing and easy enough to whip up the morning of your party. The cakes are made with a flavoursome stout and the icing is mixed with cream liquor for a traditional Irish taste and adult twist.\r\nSource: https://www.goodtoknow.co.uk/recipes/st-patrick-s-day-cupcakes",
+		"about": "These cute Irish-themed cupcakes are perfect for sharing and easy enough to whip up the morning of your party. The cakes are made with a flavoursome stout and the icing is mixed with cream liquor for a traditional Irish taste and adult twist.\r\nSource: https://www.goodtoknow.co.uk/entries/st-patrick-s-day-cupcakes",
 		"ingredients":"Cupcakes:\r\n100g soft butter\r\n100ml stout\r\n40g cocoa powder\r\n150g plain flour\r\n1/2 tsp salt\r\n1 tsp baking powder\r\n200g light soft brown sugar\r\n1 egg\r\n75ml sour cream\r\n\r\nFrosting: \r\n200g soft butter\r\n450g icing sugar, sifted\r\n3-4 tbsps Irish cream liquor\r\nGreen sugar sprinkles to decorate (optional)\r\nGreen food colouring (optional)",
 		"steps":"1. Preheat the oven to 180 C/350 F/Gas Mark 4. Line a 12 cup muffin tin with paper cases. Place the butter, stout and cocoa powder in a saucepan and place over a gentle heat, stir until the butter has melted and the mixture is smooth. Remove from the heat and allow to cool.\r\n2. In a large bowl sift together the flour, salt, baking powder and sugar. Add the cooled stout mixture and beat for 1 minute using an electric whisk on a medium speed. Add the egg and sour cream and beat for a further 2 minutes.\r\n3. Divide the batter evenly between the prepared tin. Bake for 20-25 minutes until cooked through and springy to the touch. Transfer the cakes to a cooling rack and leave to cool completely.\r\n4. For the frosting, cream the butter in a bowl until light and fluffy. Gradually beat in the icing sugar a little at a time then beat in the Irish cream liquor. Add the food colouring if using (start with a little and add more depending on the shade of green you want). Spoon or pipe the icing on the cooled cakes and sprinkle with green sugar to decorate.",
 		},
@@ -133,7 +133,7 @@ def populate():
 		"cats" : "Lunch, Japanese",
 		"chef" : "q_smart",
 		"photo" : "sushi.jpeg",
-		"about": "A California roll is a fresh take on traditional Japanese rice rolls. Filled with avocado, crab, and cucumber, it's fresh and crunchy and makes a filling meal.\r\nSource: https://tasty.co/recipe/california-roll",
+		"about": "A California roll is a fresh take on traditional Japanese rice rolls. Filled with avocado, crab, and cucumber, it's fresh and crunchy and makes a filling meal.\r\nSource: https://tasty.co/entry/california-roll",
 		"ingredients":"2 cups  sushi rice, cooked (460 g)\r\n¼ cup  seasoned rice vinegar (60 mL)\r\n4 half sheets sushi grade nori\r\n1 teaspoon  sesame seed, optional\r\n8 pieces imitation crab\r\n1 small cucumber, cut into matchsticks\r\n1 avocado, thinly sliced",
 		"steps":"1. Season the sushi rice with the rice vinegar, fanning and stirring until room temperature.\r\n2. On a rolling mat, place one sheet of nori with the rough side facing upwards.\r\n3. Wet your hands and grab a handful of rice and place it on the nori. Spread the rice evenly throughout the nori without mashing the rice down. Season rice with a pinch of sesame seeds, if using, then flip it over so the nori is facing upwards.\r\n4. Arrange, in a horizontal row 1 inch (2.5 cm) from the bottom, the crab followed by a row of avocado and a row of cucumber.\r\n5. Grabbing both nori and the mat, roll the mat over the filling so the extra space at the bottom touches the other side, squeezing down to make a nice tight roll. Squeeze down along the way to keep the roll from holding its shape.\r\n6. Transfer the roll onto a cutting board. Rub a knife on a damp paper towel before slicing the roll into six equal portions.",
 		},]
@@ -177,28 +177,28 @@ def populate():
 		c = add_cat(spec,spec_data["likes"], 'SPE', cat_objects["Special Occasions"], spec_data["photo"])
 		cat_objects[spec] = c
 
-	print(" -Adding recipes . . .")
-	for recipe in recipes:
-		add_recipe(recipe)
+	print(" -Adding entries . . .")
+	for entry in entries:
+		add_entry(entry)
 
 	print(" -Adding reviews . . .")
 	for review, review_data in reviews.items():
 		r = add_review(review,review_data)
 
-def add_recipe(recipe):
-	chef = recipe["chef"]
-	name=recipe['name']
-	r = Recipe.objects.get_or_create(chef=admin_objects[chef], name=name)[0]
-	r.name = recipe['name']
-	r.cook_time = recipe["cook_time"]
-	cats_lst = recipe["cats"].split(", ")
+def add_entry(entry):
+	chef = entry["chef"]
+	name=entry['name']
+	r = Entry.objects.get_or_create(chef=admin_objects[chef], name=name)[0]
+	r.name = entry['name']
+	r.cook_time = entry["cook_time"]
+	cats_lst = entry["cats"].split(", ")
 	print("   ",name,cats_lst)
 	for c in cats_lst:
 		r.categories.add(cat_objects[c])
-	r.photo = "food_pics/"+recipe["photo"]
-	r.about = recipe["about"]
-	r.ingredients = recipe["ingredients"]
-	r.steps = recipe["steps"]
+	r.photo = "food_pics/"+entry["photo"]
+	r.about = entry["about"]
+	r.ingredients = entry["ingredients"]
+	r.steps = entry["steps"]
 	r.save()
 	return r
 
@@ -233,13 +233,13 @@ def add_chef(user,user_data):
 	return chef
 
 def add_review(title,review_data):
-	recipe_chef = review_data["chef"]
-	recipe_name = review_data["recipe"]
+	entry_chef = review_data["chef"]
+	entry_name = review_data["entry"]
 	author = review_data["author"]
 	rating = review_data["rating"]
 
-	recipe = Recipe.objects.get(chef=admin_objects[recipe_chef], name=recipe_name)
-	review = Review.objects.get_or_create(recipe=recipe, author=admin_objects[author])[0]
+	entry = Entry.objects.get(chef=admin_objects[entry_chef], name=entry_name)
+	review = Review.objects.get_or_create(entry=entry, author=admin_objects[author])[0]
 	review.title = title
 	review.rating = review_data["rating"]
 	review.comment = review_data["comment"]

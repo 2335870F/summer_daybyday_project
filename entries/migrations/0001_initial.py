@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('likes', models.IntegerField(default=0)),
                 ('slug', models.SlugField(unique=True)),
                 ('photo', models.ImageField(blank=True, upload_to='cat_pics')),
-                ('supercat', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='category', to='recipes.Category')),
+                ('supercat', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='category', to='entries.Category')),
             ],
             options={
                 'verbose_name_plural': 'Categories',
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('photo', models.ImageField(default='profile_pics/anon.png', upload_to='profile_pics')),
-                ('bio', models.TextField(blank=True, default='Hello! I enjoy making food the opportunity to upload recipes, share tips, and explore recipes on this website!')),
+                ('bio', models.TextField(blank=True, default='Hello! I enjoy making food the opportunity to upload entries, create reminders, and explore entries on this website!')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Recipe',
+            name='Entry',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('slug', models.SlugField(unique=True)),
@@ -62,8 +62,8 @@ class Migration(migrations.Migration):
                 ('date_posted', models.DateTimeField(default=django.utils.timezone.now)),
                 ('ingredients', models.TextField(default='')),
                 ('steps', models.TextField(default='')),
-                ('about', models.TextField(default='Check out my new recipe!')),
-                ('categories', models.ManyToManyField(to='recipes.Category')),
+                ('about', models.TextField(default='Check out my new entry!')),
+                ('categories', models.ManyToManyField(to='entries.Category')),
                 ('chef', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
                 ('comment', models.TextField(default='')),
                 ('date_posted', models.DateTimeField(default=django.utils.timezone.now)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipes.Recipe')),
+                ('entry', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='entries.Entry')),
             ],
         ),
         migrations.CreateModel(

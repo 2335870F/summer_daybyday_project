@@ -31,12 +31,12 @@ class Category(models.Model):
 class Chef(models.Model):
 	user = models.OneToOneField(User)
 	photo = models.ImageField(upload_to='profile_pics', default='profile_pics/anon.png')
-	bio = models.TextField(default="Hello! I enjoy making food the opportunity to upload recipes, share tips, and explore recipes on this website!", blank=True)
+	bio = models.TextField(default="Hello! I enjoy the opportunity to upload entries, create reminders, and plan ahead on this website!", blank=True)
 
 	def __str__(self):
 		return self.user.username
 
-class Recipe(models.Model):
+class Entry(models.Model):
 	chef = models.ForeignKey(User)
 	slug = models.SlugField(unique=True)
 	categories = models.ManyToManyField(Category)
@@ -46,18 +46,18 @@ class Recipe(models.Model):
 	date_posted = models.DateTimeField(default=timezone.now)
 	ingredients = models.TextField(default="")
 	steps = models.TextField(default="")
-	about = models.TextField(default="Check out my new recipe!")
+	about = models.TextField(default="Check out my new entry!")
 	#overall rating
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.chef.username+"-"+self.name)
-		super(Recipe, self).save(*args, **kwargs)
+		super(Entry, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.name
 
 class Review(models.Model):
-	recipe = models.ForeignKey(Recipe)
+	entry = models.ForeignKey(Entry)
 	author = models.ForeignKey(User)
 	title = models.CharField(max_length=50, default="My Rating")
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)

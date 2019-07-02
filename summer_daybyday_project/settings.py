@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipes',
+    'entries',
 ]
 
 MIDDLEWARE = [
@@ -128,4 +128,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticadmin')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-LOGIN_URL = '/recipes/login/'
+LOGIN_URL = '/entries/login/'
