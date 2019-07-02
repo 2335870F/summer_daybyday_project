@@ -1,4 +1,4 @@
-{% extends 'recipes/base.html' %}
+{% extends 'entries/base.html' %}
 {% load staticfiles %}
 
 {% block js %}
@@ -13,28 +13,28 @@
 {% endblock %}
 
 {% block title_block %}
-  {{ recipe.name }}
+  {{ entry.name }}
 {% endblock %}
 
 {% block name_block %}
-	{% if recipe %}
-		{{ recipe.name }}
+	{% if entry %}
+		{{ entry.name }}
 	{% endif %}
 {% endblock %}
 
 
 {% block body_block %}
-	<div class="recipe_page">
+	<div class="entry_page">
 
 		<div class="other">
 			<div class="chef_info">
-				{% if recipe %}
-					<strong> Chef: </strong><a href="{% url 'userprofile' recipe.chef.username %}">{{ recipe.chef }}</a><br/>
-					<strong> Date: </strong>{{ recipe.date_posted }}<br/>
+				{% if entry %}
+					<strong> Chef: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
+					<strong> Date: </strong>{{ entry.date_posted }}<br/>
 					<strong> Overall Rating: </strong>{{ avgRating }}<br/>
-					<strong> Cook time: </strong>{{ recipe.cook_time }} min<br/>
+					<strong> Cook time: </strong>{{ entry.cook_time }} min<br/>
 					<strong> Ingredients:</strong>
-					<pre>{{ recipe.ingredients }}</pre>
+					<pre>{{ entry.ingredients }}</pre>
 				{% endif %}
 			</div>
 			<div class="cat_bar">
@@ -45,17 +45,17 @@
 			</div>
 		</div>
 
-		<div class="recipe_info">
-			{% if recipe %}
-				<img src="{{ MEDIA_URL }}{{ recipe.photo }}" alt="Picture of {{ recipe.name }}"/><br/>
+		<div class="entry_info">
+			{% if entry %}
+				<img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
 				<div class="steps">
-					{{ recipe.about }}<br/>
+					{{ entry.about }}<br/>
 					<br/>
 					Steps:<br/>
-					<pre>{{ recipe.steps }}</pre>
+					<pre>{{ entry.steps }}</pre>
 				</div>
 			{% else %}
-				<strong>This is not a recipe.</strong>
+				<strong>This is not an entry.</strong>
 			{% endif %}
 		</div>
 
@@ -64,7 +64,7 @@
 			<div class="view">
 			{% if reviews %}
 				{% for review in reviews %}
-					<div class="recipe">
+					<div class="entry">
 						<a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
 						<div>
 							<strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
@@ -73,14 +73,14 @@
 					</div>
 				{% endfor %}
 			{% else %}
-				<strong>There are no reviews left for this recipe.</strong>
+				<strong>There are no reviews for this entry.</strong>
 			{% endif %}
 			</div>
 			{% if user.is_authenticated %}
-				{% if recipe %}
+				{% if entry %}
 					<div class="give">
 						<h3>Leave a Review</h3>
-						<form id="review_form" method="post" action={% url 'viewrecipe' recipe.slug %}>
+						<form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
 							{% csrf_token %}
 							{% for field in form.visible_fields %}
 								{{ field.errors }}

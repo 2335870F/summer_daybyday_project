@@ -1,5 +1,5 @@
 from django import forms
-from recipes.models import *
+from entries.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
@@ -26,7 +26,7 @@ class ReviewForm(forms.ModelForm):
 
 	class Meta:
 		model = Review
-		exclude = ('recipe','author','date_posted')
+		exclude = ('entry','author','date_posted')
 
 class SuggestForm(forms.ModelForm):
 	comment = forms.CharField(widget=forms.Textarea(), label="Leave a suggestion for a new cuisine or occasion!", required=False)
@@ -45,8 +45,8 @@ class ContactForm(forms.ModelForm):
 		model = Contact
 		fields = ('first_name','last_name','email', 'comment')
 
-#asls for name of recipe, a photo, and cook time of recipe
-class AddRecipeForm(forms.ModelForm):
+#asls for name of entry, a photo, and cook time of entry
+class AddEntryForm(forms.ModelForm):
 	CATEGORIES =(
 		("1","Breakfast"),
 		("2","Lunch"),
@@ -65,7 +65,7 @@ class AddRecipeForm(forms.ModelForm):
 		("17","4th of July"),
 		("18","Valentine's Day"),
 	)
-	name = forms.CharField(widget=forms.TextInput(), help_text="Give your recipe a name", required=True)
+	name = forms.CharField(widget=forms.TextInput(), help_text="Give your entry a name", required=True)
 	photo = forms.ImageField(required=True)
 	cook_time = forms.IntegerField(min_value=0, initial=0, help_text="in minutes", required=True)
 	about = forms.CharField(widget=forms.Textarea(), label="Description", required=True)
@@ -75,15 +75,15 @@ class AddRecipeForm(forms.ModelForm):
 	categories = forms.MultipleChoiceField(widget=forms.SelectMultiple(),choices=CATEGORIES, required=True, help_text="Hold down Control (Command on Mac) to choose up to three!")
 
 	class Meta:
-		model = Recipe
+		model = Entry
 		fields = ('name','photo','cook_time','categories','about','ingredients','steps')
 
 	def save(self, username):
 		author = User.objects.get(username=username)
 		self.chef = author
 		print(self.cleaned_data)
-		recipe = super(AddRecipeForm, self).save(commit=False)
-		return recipe;
+		entry = super(AddEntryForm, self).save(commit=False)
+		return entry;
 
 class EditProfileForm(UserChangeForm):
 	class Meta:

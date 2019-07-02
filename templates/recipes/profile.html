@@ -1,4 +1,4 @@
-{% extends 'recipes/base.html' %}
+{% extends 'entries/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -26,30 +26,30 @@
 			{% endif %}
 		</div>
 
-		<div class="user_recipes">
+		<div class="user_entries">
 			<div class="page_name">{{ chef.user.get_full_name }}</div>
 			<h3>Bio</h3>
 				{{ chef.bio }}
-			<h3>Recipes</h3>
-			{% if recipes %}
-				{% for recipe in recipes %}
-					<div class="recipe">
-						<a href="{% url 'viewrecipe' recipe.slug %}"><img src="{{ MEDIA_URL }}{{ recipe.photo }}" alt="Picture of {{ recipe.photo }}" width="90"/></a>
+			<h3>Entries</h3>
+			{% if entries %}
+				{% for entry in entries %}
+					<div class="entry">
+						<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" width="90"/></a>
 						<div>
-							<strong>{{ recipe.name }}</strong><br/>
-							{{ recipe.about }}
+							<strong>{{ entry.name }}</strong><br/>
+							{{ entry.about }}
 						</div>
 					</div>
 				{% endfor %}
 			{% else %}
-				<strong>User has not created any recipes.</strong>
+				<strong>User has not created any entries.</strong>
 			{% endif %}
 
 			<h3>Reviews</h3>
 			{% if reviews %}
 				{% for review in reviews %}
-					<div class="recipe">
-						<a href="{% url 'viewrecipe' review.recipe.slug %}"><img src="{{ MEDIA_URL }}{{ review.recipe.photo }}" alt="Picture of {{ review.recipe }}" width="90"/></a>
+					<div class="entry">
+						<a href="{% url 'viewentry' review.entry.slug %}"><img src="{{ MEDIA_URL }}{{ review.entry.photo }}" alt="Picture of {{ review.entry }}" width="90"/></a>
 						<div>
 							<strong>{{ review.rating }}, {{ review.title }}</strong> -- {{ review.date_posted }}<br/>
 							{{ review.comment }}

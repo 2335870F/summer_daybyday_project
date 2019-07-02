@@ -159,7 +159,7 @@ div.cat_bar h3{
 
 /* RECIPE PAGE */
 
-div.recipe_page{
+div.entry_page{
 	position: fixed;
 	display: grid;
 	height: 69%;
@@ -170,14 +170,14 @@ div.recipe_page{
 	padding-left: 4em;
 	padding-right: 4em;
 }
-div.recipe_info img{
+div.entry_info img{
 	position: relative;
 	width: 100%;
 }
 div.other {
 	overflow: scroll;
 }
-div.recipe_info {
+div.entry_info {
 	overflow: scroll;
 	word-wrap: normal;
 }
@@ -255,10 +255,10 @@ div.account {
 div.user_info img{
 	width: 100%;
 }
-div.user_recipes {
+div.user_entries {
 	overflow: scroll;
 }
-div.recipe {
+div.entry {
 	line-height: 1.2em;
 	margin-bottom: 8px;
 	height: 60px;
@@ -266,11 +266,11 @@ div.recipe {
 	overflow: scroll;
 	font-size: 0.9em;
 }
-div.recipe img{
+div.entry img{
 	padding-right: 0.25em;
 	float: left;
 }
-div.recipe img:hover{
+div.entry img:hover{
 	opacity: 0.7;
 }
 

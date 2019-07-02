@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from recipes.models import *
-from recipes.forms import *
+from entries.models import *
+from entries.forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -15,15 +15,15 @@ from django.contrib.auth import update_session_auth_hash
 cats_bar = Category.objects.exclude(name__in=['Cuisines','Special Occasions']).order_by('name')
 
 def index(request):
-	#get all recipes, order alphabetically by name
-	latest = Recipe.objects.order_by('-date_posted')[:6]
+	#get all entries, order alphabetically by name
+	latest = Entry.objects.order_by('-date_posted')[:6]
 	#get all categories -- no order
 	users = User.objects.order_by('-date_joined')[:6]
 
-	top = Recipe.objects.order_by('cook_time')[:6]
+	top = Entry.objects.order_by('cook_time')[:6]
 
 	context_dict = {'latest':latest, 'users':users, 'top':top}
-	response = render(request,'recipes/index.html', context=context_dict)
+	response = render(request,'entries/index.html', context=context_dict)
 	return response
 
 def about(request):
@@ -31,21 +31,21 @@ def about(request):
 	chefs = Chef.objects.all()
 	context_dict = {'chefs':chefs}
 
-	response = render(request,'recipes/about.html', context=context_dict)
+	response = render(request,'entries/about.html', context=context_dict)
 	return response
 
 def faq(request):
-	return render(request,'recipes/faq.html', {})
+	return render(request,'entries/faq.html', {})
 
 def trending(request):
-	recipes = Category.objects.get(slug="st-patricks-day").recipe_set.all()
-	return render(request,'recipes/trending.html', {'recipes':recipes})
+	entries = Category.objects.get(slug="st-patricks-day").entry_set.all()
+	return render(request,'entries/trending.html', {'entries':entries})
 
 def categories(request):
 	#get all categories -- no order
 	cats = Category.objects.all()
 	context_dict = {'cats':cats}
-	response = render(request,'recipes/categories.html', context=context_dict)
+	response = render(request,'entries/categories.html', context=context_dict)
 	return response
 
 def register(request):
@@ -69,7 +69,7 @@ def register(request):
 	else:
 		user_form = UserForm()
 		profile_form = ChefForm()
-	return render(request, 'recipes/register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+	return render(request, 'entries/register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def user_login(request):
 	if request.method == 'POST':
@@ -89,10 +89,10 @@ def user_login(request):
 			print("Invalid ligin details: {0},{1}".format(username, password))
 			return HttpResponseRedirect(reverse('invalidlogin'))
 	else:
-		return render(request, 'recipes/login.html', {})
+		return render(request, 'entries/login.html', {})
 
 def invalidlogin(request):
-	return render(request,'recipes/invalidlogin.html', {})
+	return render(request,'entries/invalidlogin.html', {})
 
 @login_required
 def user_logout(request):
@@ -111,7 +111,7 @@ def suggestion(request):
 			return HttpResponseRedirect(reverse('index'))
 	else:
 		print(form.errors)
-	return render(request, 'recipes/suggestion.html', {'form':form})
+	return render(request, 'entries/suggestion.html', {'form':form})
 
 def contact(request):
 	form = ContactForm()
@@ -122,45 +122,45 @@ def contact(request):
 			return HttpResponseRedirect(reverse('index'))
 		else:
 			print(form.errors)
-	return render(request, 'recipes/contact.html', {'form':form})
+	return render(request, 'entries/contact.html', {'form':form})
 
 @login_required
-def addrecipe(request):
-	form = AddRecipeForm(request.FILES)
+def addentry(request):
+	form = AddEntryForm(request.FILES)
 	if request.method == 'POST':
-		form = AddRecipeForm(request.POST, request.FILES)
+		form = AddEntryForm(request.POST, request.FILES)
 		if form.is_valid():
-			recipe = form.save(request.user.username)
-			recipe.chef = request.user
+			entry = form.save(request.user.username)
+			entry.chef = request.user
 			cats = form.cleaned_data.get('categories')
 			if(len(cats) > 3):
 				raise forms.ValidationError("You can't select more than 3 items.")
 			else:
-				recipe.save()
+				entry.save()
 				for cat in cats:
 					category = Category.objects.get(id=cat)
-					recipe.categories.add(category)
-			recipe.save()
+					entry.categories.add(category)
+			entry.save()
 			return HttpResponseRedirect(reverse('index'))
 		else:
 			print(form.errors)
-	return render(request, 'recipes/addrecipe.html', {'form':form})
+	return render(request, 'entries/addentry.html', {'form':form})
 
-def viewrecipe(request, recipe_name_slug):
+def viewentry(request, entry_name_slug):
 	context_dict = {'cats_bar':cats_bar}
 	try:
-		recipe = Recipe.objects.get(slug=recipe_name_slug)
-		reviews = Review.objects.filter(recipe=recipe).order_by("-date_posted")
+		entry = Entry.objects.get(slug=entry_name_slug)
+		reviews = Review.objects.filter(entry=entry).order_by("-date_posted")
 
 		if len(reviews) > 0:
-			avgRating = (Review.objects.filter(recipe=recipe).aggregate(Sum('rating'))["rating__sum"])/len(reviews)
+			avgRating = (Review.objects.filter(entry=entry).aggregate(Sum('rating'))["rating__sum"])/len(reviews)
 			context_dict['avgRating'] = round(avgRating,2)
 		else:
 			context_dict['avgRating'] = "No rating yet."
-		context_dict['recipe'] = recipe
+		context_dict['entry'] = entry
 		context_dict['reviews'] = reviews
 	except:
-		context_dict['recipe'] = None
+		context_dict['entry'] = None
 
 	if request.user.is_authenticated():
 		form = ReviewForm()
@@ -168,29 +168,29 @@ def viewrecipe(request, recipe_name_slug):
 			form = ReviewForm(request.POST)
 			if form.is_valid():
 				review = form.save(commit=False)
-				review.recipe = recipe
+				review.entry = entry
 				review.author = request.user
 				review.save()
-				return redirect('/recipes/recipe/'+recipe_name_slug)
+				return redirect('/entries/entry/'+entry_name_slug)
 		else:
 			print(form.errors)
 		context_dict["form"] = form
-	return render(request, 'recipes/recipe.html', context_dict)
+	return render(request, 'entries/entry.html', context_dict)
 
 def userprofile(request, username):
 	context_dict = {}
 	try:
 		user = User.objects.get(username=username)
 		chef = Chef.objects.get(user=user)
-		recipes = Recipe.objects.filter(chef=user)
+		entries = Entry.objects.filter(chef=user)
 		reviews = Review.objects.filter(author=user)
 		context_dict['reviews'] = reviews
-		context_dict['recipes'] = recipes
+		context_dict['entries'] = entries
 		context_dict['chef'] = chef
 	except:
 		context_dict['chef'] = None
 
-	return render(request, 'recipes/profile.html', context_dict)
+	return render(request, 'entries/profile.html', context_dict)
 
 @login_required
 def edit_profile(request, username):
@@ -200,7 +200,7 @@ def edit_profile(request, username):
 		if edit.is_valid() and bio.is_valid():
 			edit.save()
 			bio.save()
-			return redirect('/recipes/profile/'+username)
+			return redirect('/entries/profile/'+username)
 		else:
 			print(edit.errors, bio.errors)
 	else:
@@ -208,7 +208,7 @@ def edit_profile(request, username):
 		bio = EditBioForm(request.FILES, instance=request.user.chef)
 
 	context_dict = {'edit':edit,'bio':bio}
-	return render(request, 'recipes/edit_profile.html', context_dict)
+	return render(request, 'entries/edit_profile.html', context_dict)
 
 @login_required
 def change_password(request, username):
@@ -224,21 +224,21 @@ def change_password(request, username):
 		form=PasswordChangeForm(data=request.POST, user=request.user)
 	context_dict = {'form':form}
 
-	return render(request, 'recipes/change_password.html', context_dict)
+	return render(request, 'entries/change_password.html', context_dict)
 
 def show_category(request, cat_name_slug):
 	context_dict = {}
 
 	try:
 		cat = Category.objects.get(slug=cat_name_slug)
-		recipes = cat.recipe_set.all()
+		entries = cat.entry_set.all()
 		subcats = Category.objects.filter(supercat=cat)
-		context_dict['recipes'] = recipes
+		context_dict['entries'] = entries
 		context_dict['subcats'] = subcats
 		context_dict['cat'] = cat
 		context_dict['cats_bar'] = cats_bar
 	except Category.DoesNotExist:
 		context_dict['category'] = None
-		context_dict['recipes'] = None
+		context_dict['entries'] = None
 
-	return render(request, 'recipes/category.html', context_dict)
+	return render(request, 'entries/category.html', context_dict)

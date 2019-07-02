@@ -1,11 +1,11 @@
 from django.conf.urls import url
-from recipes import views
+from entries import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about/', views.about, name='about'),
 	url(r'^faq/$', views.faq, name='faq'),
-	url(r'^recipe/(?P<recipe_name_slug>[\w\-]+)/$', views.viewrecipe, name='viewrecipe'),
+	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/$', views.viewentry, name='viewentry'),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
 	url(r'^invalidlogin/$', views.invalidlogin, name='invalidlogin'),
@@ -15,7 +15,7 @@ urlpatterns = [
 	url(r'^trending/$', views.trending, name='trending'),
     url(r'^categories/$', views.categories, name='categories'),
     url(r'^categories/(?P<cat_name_slug>[\w\-]+)/$', views.show_category, name='show_category'),
-    url(r'^addrecipe/$', views.addrecipe, name='addrecipe'),
+    url(r'^addentry/$', views.addentry, name='addentry'),
 	url(r'^profile/(?P<username>[\w\-]+)/$', views.userprofile, name='userprofile'),
 #new down here
     #editprofile

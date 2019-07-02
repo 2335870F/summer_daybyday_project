@@ -1,4 +1,4 @@
-{% extends 'recipes/base.html' %}
+{% extends 'entries/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -10,12 +10,12 @@
 {% endblock %}
 
 {% block body_block %}
-	{% if recipes %}
+	{% if entries %}
 	<div class="row">
-		{% for recipe in recipes %}
+		{% for entry in entries %}
 			<div class="cat">
-					<a href="{% url 'viewrecipe' recipe.slug %}"><img src="{{ MEDIA_URL }}{{ recipe.photo }}" alt="Picture of {{ recipe.photo }}"/></a>
-					<div class="cat_text">{{ recipe.name }}</div>
+					<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}"/></a>
+					<div class="cat_text">{{ entry.name }}</div>
 			</div>
 		{% endfor %}
 	</div>
