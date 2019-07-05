@@ -37,13 +37,12 @@ class SuggestForm(forms.ModelForm):
 
 class ContactForm(forms.ModelForm):
 	first_name = forms.CharField(widget=forms.TextInput(), label="First name", required=True)
-	last_name = forms.CharField(widget=forms.TextInput(), label="Last name", required=True)
 	email = forms.CharField(widget=forms.EmailInput(), label="Email address", required=True)
 	comment = forms.CharField(widget=forms.Textarea(), help_text="Leave your comment or question here.", required=True)
 
 	class Meta:
 		model = Contact
-		fields = ('first_name','last_name','email', 'comment')
+		fields = ('first_name','email', 'comment')
 
 #asls for name of entry, a photo, and cook time of entry
 class AddEntryForm(forms.ModelForm):

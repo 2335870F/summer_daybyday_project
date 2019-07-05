@@ -61,7 +61,7 @@ header {
 	width: 100%;
     opacity: 0.9;
 	padding: 1em;
-	background-color: #09203D;
+	background-color: darkgrey;
 	text-decoration: none;
 	padding-bottom: 0.5em;
 }
@@ -70,21 +70,21 @@ header ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #09203D;
+	background-color: darkgrey;
 }
 header ul li {
 	list-style-type: none;
 	float: right;
 }
 div.urls a{
-	background-color: #09203D;
+	background-color: darkgrey;
 	padding: 0.8em;
 	font-size: 1em;
 	color: #ffffff;
 	text-decoration: none;
 }
 div.urls a:hover{
-	background-color: #467DA2;
+	background-color: aquamarine;
 }
 div.page_name {
 	padding-top: 0.2em;
@@ -107,7 +107,7 @@ footer {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: #09203D;
+	background-color: darkgrey;
 	padding: 1.7em;
 }
 

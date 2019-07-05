@@ -16,7 +16,7 @@ class SuggestionAdmin(admin.ModelAdmin):
     list_display = ('comment','author')
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('comment','first_name','last_name','email')
+    list_display = ('comment','first_name','email')
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Chef)

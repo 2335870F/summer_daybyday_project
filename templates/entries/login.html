@@ -6,10 +6,15 @@
 {% endblock %}
 
 {% block name_block %}
-	Welcome to the Neighborhood Cook Book!
+    <div class=latest_posts>
+    <img class ="scrollMessage" src="{% static "images/scrollMessage.png" %}" alt="scroll message" width="300"/>
+    
+        <img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="1000" />
+    </div>
 {% endblock %}
 
 {% block body_block %}
+
 	<div class="login_page">
 		<h2> Login </h2>
 		<form id="login_form" method="post" action={% url 'login' %}>

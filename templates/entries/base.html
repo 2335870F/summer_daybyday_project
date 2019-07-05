@@ -16,18 +16,19 @@
 	<body>
 		<header>
 			<ul>
-			<li style="float:left;"><a href="{% url 'index' %}"><img src="{% static "images/logo.png" %}" alt="Website Logo" width="150" /></a></li>
 			<div class="urls">
 				{% if user.is_authenticated %}
 					<li style="float:right; padding-top:12px; padding-left:5px; padding-right:20px;"><a href="{% url 'logout' %}">Logout</a></li>
 					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'addentry' %}">Add Entry</a></li>
 					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'userprofile' user.username %}">My Account</a></li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'categories' %}">Categories</a></li>
+				    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'trending' %}">Trending</a></li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'index' %}">Home</a></li>
 				{% else %}
 					<li style="float:right; padding-top:12px; padding-left:5px; padding-right:30px;"><a href="{% url 'login' %}">Login</a></li>
 					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'register' %}">Sign Up</a></li>
 				{% endif %}
-				<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'categories' %}">Categories</a></li>
-				<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'trending' %}">Trending</a></li>
+
 			</div>
 			</ul>
 		</header>
