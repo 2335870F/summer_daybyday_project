@@ -4,7 +4,7 @@ from entries.models import *
 # Register your models here.
 
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ('name','cook_time','chef')
+    list_display = ('name','importance','chef')
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name', 'type')}

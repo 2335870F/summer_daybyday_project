@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-   Adding an entry
+   Add a new entry
 {% endblock %}
 
 {% block name_block %}
@@ -17,11 +17,15 @@
 			<strong>{{ field.label }}</strong>
 			{% if field.help_text %}
 				{{ field.help_text }}
+			{% endif %}
+            {% if field.initial %}
+				{{ field.initial }}
 			{% endif %}<br/>
 			{% if errors %}
 				{{ field.errors }}
 			{% endif %}
 			{{ field }}<br/>
+            <br>
 		{% endfor %}
 		<input type="submit" name="submit" value="Add Entry" class="button"/>
 	</form>

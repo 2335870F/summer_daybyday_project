@@ -17,9 +17,11 @@
 {% endblock %}
 
 {% block name_block %}
-	{% if entry %}
-		{{ entry.name }}
-	{% endif %}
+    <div class="entry_title">
+        {% if entry %}
+            {{ entry.name }}
+        {% endif %}
+    </div>
 {% endblock %}
 
 
@@ -30,11 +32,13 @@
 			<div class="chef_info">
 				{% if entry %}
 					<strong> Chef: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
-					<strong> Date: </strong>{{ entry.date_posted }}<br/>
+					<strong> Date: </strong>{{ entry.date_last_edited }}<br/>
+					<strong> Importance: </strong>{{ entry.importance }} min<br/>
 					<strong> Overall Rating: </strong>{{ avgRating }}<br/>
-					<strong> Cook time: </strong>{{ entry.cook_time }} min<br/>
-					<strong> Ingredients:</strong>
-					<pre>{{ entry.ingredients }}</pre>
+					<strong> Key Information:</strong>
+					<pre>{{ entry.key_info }}</pre>
+					<strong> To-Do:</strong>
+					<pre>{{ entry.to_do }}</pre>
 				{% endif %}
 			</div>
 			<div class="cat_bar">
@@ -60,7 +64,7 @@
 		</div>
 
 		<div class="reviews">
-			<h3>Reviews</h3>
+			<h11>Reviews</h11>
 			<div class="view">
 			{% if reviews %}
 				{% for review in reviews %}
@@ -73,18 +77,18 @@
 					</div>
 				{% endfor %}
 			{% else %}
-				<strong>There are no reviews for this entry.</strong>
+                <h12><strong>There are no reviews for this entry.</strong></h12>
 			{% endif %}
 			</div>
 			{% if user.is_authenticated %}
 				{% if entry %}
 					<div class="give">
-						<h3>Leave a Review</h3>
+						<br><h11>Leave a Review</h11>
 						<form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
 							{% csrf_token %}
 							{% for field in form.visible_fields %}
 								{{ field.errors }}
-								{{ field.label }}<br/>
+                            <h12>{{ field.label }}</h12><br/>
 								{{ field }}<br/>
 							{% endfor %}
 							<button type="submit" name="submit" value="Submit">Submit</button>

@@ -12,15 +12,15 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
-cats_bar = Category.objects.exclude(name__in=['Cuisines','Special Occasions']).order_by('name')
+cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions']).order_by('name')
 
 def index(request):
-	#get all entries, order alphabetically by name
-	latest = Entry.objects.order_by('-date_posted')[:6]
+	#get all entries, order alphabetically by name - is recent
+	latest = Entry.objects.order_by('-date_last_edited')[:6]
 	#get all categories -- no order
 	users = User.objects.order_by('-date_joined')[:6]
 
-	top = Entry.objects.order_by('cook_time')[:6]
+	top = Entry.objects.order_by('-importance')[:6]
 
 	context_dict = {'latest':latest, 'users':users, 'top':top}
 	response = render(request,'entries/index.html', context=context_dict)
@@ -150,7 +150,7 @@ def viewentry(request, entry_name_slug):
 	context_dict = {'cats_bar':cats_bar}
 	try:
 		entry = Entry.objects.get(slug=entry_name_slug)
-		reviews = Review.objects.filter(entry=entry).order_by("-date_posted")
+		reviews = Review.objects.filter(entry=entry).order_by("-date_last_edited")
 
 		if len(reviews) > 0:
 			avgRating = (Review.objects.filter(entry=entry).aggregate(Sum('rating'))["rating__sum"])/len(reviews)

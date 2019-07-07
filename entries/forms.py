@@ -2,7 +2,7 @@ from django import forms
 from entries.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
+import datetime
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput())
 
@@ -26,7 +26,7 @@ class ReviewForm(forms.ModelForm):
 
 	class Meta:
 		model = Review
-		exclude = ('entry','author','date_posted')
+		exclude = ('entry','author','date_last_edited')
 
 class SuggestForm(forms.ModelForm):
 	comment = forms.CharField(widget=forms.Textarea(), label="Leave a suggestion for a new cuisine or occasion!", required=False)
@@ -36,53 +36,49 @@ class SuggestForm(forms.ModelForm):
 		fields = ('comment',)
 
 class ContactForm(forms.ModelForm):
-	first_name = forms.CharField(widget=forms.TextInput(), label="First name", required=True)
-	email = forms.CharField(widget=forms.EmailInput(), label="Email address", required=True)
-	comment = forms.CharField(widget=forms.Textarea(), help_text="Leave your comment or question here.", required=True)
+    first_name = forms.CharField(widget=forms.TextInput(), label="First name", required=True)
+    email = forms.CharField(widget=forms.EmailInput(), label="Email address", required=True)
+    comment = forms.CharField(widget=forms.Textarea(), help_text="Leave your comment or question here.", required=True)
 
-	class Meta:
-		model = Contact
-		fields = ('first_name','email', 'comment')
+    class Meta:
+        model = Contact
+        fields = ('first_name','email', 'comment')
 
 #asls for name of entry, a photo, and cook time of entry
 class AddEntryForm(forms.ModelForm):
-	CATEGORIES =(
-		("1","Breakfast"),
-		("2","Lunch"),
-		("3","Dinner"),
-		("4","Dessert"),
-		("6","Italian"),
-		("7","American"),
-		("8","Mexican"),
-		("9","Chinese"),
-		("10","Indian"),
-		("11","Japanese"),
-		("13","St Patrick's Day"),
-		("14","Easter"),
-		("15","Christmas"),
-		("16","Halloween"),
-		("17","4th of July"),
-		("18","Valentine's Day"),
-	)
-	name = forms.CharField(widget=forms.TextInput(), help_text="Give your entry a name", required=True)
-	photo = forms.ImageField(required=True)
-	cook_time = forms.IntegerField(min_value=0, initial=0, help_text="in minutes", required=True)
-	about = forms.CharField(widget=forms.Textarea(), label="Description", required=True)
-	ingredients = forms.CharField(widget=forms.Textarea(), label=" Ingredients", required=True)
-	steps = forms.CharField(widget=forms.Textarea(), label="Steps", required=True)
-	#slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-	categories = forms.MultipleChoiceField(widget=forms.SelectMultiple(),choices=CATEGORIES, required=True, help_text="Hold down Control (Command on Mac) to choose up to three!")
+    CATEGORIES =(
+    ("1","My Courses"),
+    ("2","My Work"),
+    ("3","My Weekends"),
+    ("4","My Holidays"),
+    ("6","My Hobbies"),
+    ("7","My Home"),
+    ("8","Other"),
+    ("9","Degree Courses"),
+    ("10","Electives"),
+    ("11","Grocery Lists"),
+    ("12","Personal"),
+    ("13","Family"),
+    )
+    name = forms.CharField(widget=forms.TextInput(), label="Title Your Entry", required=True)
+    photo = forms.ImageField(label="Upload a Picture", required=True)
+    content = forms.CharField(widget=forms.Textarea(), label="Your Content", required=False)
+    importance = forms.IntegerField(min_value=0, max_value=5, initial=0, help_text="1 is least, 5 is most", required=True)
+    key_info = forms.CharField(widget=forms.Textarea(), label="Key Information", help_text="e.g. Lecture times, Professor email, etc.", initial="hello", required=False)
+    to_do = forms.CharField(widget=forms.Textarea(), label="To-Do", required=False)
+    #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    categories = forms.MultipleChoiceField(widget=forms.SelectMultiple(),choices=CATEGORIES, required=True, help_text="Hold Down Control (Command on Mac) to choose up to three categories!")
 
-	class Meta:
-		model = Entry
-		fields = ('name','photo','cook_time','categories','about','ingredients','steps')
+    class Meta:
+        model = Entry
+        fields = ('name','photo','content','importance','key_info','to_do','categories',)
 
-	def save(self, username):
-		author = User.objects.get(username=username)
-		self.chef = author
-		print(self.cleaned_data)
-		entry = super(AddEntryForm, self).save(commit=False)
-		return entry;
+    def save(self, username):
+        author = User.objects.get(username=username)
+        self.chef = author
+        print(self.cleaned_data)
+        entry = super(AddEntryForm, self).save(commit=False)
+        return entry;
 
 class EditProfileForm(UserChangeForm):
 	class Meta:
@@ -99,3 +95,11 @@ class EditBioForm(UserChangeForm):
 
 	def clean_password(self):
 		return ""
+    
+class EditEntryForm(UserChangeForm):
+    class Meta:
+        model = Entry
+        fields = ('name','photo','key_info','to_do','content','categories','importance')
+
+    def clean_password(self):
+        return ""

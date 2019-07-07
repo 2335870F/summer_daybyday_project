@@ -8,8 +8,9 @@ from django.utils import *
 class Category(models.Model):
 	TYPES = (
 		('CAT', 'Category'),
-		('CUS', 'Cuisines'),
-		('SPE', 'Special Occasions')
+		('CRS', 'My Courses'),
+        ('HOM', 'My Home'),
+
 	)
 	name = models.CharField(max_length=50, unique=True)
 	type = models.CharField(max_length=25, choices=TYPES)
@@ -37,24 +38,24 @@ class Chef(models.Model):
 		return self.user.username
 
 class Entry(models.Model):
-	chef = models.ForeignKey(User)
-	slug = models.SlugField(unique=True)
-	categories = models.ManyToManyField(Category)
-	name = models.CharField(max_length=128, unique=True)
-	photo = models.ImageField(upload_to='food_pics')
-	cook_time = models.IntegerField(default=0)
-	date_posted = models.DateTimeField(default=timezone.now)
-	ingredients = models.TextField(default="")
-	steps = models.TextField(default="")
-	about = models.TextField(default="Check out my new entry!")
-	#overall rating
+    chef = models.ForeignKey(User)
+    slug = models.SlugField(unique=True)
+    categories = models.ManyToManyField(Category)
+    name = models.CharField(max_length=128, unique=True)
+    photo = models.ImageField(upload_to='food_pics')
+    importance = models.IntegerField(default=0)
+    date_last_edited = models.DateTimeField(default=timezone.now)
+    key_info = models.TextField(default='No key info.')
+    to_do = models.TextField(default='None.')
+    content = models.TextField(default='No content yet!')
+    #overall rating
 
-	def save(self, *args, **kwargs):
-		self.slug = slugify(self.chef.username+"-"+self.name)
-		super(Entry, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.chef.username+"-"+self.name)
+        super(Entry, self).save(*args, **kwargs)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
 class Review(models.Model):
 	entry = models.ForeignKey(Entry)
@@ -62,7 +63,7 @@ class Review(models.Model):
 	title = models.CharField(max_length=50, default="My Rating")
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)
 	comment = models.TextField(default="")
-	date_posted = models.DateTimeField(default=timezone.now)
+	date_last_edited = models.DateTimeField(default=timezone.now)
 
 class Suggestion(models.Model):
 	author = models.ForeignKey(User)

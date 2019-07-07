@@ -6,11 +6,11 @@
 /* GENERIC */
 
 a {
-	color: #773D1B;
+	color: lightcyan;
 	text-decoration: none;
 }
 a:hover, a:active {
-	color: #8E7262;
+	color: lightcyan;
 	cursor: pointer;
 }
 
@@ -20,17 +20,25 @@ img.profile {
 }
 
 h2, h3 {
-	color: inherit;
+    font-size: 30px;
+	color: lightblue;
 }
 
+h11, h12{
+    font-size: 30px;
+    color: #09203D;
+}
+h12{
+    font-size: 17px;
+}
 h7 {
 	font-size: 40px;
-	color: #3A1003;
+	color: lightblue;
 
 }
 h8 {
 	font-size: 20px;
-	color: #3A1003;
+	color: lightblue;
 	font-style: italic;
 	font-family: inherit;
 }
@@ -43,9 +51,9 @@ html {
 	width: 100%;
 	margin: 0;
 	background-color: #ccbeaf;
-	font-family: sans-serif;
+    font-family: 'Fjalla One', sans-serif;
 	font-size: 1em;
-	color: #3A1003;
+	color: lightblue;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -94,8 +102,12 @@ div.urls a:hover{
 div.page_name {
 	padding-top: 0.2em;
 	clear: both;
+    margin-left:480px;
 	text-align: center;
-	font-size: 3em;
+    background-color: white;
+    opacity:0.95;
+    width:600px;
+	font-size: 3.5em;
 	padding-bottom: 0.3em;
 }
 div.body {
@@ -162,7 +174,7 @@ div.cat_bar h3{
 	font-weight: bold;
 }
 
-/* RECIPE PAGE */
+/* ENTRY PAGE */
 
 div.entry_page{
 	position: fixed;
@@ -175,9 +187,19 @@ div.entry_page{
 	padding-left: 4em;
 	padding-right: 4em;
 }
+div.entry_title{
+    text-align: :center;
+    color:#09203D;
+    font-family: 'Fjalla One', sans-serif;
+    font-size:50px;
+    width:100%;
+    padding-top:10px;
+}
 div.entry_info img{
 	position: relative;
-	width: 100%;
+    margin-left: 80px;
+	width: 600px;
+    height: 330px;
 }
 div.other {
 	overflow: scroll;
@@ -187,15 +209,20 @@ div.entry_info {
 	word-wrap: normal;
 }
 div.reviews {
+    width: 350px;
 	text-align: right;
 	overflow: scroll;
+    background-color: white;
+    opacity: 0.95;
+    padding:15px;
+    border: 15px solid #09203D;
 }
 pre {
 	white-space: pre-wrap;
 	display: block;
 	width: auto;
 	font-size: 1em;
-	font-family: sans-serif;
+    font-family: 'Fjalla One', sans-serif;
 }
 div.view {
 	max-height: 10em;
@@ -325,6 +352,7 @@ div.center {
 }
 textarea {
 	width: 400px;
+    background-color:aliceblue;
 }
 div.login_page {
     width: 400px;
@@ -345,6 +373,7 @@ div.register{
 div.contact {
     width: 400px;
     border: 15px solid #09203D;
+    background-color:white;
     padding: 25px;
     margin: 0 auto;
     text-align: center;
@@ -352,9 +381,10 @@ div.contact {
 div.add {
     width: 400px;
     border: 15px solid #09203D;
+    background-color:white;
     padding: 25px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 div.edit_class {
     width: 400px;
@@ -393,6 +423,8 @@ div.faq_class {
 div.chef_info{
     width: 75%;
     border: 10px solid #09203D;
+    background-color: white;
+    opacity:0.95;
     padding: 15px;
     margin: 0 auto;
     text-align: center;
