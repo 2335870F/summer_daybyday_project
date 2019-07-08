@@ -8,9 +8,11 @@
 {% endblock %}
 
 {% block name_block %}
-	{% if cat %}
-		{{ cat.name }}
-	{% endif %}
+    <div class="page_name">
+        {% if cat %}
+            {{ cat.name }}
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block body_block %}

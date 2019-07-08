@@ -26,7 +26,7 @@ h2, h3 {
 
 h11, h12{
     font-size: 30px;
-    color: #09203D;
+    color: lightblue;
 }
 h12{
     font-size: 17px;
@@ -46,13 +46,12 @@ h8 {
 /* BASE */
 
 html {
-	background-image: url('/static/images/okay.png');
+	background-image: url('/static/images/notebook.png');
 	height: 100%;
 	width: 100%;
 	margin: 0;
-	background-color: #ccbeaf;
     font-family: 'Fjalla One', sans-serif;
-	font-size: 1em;
+	font-size: 15px;
 	color: lightblue;
 	background-attachment: fixed;
 	background-position: center;
@@ -92,21 +91,26 @@ div.urls a{
 	background-color: lightcyan;
 	padding: 2em;
 	font-size: 1.4em;
-    font-family: monospace;
+    font-family: 'Fjalla One', sans-serif;
 	color: black;
     text-decoration-color: blue;
 }
 div.urls a:hover{
-	background-color: #467DA2;
+	background-color: greenyellow;
 }
 div.page_name {
-	padding-top: 0.2em;
+	margin-top:50px;
+    border: 5px solid greenyellow;
+    background-color: #09203D;
+    padding-top: 0.2em;
+    text-decoration: underline;
+    text-decoration-color: greenyellow;
+    text-decoration-style: dotted;
 	clear: both;
-    margin-left:480px;
+    margin-left:465px;
 	text-align: center;
-    background-color: white;
-    opacity:0.95;
-    width:600px;
+    opacity:0.8;
+    width:590px;
 	font-size: 3.5em;
 	padding-bottom: 0.3em;
 }
@@ -148,6 +152,7 @@ div.cat img{
 	width: 18.75em;
 	height: 12.5em;
 	box-shadow: 3px 3px 3px grey;
+ 
 }
 div.cat img:hover{
     bottom: 7px;
@@ -160,18 +165,30 @@ div.row {
 	align-items: center;
 }
 div.show_categories {
-	font-family: sans-serif;
+    padding:15px;
+	font-family: 'Fjalla One', sans-serif;
 	display: grid;
 	grid-template-columns: 9em auto;
 	grid-gap: 1%;
 }
 div.cat_bar a{
 	margin-left: 0.9em;
+    margin-top: 250px;
+    margin-bottom: 10px;
+    position: fixed;
 	font-size: 1em;
+    color:aliceblue;
+    padding-bottom: 70px;
+    font-family: 'Fjalla One', sans-serif;
+    overflow:scroll;
 }
 div.cat_bar h3{
+    margin-top: 225px;
+    position: fixed;
 	line-height: 10%;
 	font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+
 }
 
 /* ENTRY PAGE */
@@ -186,10 +203,11 @@ div.entry_page{
 	grid-column-gap: 1em;
 	padding-left: 4em;
 	padding-right: 4em;
+    overflow:scroll;
 }
 div.entry_title{
-    text-align: :center;
-    color:#09203D;
+    text-align: :left;
+    color:white;
     font-family: 'Fjalla One', sans-serif;
     font-size:50px;
     width:100%;
@@ -198,6 +216,7 @@ div.entry_title{
 div.entry_info img{
 	position: relative;
     margin-left: 80px;
+    margin-top: 10px;
 	width: 600px;
     height: 330px;
 }
@@ -205,18 +224,36 @@ div.other {
 	overflow: scroll;
 }
 div.entry_info {
-	overflow: scroll;
 	word-wrap: normal;
 }
+
 div.reviews {
     width: 350px;
 	text-align: right;
-	overflow: scroll;
-    background-color: white;
+    word-wrap: normal;
+    background-color: #09203D;
     opacity: 0.95;
     padding:15px;
-    border: 15px solid #09203D;
+    border: 5px solid greenyellow;
+    margin-bottom: 100px;
+	overflow: scroll;
+
+    
 }
+div.reviews2 {
+    width: 350px;
+    margin-left: 1000px;
+	text-align: right;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+    margin-bottom: auto;
+	overflow: scroll;
+}
+
+
 pre {
 	white-space: pre-wrap;
 	display: block;
@@ -226,15 +263,19 @@ pre {
 }
 div.view {
 	max-height: 10em;
+    overflow: scroll;
 }
 div.give {
-	overflow: hidden;
+    width:300px;
+	overflow: scroll;
+    margin-bottom: 10px;
+    padding: 20px;
 }
 
 /* HOMEPAGE */
 
 div.index_page {
-	position: fixed;
+	position: sticky;
 	display: grid;
 	height: 79%;
 	grid-template-columns: auto 60% auto;
@@ -242,11 +283,13 @@ div.index_page {
 	grid-column-gap: 3em;
 	padding-left: 4em;
 	padding-right: 4em;
+    color:greenyellow;
+    font-family: 'Fjalla One', sans-serif;
 }
 div.latest_posts img.index-logo{
 	position: static;
 	text-align: center;
-	width: 60%;
+	width: 103%;
 	padding: 0.25em;
 	background-color: rgba(220, 220, 220, 0);
 }
@@ -269,12 +312,15 @@ div.index_page img{
 div.latest_posts {
 	overflow: scroll;
 	text-align: center;
+    margin-bottom: 45px;
 }
 div.pop_cuisines {
 	overflow: scroll;
+    margin-bottom: 55px;
 }
 div.top_rated {
 	overflow: scroll;
+    margin-bottom: 55px;
 }
 div.top_rated img:hover{
 	bottom: 7px;
@@ -321,8 +367,8 @@ div.entry img:hover{
 /* FAQS */
 
 input.button {
-    background-color: #467DA2;
-    color: white;
+    background-color: greenyellow;
+    color: #09203D;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -333,7 +379,7 @@ input.button {
     height: 35px;
 }
 .btn1, .btn2, .btn4, .btn3 {
-    background-color: #467DA2;
+    background-color: greenyellow;
     color: white;
     text-align: center;
     font-size: 16px;
@@ -362,13 +408,28 @@ div.login_page {
     margin-left:550px;
     text-align: center;
 }
+div.login_page2 {
+    padding: 15px;
+    margin-bottom: 240px;
+    text-align: center;
+}
 div.register{
     width: 450px;
     border: 15px solid #09203D;
-    padding: 25px;
+    padding: 55px;
     margin: 0 auto;
 	overflow: scroll;
     text-align: center;
+}
+div.steps {
+    width: 570px;
+    border: 5px solid greenyellow;
+    padding: 10px;
+    margin-bottom: 140px;
+    margin-left:80px;
+    text-align: left; 
+    background-color: #09203D;
+    opacity:0.95;
 }
 div.contact {
     width: 400px;
@@ -379,11 +440,13 @@ div.contact {
     text-align: center;
 }
 div.add {
-    width: 400px;
+    width: 520px;
+    color:#09203D;
     border: 15px solid #09203D;
     background-color:white;
     padding: 25px;
-    margin: 0 auto;
+    margin: 50px;
+    margin-left: 480px;
     text-align: left;
 }
 div.edit_class {
@@ -422,10 +485,11 @@ div.faq_class {
 }
 div.chef_info{
     width: 75%;
-    border: 10px solid #09203D;
-    background-color: white;
+    border: 10px solid greenyellow;
+    background-color: #09203D;
     opacity:0.95;
     padding: 15px;
     margin: 0 auto;
-    text-align: center;
+    margin-bottom:100px;
+    text-align: left;
 }

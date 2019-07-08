@@ -17,10 +17,12 @@
 {% endblock %}
 
 {% block name_block %}
-    <div class="entry_title">
-        {% if entry %}
-            {{ entry.name }}
-        {% endif %}
+    <div class="page_name">
+        <div class="entry_title">
+            {% if entry %}
+                {{ entry.name }}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
 
@@ -33,20 +35,23 @@
 				{% if entry %}
 					<strong> Chef: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
 					<strong> Date: </strong>{{ entry.date_last_edited }}<br/>
-					<strong> Importance: </strong>{{ entry.importance }} min<br/>
-					<strong> Overall Rating: </strong>{{ avgRating }}<br/>
-					<strong> Key Information:</strong>
+					<strong> Importance: </strong>{{ entry.importance }} / 5<br/>
+					<strong> Overall Rating: </strong>{{ avgRating }}<br/> 
+					<br><strong> Key Information:</strong>
 					<pre>{{ entry.key_info }}</pre>
 					<strong> To-Do:</strong>
 					<pre>{{ entry.to_do }}</pre>
 				{% endif %}
 			</div>
-			<div class="cat_bar">
-			<h3>Categories</h3>
-				{% for cat in cats_bar %}
-					<a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br/>
-				{% endfor %}
-			</div>
+<!--            <div class="show_categories">
+                <div class="cat_bar">
+                <h3>Categories</h3>
+                    {% for cat in cats_bar %}
+                        <a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br/>
+                    {% endfor %}
+                </div>
+            </div>-->
+            
 		</div>
 
 		<div class="entry_info">
@@ -55,47 +60,52 @@
 				<div class="steps">
 					{{ entry.about }}<br/>
 					<br/>
-					Steps:<br/>
+					My Content:<br/>
 					<pre>{{ entry.steps }}</pre>
 				</div>
 			{% else %}
 				<strong>This is not an entry.</strong>
 			{% endif %}
 		</div>
-
+            
 		<div class="reviews">
-			<h11>Reviews</h11>
-			<div class="view">
-			{% if reviews %}
-				{% for review in reviews %}
-					<div class="entry">
-						<a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
-						<div>
-							<strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
-							{{ review.comment }}
-						</div>
-					</div>
-				{% endfor %}
-			{% else %}
-                <h12><strong>There are no reviews for this entry.</strong></h12>
-			{% endif %}
-			</div>
-			{% if user.is_authenticated %}
-				{% if entry %}
-					<div class="give">
-						<br><h11>Leave a Review</h11>
-						<form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
-							{% csrf_token %}
-							{% for field in form.visible_fields %}
-								{{ field.errors }}
-                            <h12>{{ field.label }}</h12><br/>
-								{{ field }}<br/>
-							{% endfor %}
-							<button type="submit" name="submit" value="Submit">Submit</button>
-						</form>
-					</div>
-				{% endif %}
-			{% endif %}
-		</div>
+          
+                <h11>Reviews</h11>
+                <div class="view">
+                    {% if reviews %}
+                        {% for review in reviews %}
+                            <div class="entry">
+                                <a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
+                                <div>
+                                    <strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
+                                    {{ review.comment }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h12><strong>There are no reviews for this entry.</strong></h12>
+                    {% endif %}
+                </div>
+          
+         
+                {% if user.is_authenticated %}
+                    {% if entry %}
+                        <div class="give">
+                            <br><h11>Leave a Review</h11>
+                            <form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
+                                {% csrf_token %}
+                                {% for field in form.visible_fields %}
+                                    {{ field.errors }}
+                                <h12>{{ field.label }}</h12><br/>
+                                    {{ field }}<br/>
+                                {% endfor %}
+                                <button type="submit" name="submit" value="Submit">Submit</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endif %}
+		
+        </div>
+
 	</div>
 {% endblock %}
