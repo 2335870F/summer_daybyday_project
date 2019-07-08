@@ -16,11 +16,11 @@ cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions
 
 def index(request):
 	#get all entries, order alphabetically by name - is recent
-	latest = Entry.objects.order_by('-date_last_edited')[:6]
+	latest = Entry.objects.order_by('-date_last_edited')[:4]
 	#get all categories -- no order
-	users = User.objects.order_by('-date_joined')[:6]
+	users = User.objects.order_by('-date_joined')[:4]
 
-	top = Entry.objects.order_by('-importance')[:6]
+	top = Entry.objects.order_by('-importance')[:4]
 
 	context_dict = {'latest':latest, 'users':users, 'top':top}
 	response = render(request,'entries/index.html', context=context_dict)
@@ -38,8 +38,7 @@ def faq(request):
 	return render(request,'entries/faq.html', {})
 
 def trending(request):
-	entries = Category.objects.get(slug="st-patricks-day").entry_set.all()
-	return render(request,'entries/trending.html', {'entries':entries})
+	return render(request,'entries/trending.html', {})
 
 def categories(request):
 	#get all categories -- no order

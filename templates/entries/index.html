@@ -21,6 +21,8 @@
 		</div>
 
 		<div class="latest_posts">
+            <h13>Welcome to </h13>
+            <script type="text/javascript" src="//100widgets.com/js_data.php?id=106"></script>
 
 			<img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="100" padding-bottom=50px;/>
 			<div class="carousel">
@@ -63,15 +65,19 @@
 						</a>
 					</div>
 				</div>
+                
 			</div>
+            
 		</div>
 
 		<div class="top_rated">
-			<h3>Featured Entries</h3>
+			<h3>Important Entries</h3>
 			{% if top %}
 				{% for post in top %}
 					<a href="{% url 'viewentry' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
-					<div class="cat_text">{{ post.name }}</div>
+					<div class="cat_text">
+                        {{ post.name }}
+                    </div>
 				{% endfor %}
 			{% endif %}
 		</div>

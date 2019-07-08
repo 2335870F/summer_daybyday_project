@@ -42,6 +42,11 @@ h8 {
 	font-style: italic;
 	font-family: inherit;
 }
+h13{
+    font-size:50px;
+    color:greenyellow;
+    background-color: white;
+}
 
 /* BASE */
 
@@ -144,7 +149,9 @@ div.cat_text{
 	bottom: 1em;
 	font-size: 1em;
 	box-shadow: 3px 3px 3px grey;
+    border-radius: 30%;
 }
+
 div.cat img{
 	position: relative;
 	min-width: 4.3em;
@@ -152,10 +159,13 @@ div.cat img{
 	width: 18.75em;
 	height: 12.5em;
 	box-shadow: 3px 3px 3px grey;
- 
+    opacity:0.9;
+
 }
 div.cat img:hover{
     bottom: 7px;
+    opacity:1;
+
 }
 div.row {
 	display: grid;
@@ -181,6 +191,10 @@ div.cat_bar a{
     padding-bottom: 70px;
     font-family: 'Fjalla One', sans-serif;
     overflow:scroll;
+}
+div.cat_bar a:hover{
+    font-size:1.2em;
+    color:greenyellow;
 }
 div.cat_bar h3{
     margin-top: 225px;
@@ -278,7 +292,7 @@ div.index_page {
 	position: sticky;
 	display: grid;
 	height: 79%;
-	grid-template-columns: auto 60% auto;
+	grid-template-columns: auto 56% auto;
 	justify-content: center;
 	grid-column-gap: 3em;
 	padding-left: 4em;
@@ -312,21 +326,45 @@ div.index_page img{
 div.latest_posts {
 	overflow: scroll;
 	text-align: center;
-    margin-bottom: 45px;
+    margin-bottom: 50px;
+    padding:10px;
+    
 }
 div.pop_cuisines {
+    padding-top:10px;
 	overflow: scroll;
-    margin-bottom: 55px;
+    margin-bottom: 35px;
+}
+div.pop_cuisines h3 {
+    font-size: 30px;
 }
 div.top_rated {
+    padding-top:10px;
 	overflow: scroll;
-    margin-bottom: 55px;
+    margin-bottom: 35px;
 }
+div.top_rated img{
+    width:260px;
+    height:180px;
+    border-radius: 50%;
+    opacity:0.8;
+}
+div.top_rated h3{
+    font-size: 30px;
+}
+div.pop_cuisines img{
+    width:260px;
+    height:180px;
+    border-radius: 50%;
+    opacity:0.9;
+}
+
 div.top_rated img:hover{
-	bottom: 7px;
+    opacity:1;
 }
 div.pop_cuisines img:hover{
 	bottom: 7px;
+    opacity:1;
 }
 
 /* PROFILE PAGE*/
@@ -493,3 +531,5 @@ div.chef_info{
     margin-bottom:100px;
     text-align: left;
 }
+
+

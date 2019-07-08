@@ -44,13 +44,15 @@
 		</div>
 		<footer>
 			<div class="urls">
-				<a href="{% url 'about' %}">About Us</a>
+				<a href="{% url 'about' %}">About Us</a>                
 				<a href="{% url 'contact' %}">Contact Us</a>
 				<a href="{% url 'faq' %}">FAQs</a>
 				{% if user.is_authenticated %}
 					<a href="{% url 'suggestion' %}">Suggest a Category</a>
 				{% endif %}
+
 			</div>
+
 		</footer>
 	</body>
 </html>

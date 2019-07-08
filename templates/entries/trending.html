@@ -2,21 +2,26 @@
 {% load staticfiles %}
 
 {% block title_block %}
-	Trending
+	Widgets
 {% endblock %}
 
 {% block name_block %}
+    <div class="page_name">
+        Widgets
+    </div>
 {% endblock %}
 
 {% block body_block %}
-	{% if entries %}
-	<div class="row">
-		{% for entry in entries %}
-			<div class="cat">
-					<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}"/></a>
-					<div class="cat_text">{{ entry.name }}</div>
-			</div>
-		{% endfor %}
-	</div>
-	{% endif %}
+    <h3>Widgets to help you plan</h3>
+
+    <div class="row">
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=276"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=241"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=105"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=174"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=159"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=122"></script>
+        <script type="text/javascript" src="//100widgets.com/js_data.php?id=83"></script>
+    </div>
+	
 {% endblock %}
