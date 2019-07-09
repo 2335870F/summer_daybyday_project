@@ -239,10 +239,12 @@ div.other {
 }
 div.entry_info {
 	word-wrap: normal;
+    overflow:scroll;
 }
 
 div.reviews {
     width: 350px;
+    height: 450px;
 	text-align: right;
     word-wrap: normal;
     background-color: #09203D;
@@ -273,7 +275,8 @@ pre {
 	white-space: pre-wrap;
 	display: block;
 	width: auto;
-	font-size: 1em;
+	font-size: 1.4em;
+    color: white;
     font-family: 'Fjalla One', sans-serif;
 }
 div.view {
@@ -543,7 +546,10 @@ div.about{
 }
 div.about h1{
     padding:20px;
-    color:greenyellow;
+    color:#09203D;
+    text-decoration: underline;
+    text-decoration-color: #09203D;
+    text-decoration-style: wavy;
     font-size: 40px;
 }
 
@@ -552,7 +558,7 @@ div.about p{
     margin-right:220px;
     color:black;
     font-size: 25px;
-    background-color:white;
+    background-color:lightblue;
     opacity:0.8;
     border-radius: 10%;
 }

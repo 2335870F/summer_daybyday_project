@@ -33,8 +33,8 @@
 		<div class="other">
 			<div class="chef_info">
 				{% if entry %}
-					<strong> Chef: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
-					<strong> Date: </strong>{{ entry.date_last_edited }}<br/>
+					<strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
+					<strong> Date Last Edited: </strong>{{ entry.date_last_edited }}<br/>
 					<strong> Importance: </strong>{{ entry.importance }} / 5<br/>
 					<strong> Overall Rating: </strong>{{ avgRating }}<br/> 
 					<br><strong> Key Information:</strong>
@@ -58,10 +58,9 @@
 			{% if entry %}
 				<img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
 				<div class="steps">
-					{{ entry.about }}<br/>
-					<br/>
+					
 					My Content:<br/>
-					<pre>{{ entry.steps }}</pre>
+					<pre>{{ entry.content }}</pre>
 				</div>
 			{% else %}
 				<strong>This is not an entry.</strong>
