@@ -97,27 +97,28 @@
         <div class="hero__content">
             <div class="about">
                 <p>
-                <h1>Welcome to The Think Tank!</h1><br> <p>Here, you can browse entries created by you. These entries will help to keep you organized, whether you make one entry to keep all of your reminders or 100 entries, your entries themselevs will be organized into categories to aid the organization of your reminders and notes. <br> Create an account and you can leave reviews and ratings on your own entries, to rate your progress on your work! Highest rated progress will be posted on the home screen for positive reinforcement. <br> What are you waiting for? Start getting organized on the Neighborhood Cookbook.
+                Welcome to The Think Tank!<br>Here, you can browse entries created by you. These entries will help to keep you organized, whether you make one entry to keep all of your reminders or 100 entries, your entries themselevs will be organized into categories to aid the organization of your reminders and notes. <br> Create an account and you can leave reviews and ratings on your own entries, to rate your progress on your work! Highest rated progress will be posted on the home screen for positive reinforcement. <br> What are you waiting for? Start getting organized on the Neighborhood Cookbook.
                 </p>
                 <br/>
                 <br/>
-                    <h1>About The Creators</h1>
+                    <p>
+                        About The Think Tank
+                        <br/>
+                        <br/>
+                        {% if chefs %}
+                        {% for chef in chefs %}
+                            {% if chef.user.is_staff %}
+                                {% with abouturl="/static/about_"|add:chef.user.username|add:".txt" %}
+                                <button type="submit" onclick="loadDoc('{{ abouturl }}')"><img src="{{ MEDIA_URL }}{{ chef.photo }}" alt="Picture of {{ chef.user.get_full_name }}" height="100" /></button>
+                                {% endwith %}
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <strong>There are no admins present.</strong>
+                    {% endif %}
                     <br/>
-                    <br/>
-                    {% if chefs %}
-                    {% for chef in chefs %}
-                        {% if chef.user.is_staff %}
-                            {% with abouturl="/static/about_"|add:chef.user.username|add:".txt" %}
-                            <button type="submit" onclick="loadDoc('{{ abouturl }}')"><img src="{{ MEDIA_URL }}{{ chef.photo }}" alt="Picture of {{ chef.user.get_full_name }}" height="100" /></button>
-                            {% endwith %}
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    <strong>There are no admins present.</strong>
-                {% endif %}
-                <br/>
-                <div id="about_creator"></div>
-                <h5> This website was designed by Lynda, Amy, Qiufei and Eve </h5>
+                    <div id="about_creator"></div>
+                </p>
 		  </div>
         </div>
 

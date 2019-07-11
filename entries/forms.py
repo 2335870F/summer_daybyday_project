@@ -61,7 +61,7 @@ class AddEntryForm(forms.ModelForm):
     ("13","Family"),
     )
     name = forms.CharField(widget=forms.TextInput(), max_length=40, label="Title Your Entry", help_text="up to 40 characters", required=True)
-    photo = forms.ImageField(label="Upload a Picture", required=True)
+    photo = forms.ImageField(label="Upload a Picture", required=False)
     content = forms.CharField(widget=forms.Textarea(), label="Your Content", required=False)
     importance = forms.IntegerField(min_value=0, max_value=5, initial=0, help_text="1 is least, 5 is most", required=True)
     key_info = forms.CharField(widget=forms.Textarea(), label="Key Information", help_text="e.g. Lecture times, Professor email, etc.", initial="hello", required=False)

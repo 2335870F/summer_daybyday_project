@@ -19,7 +19,7 @@ def index(request):
 	latest = Entry.objects.order_by('-date_last_edited')[:4]
 	#get all categories -- no order
 	users = User.objects.order_by('-date_joined')[:4]
-
+    
 	top = Entry.objects.order_by('-importance')[:4]
 
 	context_dict = {'latest':latest, 'users':users, 'top':top}

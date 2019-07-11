@@ -42,7 +42,7 @@ class Entry(models.Model):
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category)
     name = models.CharField(max_length=128, unique=True)
-    photo = models.ImageField(upload_to='food_pics')
+    photo = models.ImageField(upload_to='food_pics', default='cat_pics/default.png')
     importance = models.IntegerField(default=0)
     date_last_edited = models.DateTimeField(default=timezone.now)
     key_info = models.TextField(default='No key info.')

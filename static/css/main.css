@@ -554,8 +554,8 @@ div.about h1{
 }
 
 div.about p{
-    margin-left:100px;
-    margin-right:220px;
+    margin:auto;
+    margin-bottom: 43px;
     color:black;
     font-size: 25px;
     background-color:lightblue;
