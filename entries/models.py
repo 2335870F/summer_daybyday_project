@@ -56,6 +56,24 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Reminder(models.Model):
+    chef = models.ForeignKey(User)
+    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=128, unique=True)
+    photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.png')
+    importance = models.IntegerField(default=0)
+    date_last_edited = models.DateTimeField(default=timezone.now)
+    content = models.TextField(default='No content yet!')
+    #overall rating
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.chef.username+"-"+self.name)
+        super(Reminder, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
 
 class Review(models.Model):
 	entry = models.ForeignKey(Entry)

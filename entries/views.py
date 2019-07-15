@@ -10,19 +10,37 @@ from datetime import datetime
 from django.db.models import Sum
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from .forms import UploadFileForm
 # Create your views here.
 
+
+def handle_uploaded_file(f):
+    with open('entries/uploads.txt', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+            
+            
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            form = UploadFileForm()
+        return render(request, 'entries/upload.html', {'form':form})
 cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions']).order_by('name')
 
+@login_required
 def index(request):
 	#get all entries, order alphabetically by name - is recent
 	latest = Entry.objects.order_by('-date_last_edited')[:4]
 	#get all categories -- no order
-	users = User.objects.order_by('-date_joined')[:4]
+	reminders = Reminder.objects.order_by('-importance')[:4]
     
 	top = Entry.objects.order_by('-importance')[:4]
 
-	context_dict = {'latest':latest, 'users':users, 'top':top}
+	context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
 	response = render(request,'entries/index.html', context=context_dict)
 	return response
 
@@ -36,10 +54,10 @@ def about(request):
 
 def faq(request):
 	return render(request,'entries/faq.html', {})
-
-def trending(request):
-	return render(request,'entries/trending.html', {})
-
+@login_required
+def widgets(request):
+	return render(request,'entries/widgets.html', {})
+@login_required
 def categories(request):
 	#get all categories -- no order
 	cats = Category.objects.all()
@@ -85,7 +103,7 @@ def user_login(request):
 			else:
 				return HttpResponse("Your Rango account is disabled.")
 		else:
-			print("Invalid ligin details: {0},{1}".format(username, password))
+			print("Invalid login details: {0},{1}".format(username, password))
 			return HttpResponseRedirect(reverse('invalidlogin'))
 	else:
 		return render(request, 'entries/login.html', {})
@@ -145,6 +163,7 @@ def addentry(request):
 			print(form.errors)
 	return render(request, 'entries/addentry.html', {'form':form})
 
+@login_required
 def viewentry(request, entry_name_slug):
 	context_dict = {'cats_bar':cats_bar}
 	try:
@@ -175,6 +194,34 @@ def viewentry(request, entry_name_slug):
 			print(form.errors)
 		context_dict["form"] = form
 	return render(request, 'entries/entry.html', context_dict)
+
+
+
+@login_required
+def addreminder(request):
+    form = AddReminderForm(request.FILES)
+    if request.method == 'POST':
+        form = AddReminderForm(request.POST, request.FILES)
+        if form.is_valid():
+            reminder = form.save(request.user.username)
+            reminder.chef = request.user
+            reminder.save()
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            print(form.errors)
+    return render(request, 'entries/addreminder.html', {'form':form})
+
+@login_required
+def viewreminder(request, reminder_name_slug):
+    context_dict = {'cats_bar':cats_bar}
+    try:
+        reminder = Reminder.objects.get(slug=reminder_name_slug)
+        context_dict['reminder'] = reminder
+    except:
+        context_dict['reminder'] = None
+
+    return render(request, 'entries/reminders.html', context_dict)
+
 
 def userprofile(request, username):
 	context_dict = {}
@@ -225,6 +272,7 @@ def change_password(request, username):
 
 	return render(request, 'entries/change_password.html', context_dict)
 
+@login_required
 def show_category(request, cat_name_slug):
 	context_dict = {}
 

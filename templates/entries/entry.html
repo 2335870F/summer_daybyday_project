@@ -1,5 +1,7 @@
+
 {% extends 'entries/base.html' %}
 {% load staticfiles %}
+
 
 {% block js %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,94 +19,106 @@
 {% endblock %}
 
 {% block name_block %}
-    <div class="page_name">
-        <div class="entry_title">
-            {% if entry %}
-                {{ entry.name }}
-            {% endif %}
-        </div>
-    </div>
+    {% if user.is_authenticated %}
+        {% if user.username == entry.chef.username %}
+            <div class="page_name">
+                <div class="entry_title">
+                    {% if entry %}
+                        {{ entry.name }}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 
 {% block body_block %}
-	<div class="entry_page">
+    {% if user.is_authenticated %}
+        {% if user.username == entry.chef.username %}
+            <div class="entry_page">
 
-		<div class="other">
-			<div class="chef_info">
-				{% if entry %}
-					<strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
-					<strong> Date Last Edited: </strong>{{ entry.date_last_edited }}<br/>
-					<strong> Importance: </strong>{{ entry.importance }} / 5<br/>
-					<strong> Overall Rating: </strong>{{ avgRating }}<br/> 
-					<br><strong> Key Information:</strong>
-					<pre>{{ entry.key_info }}</pre>
-					<strong> To-Do:</strong>
-					<pre>{{ entry.to_do }}</pre>
-				{% endif %}
-			</div>
-<!--            <div class="show_categories">
-                <div class="cat_bar">
-                <h3>Categories</h3>
-                    {% for cat in cats_bar %}
-                        <a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br/>
-                    {% endfor %}
-                </div>
-            </div>-->
-            
-		</div>
-
-		<div class="entry_info">
-			{% if entry %}
-				<img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
-				<div class="steps">
-					
-					My Content:<br/>
-					<pre>{{ entry.content }}</pre>
-				</div>
-			{% else %}
-				<strong>This is not an entry.</strong>
-			{% endif %}
-		</div>
-            
-		<div class="reviews">
-          
-                <h11>Progress Reports</h11>
-                <div class="view">
-                    {% if reviews %}
-                        {% for review in reviews %}
-                            <div class="entry">
-                                <a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
-                                <div>
-                                    <strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
-                                    {{ review.comment }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <h12><strong>There are no progress reports for this entry.</strong></h12>
-                    {% endif %}
-                </div>
-          
-         
-                {% if user.is_authenticated %}
-                    {% if entry %}
-                        <div class="give">
-                            <br><h11>Leave a Progress Report!</h11>
-                            <form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
-                                {% csrf_token %}
-                                {% for field in form.visible_fields %}
-                                    {{ field.errors }}
-                                <h12>{{ field.label }}</h12><br/>
-                                    {{ field }}<br/>
-                                {% endfor %}
-                                <button type="submit" name="submit" value="Submit">Submit</button>
-                            </form>
+                <div class="other">
+                    <div class="chef_info">
+                        {% if entry %}
+                            <strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
+                            <strong> Date Last Edited: </strong>{{ entry.date_last_edited }}<br/>
+                            <strong> Importance: </strong>{{ entry.importance }} / 5<br/>
+                            <strong> Overall Rating: </strong>{{ avgRating }}<br/> 
+                            <br><strong> Key Information:</strong>
+                            <pre>{{ entry.key_info }}</pre>
+                            <strong> To-Do:</strong>
+                            <pre>{{ entry.to_do }}</pre>
+                        {% endif %}
+                    </div>
+            <!--            <div class="show_categories">
+                        <div class="cat_bar">
+                        <h3>Categories</h3>
+                            {% for cat in cats_bar %}
+                                <a href="{% url 'show_category' cat.slug %}">{{ cat.name }}</a><br/>
+                            {% endfor %}
                         </div>
-                    {% endif %}
-                {% endif %}
-		
-        </div>
+                    </div>-->
 
-	</div>
+                </div>
+
+                <div class="entry_info">
+                    {% if entry %}
+                        <img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
+                        <div class="steps">
+
+                            My Content:<br/>
+                            <pre>{{ entry.content }}</pre>
+                        </div>
+                    {% else %}
+                        <strong>This is not an entry.</strong>
+                    {% endif %}
+                </div>
+
+                <div class="reviews">
+
+                        <h11>Progress Reports</h11>
+                        <div class="view">
+                            {% if reviews %}
+                                {% for review in reviews %}
+                                    <div class="entry">
+                                        <a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
+                                        <div>
+                                            <strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
+                                            {{ review.comment }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <h12><strong>There are no progress reports for this entry.</strong></h12>
+                            {% endif %}
+                        </div>
+
+
+                        {% if user.is_authenticated %}
+                            {% if entry %}
+                                <div class="give">
+                                    <br><h11>Leave a Progress Report!</h11>
+                                    <form id="review_form" method="post" action={% url 'viewentry' entry.slug %}>
+                                        {% csrf_token %}
+                                        {% for field in form.visible_fields %}
+                                            {{ field.errors }}
+                                        <h12>{{ field.label }}</h12><br/>
+                                            {{ field }}<br/>
+                                        {% endfor %}
+                                        <button type="submit" name="submit" value="Submit">Submit</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                </div>
+
+            </div>
+        
+        {% else %}
+            <h11>You do not have permission to view this page</h11>
+        {% endif %}
+    {% endif %}
 {% endblock %}
+

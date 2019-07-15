@@ -9,22 +9,27 @@
 {% block body_block %}
 
 	<div class="index_page">
-
-		<div class="pop_cuisines">
-			<h3>New Chefs</h3>
-			{% if users %}
-				{% for u in users %}
-					<a href="{% url 'userprofile' u.username %}"><img src="{{ MEDIA_URL }}{{ u.chef.photo }}" alt="Picture of {{ u.get_full_name }}"/></a>
-					<div class="cat_text">{{ u.get_full_name }}</div>
+		<div class="current_reminders">
+            
+			<h3> Current Reminders</h3>
+			{% if reminders %}
+				{% for post in reminders %}
+					<a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
+					<div class="cat_text">
+                        {{ post.name }}
+                    </div>
 				{% endfor %}
 			{% endif %}
+                
+            
 		</div>
 
-		<div class="latest_posts">
-            <h13>Welcome to </h13>
-            <script type="text/javascript" src="//100widgets.com/js_data.php?id=106"></script>
+        
+    
 
-			<img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="100" padding-bottom=50px;/>
+		<div class="latest_posts">
+
+			<img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="90" padding-bottom=50px;/>
 			<div class="carousel">
 				<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -41,7 +46,7 @@
 							{% endfor %}
 						</ol>
 						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox" style="width:100%; height: 500px !important;">
+						<div class="carousel-inner" role="listbox" style="width:100%; height: 525px !important;">
 							{% for entry in latest %}
 								{% if forloop.counter0 == 0 %}
 									<div class="item active">
@@ -74,10 +79,14 @@
 			<h3>Important Entries</h3>
 			{% if top %}
 				{% for post in top %}
-					<a href="{% url 'viewentry' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
-					<div class="cat_text">
-                        {{ post.name }}
-                    </div>
+                    {% if user.is_authenticated %}
+                        {% if user.username == post.chef.username %}
+                            <a href="{% url 'viewentry' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
+                            <div class="cat_text">
+                                {{ post.name }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
 				{% endfor %}
 			{% endif %}
 		</div>

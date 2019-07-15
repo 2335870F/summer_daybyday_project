@@ -19,11 +19,6 @@ img.profile {
 	max-width: 30em;
 }
 
-h2, h3 {
-    font-size: 30px;
-	color: lightblue;
-}
-
 h11, h12{
     font-size: 30px;
     color: lightblue;
@@ -72,11 +67,12 @@ header {
 	overflow: hidden;
 	width: 100%;
 	padding: 1em;
-	background-color: lightblue;
-    opacity: 0.9;
+	background-color: black;
+    opacity: 1;
 	text-decoration: none;
-	padding-bottom: 1em;
-    padding-top: 1em;
+	padding-bottom: 0.5em;
+    padding-top: 0.5em;
+
 
 }
 header ul {
@@ -85,23 +81,44 @@ header ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: lightcyan;  
+	background-color: white;  
+
 }
 header ul li {
 	list-style-type: none;
 	float: right;
-    padding:1em;
+    padding-top:1em;
+    padding-bottom:1em;
 }
 div.urls a{
-	background-color: lightcyan;
+	background-color: white;
 	padding: 2em;
 	font-size: 1.4em;
     font-family: 'Fjalla One', sans-serif;
 	color: black;
-    text-decoration-color: blue;
 }
 div.urls a:hover{
-	background-color: greenyellow;
+    background-image: radial-gradient(50% 176%, greenyellow 80%, lightblue 100%);
+    border-radius: 50%;
+    text-decoration: none;
+}
+div.urlsA a:hover{
+    background-image: radial-gradient(50% 176%, #50117d 80%, purple 100%);
+}
+div.urlsB a:hover{
+    background-image: radial-gradient(50% 176%, lightblue 80%, purple 100%);
+}
+div.urlsC a:hover{
+    background-image: radial-gradient(50% 176%, purple 80%, lightblue 100%);
+}
+div.urlsD a:hover{
+    background-image: radial-gradient(50% 176%, yellow 80%, orange 100%);
+}
+div.urlsE a:hover{
+    background-image: radial-gradient(50% 176%, purple 80%, orange 100%);
+}
+div.urlsF a:hover{
+    background-image: radial-gradient(50% 176%, green 80%, lightblue 100%);
 }
 div.page_name {
 	margin-top:50px;
@@ -129,27 +146,26 @@ div.body {
 footer {
 	position: absolute;
 	overflow: hidden;
-	opacity: 0.9;
+	opacity: 1;
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: lightcyan;
-	padding: 1.7em;
+	background-color: white;
+	padding: 1em;
 }
 
 /* CATEGORIES PAGES */
 
 div.cat_text{
-	font-weight: bold;
 	padding: 2%;
-	color: white;
+	color: snow;
 	position: relative;
 	background-color: #467DA2;
 	text-align: center;
 	bottom: 1em;
 	font-size: 1em;
-	box-shadow: 3px 3px 3px grey;
-    border-radius: 30%;
+	box-shadow: 3px 3px 3px lightblue;
+    border-radius: 0%;
 }
 
 div.cat img{
@@ -307,22 +323,11 @@ div.index_page {
 div.latest_posts img.index-logo{
 	position: static;
 	text-align: center;
-	width: 103%;
+	width: 93%;
 	padding: 0.25em;
 	background-color: rgba(220, 220, 220, 0);
 }
-div.latest_posts img.scrollMessage{
-	text-align: left;
-	width: 16%;
-	padding: 1em;
-	background-color: rgba(220, 220, 220, 0);
-    position: fixed;
-	left: 0;
-	margin-top: 21px;
-	overflow: hidden;
-	padding: 1em;
 
-}
 div.index_page img{
 	width: 100%;
 	position: relative;
@@ -334,42 +339,66 @@ div.latest_posts {
     padding:10px;
     
 }
-div.pop_cuisines {
+div.current_reminders, div.top_rated {
     padding-top:10px;
 	overflow: scroll;
     margin-bottom: 35px;
-}
-div.pop_cuisines h3 {
-    font-size: 30px;
-}
-div.top_rated {
-    padding-top:10px;
-	overflow: scroll;
-    margin-bottom: 35px;
-}
-div.top_rated img{
-    width:260px;
-    height:180px;
-    border-radius: 50%;
-    opacity:0.8;
-}
-div.top_rated h3{
-    font-size: 30px;
-}
-div.pop_cuisines img{
-    width:260px;
-    height:180px;
-    border-radius: 50%;
-    opacity:0.9;
 }
 
-div.top_rated img:hover{
-    opacity:1;
+/*INDEX PAGE Current Reminders& Latest Posts & Important Entries Columns*/ 
+/* hot purple: 50117d or purple */
+div.current_reminders, div.top_rated, div.item {
+   /* background-image: radial-gradient(50% 176%, #09203D 80%, white 100%); */
+  /*  background-image: radial-gradient(50% 296%, #3a7a12 80%, lime 100%); */
+    background-image: radial-gradient(50% 296%, #09203D 80%, lightblue 100%);
+
+    opacity: 1;
+    margin-top:50px;
+    padding:10px;
+    color: greenyellow;
+    font-size: 20px;
+    border-radius: 10%;
 }
-div.pop_cuisines img:hover{
-	bottom: 7px;
-    opacity:1;
+div.latest_posts img.index-logo{
+    /*background-image: radial-gradient(50% 296%, white 80%, white 100%); */
+    opacity:0.9;
+    border-radius: 20%
+
 }
+/*Size of image inside carousel*/
+div.latest_posts img{
+    border-radius:10%;
+}
+/*Size of border inside carousel*/
+div.item {
+    margin-top:0px;
+    border-radius:5%;
+    background-image: radial-gradient(50% 296%, #09203D 80%, lightblue 100%);
+
+}
+
+div.current_reminders h3, div.top_rated h3{
+    font-size:30px;
+    padding-left:18px;
+}
+ div.top_rated h3{
+     padding-left:30px;
+}
+
+/*INDEX PAGE Current Reminders and Important Entries Columns IMAGES */
+div.current_reminders img, div.top_rated img{
+    width:260px;
+    height:180px;
+    padding-left:13px;
+    opacity:0.8;
+    border-radius: 10%;
+}
+
+div.top_rated img:hover, div.current_reminders img:hover{
+    opacity:1;
+    bottom: 2px;
+}
+
 
 /* PROFILE PAGE*/
 
@@ -441,6 +470,18 @@ div.center {
 textarea {
 	width: 400px;
     background-color:aliceblue;
+}
+div.latest_posts img.scrollMessage{
+	text-align: left;
+	width: 16%;
+	padding: 1em;
+	background-color: rgba(220, 220, 220, 0);
+    position: fixed;
+	left: 0;
+	margin-top: 21px;
+	overflow: hidden;
+	padding: 1em;
+
 }
 div.login_page {
     width: 400px;

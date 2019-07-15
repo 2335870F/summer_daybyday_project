@@ -1,0 +1,50 @@
+{% extends 'entries/base.html' %}
+{% load staticfiles %}
+
+
+{% block js %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("button").click(function() {
+			alert("Thanks for leaving a reminder!");
+		});
+	});
+	</script>
+{% endblock %}
+
+{% block title_block %}
+   Add a New Reminder
+{% endblock %}
+
+
+
+
+{% block name_block %}
+    <div class="page_name">
+	   New Reminder
+    </div>
+{% endblock %}
+
+{% block body_block %}
+<div class="add">
+	<form id="addreminder" method="post" enctype="multipart/form-data" action={% url 'addreminder' %}>
+		{% csrf_token %}
+		{% for field in form.visible_fields %}
+			<strong>{{ field.label }}</strong>
+			{% if field.help_text %}
+				{{ field.help_text }}
+			{% endif %}
+            {% if field.initial %}
+				{{ field.initial }}
+			{% endif %}<br/>
+			{% if errors %}
+				{{ field.errors }}
+			{% endif %}
+			{{ field }}<br/>
+            <br>
+		{% endfor %}
+		<input type="submit" name="submit" value="Add Reminder" class="button"/>
+	</form>
+</div>
+{% endblock %}

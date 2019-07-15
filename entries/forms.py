@@ -79,7 +79,33 @@ class AddEntryForm(forms.ModelForm):
         print(self.cleaned_data)
         entry = super(AddEntryForm, self).save(commit=False)
         return entry;
+ 
 
+
+class AddReminderForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput(), max_length=40, label="Title Your Reminder", help_text="up to 40 characters", required=True)
+    photo = forms.ImageField(label="Upload a Picture", required=False)
+    content = forms.CharField(widget=forms.Textarea(), label="Your Reminder", required=False)
+    importance = forms.IntegerField(min_value=0, max_value=5, initial=0, help_text="1 is least, 5 is most", required=True)
+    #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = Reminder
+        fields = ('name','photo','content','importance',)
+
+    def save(self, username):
+        author = User.objects.get(username=username)
+        self.chef = author
+        print(self.cleaned_data)
+        reminder = super(AddReminderForm, self).save(commit=False)
+        return reminder;
+    
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple':True}))
+    
+
+    
 class EditProfileForm(UserChangeForm):
 	class Meta:
 		model = User
