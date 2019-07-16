@@ -473,6 +473,8 @@ input.button {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 
@@ -483,6 +485,8 @@ input.button {
   height: 100vh;
   transform: translateZ(-1px) scale(2);
   z-index: -1;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .ContentContainer {
@@ -490,6 +494,8 @@ input.button {
   position: relative;
   background-color: white;
   z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -531,13 +537,17 @@ div.login_page {
     border: 15px solid #09203D;
     padding: 15px;
     margin-bottom: 240px;
-    margin-left:550px;
+    margin-left:auto;
+    margin-right:auto;
     text-align: center;
+    margin:auto;
 }
 div.login_page2 {
     padding: 15px;
     margin-bottom: 240px;
     text-align: center;
+    margin-left:auto;
+    margin-right:500px;
 }
 div.register{
     width: 450px;
