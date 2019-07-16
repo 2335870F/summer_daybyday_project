@@ -464,6 +464,60 @@ input.button {
 
 /* FORMS */
 
+
+
+
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+.ParallaxContainer {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  height: 100vh;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+
+.ContentContainer {
+  display: block;
+  position: relative;
+  background-color: white;
+  z-index: 1;
+}
+
+
+
+
+
+
+.parallax { 
+    /* The image used */
+    background-image: url("notebook.png");
+
+    /* Full height */
+    height: 100%; 
+    width: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
 div.center {
     text-align: center;
 }
@@ -471,18 +525,7 @@ textarea {
 	width: 400px;
     background-color:aliceblue;
 }
-div.latest_posts img.scrollMessage{
-	text-align: left;
-	width: 16%;
-	padding: 1em;
-	background-color: rgba(220, 220, 220, 0);
-    position: fixed;
-	left: 0;
-	margin-top: 21px;
-	overflow: hidden;
-	padding: 1em;
 
-}
 div.login_page {
     width: 400px;
     border: 15px solid #09203D;
