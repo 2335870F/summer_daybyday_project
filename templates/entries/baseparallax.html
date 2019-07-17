@@ -6,10 +6,8 @@
         
 		<meta charset="utf-8" content="width=device-width, height=device-height" />
 		<link href="{% static 'css/main.css' %}" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Playfair+Display+SC|Raleway&display=swap" rel="stylesheet">
-
-        
-        <title>
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+		<title>
 			TheThinkTank -
 			{% block title_block %}
 			{% endblock %}
@@ -51,7 +49,7 @@
 			</div>
 			</ul>
 		</header>
-		<div class="body">
+		
 				{% block name_block %}
 				{% endblock %}
 	
@@ -59,7 +57,7 @@
 				{% block body_block %}
 				{% endblock %}
 			
-		</div>
+		
 		<footer>
 			<div class="urls">
 				<a href="{% url 'about' %}" style="background-color:white;">About Us</a>                

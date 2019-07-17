@@ -6,17 +6,21 @@
 {% endblock %}
 
 {% block name_block %}
-	Invalid Login
+<div class="page_name">
+    Username or password was invalid.
+
+</div>
 {% endblock %}
 
 {% block body_block %}
-<div class="container">
-	Username or password was invalid.
-</div>
-<br/>
-<div class="urls">
-	<a href="{% url 'index' %}">Return to Index</a>
-	<a href="{% url 'register' %}">Sign Up</a>
-	<a href="{% url 'login' %}">Try Login Again</a>
-</div>
+    <div class="urls" style="margin-left:485px;margin-top:30px;margin-bottom:30px;">
+        <a href="{% url 'index' %}">Return to Index</a>
+        <a href="{% url 'register' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Try Login Again</a>
+    </div>
+    <video style="margin-left: 430px; margin-right: auto;" autoplay loop controls width="700" height="400" name="Video Name" src="{% static "images/ThinkTankMorph.mov" %}"></video>
+    <br>
+
+
+
 {% endblock %}

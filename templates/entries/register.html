@@ -1,4 +1,4 @@
-{% extends 'entries/base.html' %}
+{% extends 'entries/baseparallax.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -6,27 +6,45 @@
 {% endblock %}
 
 {% block name_block %}
-	Register for Day By Day!
 {% endblock %}
 
 {% block body_block %}
-  {% if registered %}
-    <strong> Thank You for Registering! </strong>
-    <a href="{% url 'index' %}">Return to the homepage.</a>
-    <br />
-  {% else %}
+    <body class="registerpage">
+        {% if registered %}
+            <strong> Thank You for Registering! </strong>
+            <a href="{% url 'index' %}">Return to the homepage.</a>
+            <br />
+        {% else %}
 
+        <div class="banner">
+            <img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="430" height="300" />
+            <h144>Welcome to The Think Tank</h144> 
 
-    <div class="register">
-        <h2> Register Below! </h2>
-    <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+            
+        </div>
+        <div class="banner2">
+            <h144>Slide Two</h144>
+        </div>
+        <div class="banner3">
+            <h144>Slide Three</h144>
+        </div>
+        <div class="banner4">
+            <div class="register">
+                <h2> Register Below! </h2>
+                <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
 
-      {% csrf_token %}
-      {{ user_form.as_p }}
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
 
-    {{ profile_form.as_p }}
-      <input type="submit" name="submit" value="Register" class="button" />
-    </form>
-    </div>
+                    {{ profile_form.as_p }}
+                    <input type="submit" name="submit" value="Register" class="button" />
+                </form>
+            </div>
+    </body>
   {% endif %}
+   
+    
+
+
 {% endblock %}
+</div>
