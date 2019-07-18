@@ -39,8 +39,10 @@
 					<div class="row">
 						{% for entry in entries %}
 							<div class="cat">
+                                <div class="entrycat">
 								<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}"/></a>
-								<div class="cat_text">{{ entry.name }}</div>
+								<div class="cat_text"><div class="cat_textentry">{{ entry.name }}</div></div>
+                                </div>
 							</div>
 						{% endfor %}
 					</div>

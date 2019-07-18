@@ -137,12 +137,16 @@ div.page_name {
     text-decoration-color: greenyellow;
     text-decoration-style: dotted;
 	clear: both;
-    margin-left:465px;
+    margin-left:auto;
+    margin-right:auto;
 	text-align: center;
-    opacity:0.8;
+    opacity:1;
     width:590px;
 	font-size: 3.5em;
 	padding-bottom: 0.3em;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 1));
 }
 div.body {
 	width: 100%;
@@ -169,32 +173,40 @@ div.cat_text{
 	padding: 2%;
 	color: snow;
 	position: relative;
-	background-color: #467DA2;
+	background-color: #09203D;
 	text-align: center;
 	bottom: 1em;
-	font-size: 1em;
+	font-size: 1.5em;
 	box-shadow: 3px 3px 3px lightblue;
-    border-radius: 0%;
 }
 
+div.cat_textentry{
+    width:10em;
+    height:2.5em;
+}
+div.cat_text:hover {
+}
 div.cat img{
+    margin-top:20px;
 	position: relative;
-	min-width: 4.3em;
-	max-width: 20em;
-	width: 18.75em;
-	height: 12.5em;
-	box-shadow: 3px 3px 3px grey;
-    opacity:0.9;
+	width: 12.5em;
+	height: 11em;
+    border-radius:50%;
 
+}
+div.entrycat img{
+
+	width: 15.7em;
+	height: 12em;
+    border-radius:10%;
 }
 div.cat img:hover{
-    bottom: 7px;
-    opacity:1;
+    top:7px;
 
 }
 div.row {
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	grid-gap: 4%;
 	justify-content: center;
 	align-items: center;
@@ -576,7 +588,9 @@ div.add {
     background-color:white;
     padding: 25px;
     margin: 50px;
-    margin-left: 480px;
+    margin-top:12px;
+    margin-left: auto;
+    margin-right:auto;
     text-align: left;
 }
 div.edit_class {
@@ -717,7 +731,7 @@ div.hero__content {
 
 
 .banner, .banner2, .banner3, .banner4 {
-    background-image: url('/static/images/mosaicF.jpg');
+    background-image: url('/static/images/mosaic.jpg');
 	background-size: cover;
     background-attachment: fixed;
     width: 100%;

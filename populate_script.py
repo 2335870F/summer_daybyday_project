@@ -73,7 +73,7 @@ def populate():
     #		"Japanese": {"likes": 16, "photo":"japanese.png"},}
     
     #these are subcategories in the category of My Courses
-    My_Courses = {"Degree Courses": {"likes": 32, "photo":"american.jpeg"}, "Electives": {"likes":30, "photo":"american.jpeg"},}
+    My_Courses = {"Degree Courses": {"likes": 32, "photo":"degreeicon.png"}, "Electives": {"likes":30, "photo":"electivesicon.png"},}
 
     #	specials = {"St Patrick's Day": {"likes": 64, "photo":"stpaddys.jpeg"},
     #		"Easter": {"likes": 32, "photo":"easter.jpeg"},
@@ -82,17 +82,17 @@ def populate():
     #		"4th of July": {"likes": 16, "photo":"4july.jpeg"},
     #		"Valentine's Day": {"likes": 16, "photo":"valentines.jpeg"},}
     #these are subcategories in the category of My Home
-    My_Home = {"Grocery Lists": {"likes": 64, "photo":"stpaddys.jpeg"},
-    "Personal": {"likes": 32, "photo":"easter.jpeg"},
-    "Family": {"likes": 16, "photo":"christmas.jpeg"},}
+    My_Home = {"Grocery Lists": {"likes": 64, "photo":"groceryicon.png"},
+    "Personal": {"likes": 32, "photo":"personalicon.png"},
+    "Family": {"likes": 16, "photo":"familyicon.png"},}
 
-    cats = {"My Courses": {"likes": 64, "photo":"breakfast.jpeg"},
-    "My Work": {"likes": 32, "photo":"lunch.jpeg"},
-    "My Weekends": {"likes": 16, "photo":"dinner.jpeg"},
-    "My Holidays": {"likes": 16, "photo":"dessert.jpeg"},
-    "My Hobbies": {"likes":160, "photo":"cuisines.jpeg"},
-    "My Home": {"likes":160, "photo":"cuisines.jpeg"},
-    "Other": {"likes":160, "photo":"spec_occ.jpeg"},}
+    cats = {"My Courses": {"likes": 64, "photo":"coursesicon.png"},
+    "My Work": {"likes": 32, "photo":"workicon.png"},
+    "My Weekends": {"likes": 16, "photo":"weekendsicon.png"},
+    "My Holidays": {"likes": 16, "photo":"holidaysicon.png"},
+    "My Hobbies": {"likes":160, "photo":"hobbiesicon.png"},
+    "My Home": {"likes":160, "photo":"homeicon.png"},
+    "Other": {"likes":160, "photo":"othericon.png"},}
     #My Courses and My Home have subcategories
 
     print(" -Initializing admins . . .")
