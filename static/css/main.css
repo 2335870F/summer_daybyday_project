@@ -383,7 +383,6 @@ div.current_reminders, div.top_rated, div.item {
 div.latest_posts img.index-logo{
     /*background-image: radial-gradient(50% 296%, white 80%, white 100%); */
     opacity:0.9;
-    border-radius: 20%
 
 }
 /*Size of image inside carousel*/
@@ -432,6 +431,7 @@ div.account {
 	grid-column-gap: 3em;
 	padding-left: 4em;
 	padding-right: 4em;
+    color:#09203D;
 }
 
 div.user_info img{
@@ -751,6 +751,11 @@ div.hero__content {
     background-image: url('/static/images/j.jpg');
     
 
+}
+div.banner img{
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
 }
 h144 {
     font-size: 5rem;
