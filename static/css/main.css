@@ -46,7 +46,7 @@ h13{
 /* BASE */
 
 body { 
-	background-image: url('/static/images/notebook.png');
+	background-image: url('/static/images/mosaic.jpg');
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -67,44 +67,37 @@ body.registerpage {
 
 
 header {
-	z-index: 1000;
-	position: absolute;
-	left: 0;
-	top: 0;
-	overflow: hidden;
-	width: 100%;
-	padding: 1em;
-	background-color: black;
-    opacity: 1;
-	text-decoration: none;
-	padding-bottom: 0.5em;
-    padding-top: 0.5em;
-    position:fixed;
-
+    margin: 0 auto;
+	width: 950px;
+    height:80px;
+    border-radius:3%;
 
 }
-header ul {
+footer ul {
 	text-align: center;
     opacity: 0.9;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: white;  
+	overflow: scroll;
+    display: inline;
 
 }
-header ul li {
+footer ul li {
 	list-style-type: none;
-	float: right;
-    padding-top:1em;
-    padding-bottom:1em;
+}
+div.urls{
+    list-style-type:none;
 }
 div.urls a{
-	background-color: white;
-	padding: 2em;
-	font-size: 1.4em;
+	padding: 1em;
+	font-size: 1.3em;
     font-family: 'Fjalla One', sans-serif;
 	color: black;
 }
+
+
+
+
+
+
 div.urls a:hover{
     color:greenyellow;
     border-radius: 10%;
@@ -150,21 +143,34 @@ div.page_name {
 }
 div.body {
 	width: 100%;
-	position: absolute;
-	overflow: auto;
+	overflow: scroll;
 	top: 4.5em;
 	bottom: 4.5em;
 }
+div.new{
+    margin-left:auto;
+    width:450px;
+    margin-right: auto;
+    text-align:right;
+    bottom:0;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 250, 120, 0.9));
+    padding-bottom:10px;
+    overflow:scroll;
+}
 footer {
-	position: absolute;
-	overflow: hidden;
 	opacity: 1;
-	left: 0;
+    margin-bottom:5px;
 	bottom: 0;
 	width: 100%;
-	background-color: white;
 	padding: 1em;
+    padding-top:0px;
+    padding-bottom:0px;
     position:fixed;
+    list-style-type: none;
+    background-image: radial-gradient(50% 176%, lightblue 80%, #09203D 100%);
+
 }
 
 /* CATEGORIES PAGES */
@@ -330,7 +336,7 @@ div.give {
 /* HOMEPAGE */
 
 div.index_page {
-	position: sticky;
+	position: fixed;
 	display: grid;
 	height: 79%;
 	grid-template-columns: auto 56% auto;
@@ -342,11 +348,10 @@ div.index_page {
     font-family: 'Fjalla One', sans-serif;
 }
 div.latest_posts img.index-logo{
-	position: static;
-	text-align: center;
-	width: 93%;
-	padding: 0.25em;
+	width: 30%;
 	background-color: rgba(220, 220, 220, 0);
+    border-radius:0%;
+
 }
 
 div.index_page img{
@@ -354,16 +359,14 @@ div.index_page img{
 	position: relative;
 }
 div.latest_posts {
-	overflow: scroll;
 	text-align: center;
-    margin-bottom: 50px;
     padding:10px;
     
 }
 div.current_reminders, div.top_rated {
     padding-top:10px;
-	overflow: scroll;
-    margin-bottom: 35px;
+	/*overflow: scroll; */
+    height:1000px;
 }
 
 /*INDEX PAGE Current Reminders& Latest Posts & Important Entries Columns*/ 
@@ -400,6 +403,7 @@ div.item {
 div.current_reminders h3, div.top_rated h3{
     font-size:30px;
     padding-left:18px;
+    
 }
  div.top_rated h3{
      padding-left:30px;
@@ -739,9 +743,11 @@ div.hero__content {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .banner2{
     background-image: url('/static/images/m.jpg');
+
 }
 
 .banner3{

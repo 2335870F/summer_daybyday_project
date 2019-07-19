@@ -5,7 +5,8 @@
 	Index
 {% endblock %}
 
-
+{% block name_block %}
+{% endblock %}
 {% block body_block %}
 
 	<div class="index_page">
@@ -27,15 +28,18 @@
         
     
 
-		<div class="latest_posts">
+		<div class="latest_posts" style="overflow:scroll;">
 
-			<img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="90" padding-bottom=50px;/>
+
 			<div class="carousel">
 				<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-				<div class="container" style="width:100%; height:400px" >
+				<div class="container" style="width:100%; height:400px; overflow: scroll;" >
+                    <div class="new">
+                        <img src="{% static "images/logo.png" %}" alt="Website Logo" width="250" />
+                    </div>
 					<h2>Latest Posts</h2>
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
