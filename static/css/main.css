@@ -51,78 +51,58 @@ body {
 	width: 100%;
 	margin: 0;
     font-family: 'Fjalla One', sans-serif;
-	font-size: 17px;
-	color: ghostwhite;
+	font-size: 14px;
+	color: greenyellow;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	overflow: hidden;
+    
+	display: grid;
+	grid-column-gap: 3em;
+
+    color:greenyellow;
+    font-family: 'Fjalla One', sans-serif;
+
 }
 body.registerpage {
     background-image:none; 
     overflow:scroll;
 }
 
-
-
 header {
-    margin: 0 auto;
-	width: 950px;
-    height:80px;
-    border-radius:3%;
-
+	width: 100%;
+    position:fixed;
+    list-style-type: none;
+    background: rgba(0, 200, 220, 0.5);
 }
-footer ul {
-	text-align: center;
+
+header ul {
     opacity: 0.9;
 	overflow: scroll;
-    display: inline;
+}
+header ul li {
+    padding:1em;
+    list-style-type: none;
+}
 
-}
-footer ul li {
-	list-style-type: none;
-}
-div.urls{
-    list-style-type:none;
-}
 div.urls a{
-	padding: 1em;
-	font-size: 1.3em;
+	font-size: 1.6em;
     font-family: 'Fjalla One', sans-serif;
 	color: black;
 }
 
-
-
-
-
-
 div.urls a:hover{
-    color:greenyellow;
-    border-radius: 10%;
+    -webkit-filter: drop-shadow(12px 12px 20px white);
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 20px white);
+    color:white;
     text-decoration: none;
 }
-div.urlsA a:hover{
-    background-image: radial-gradient(50% 176%, #50117d 80%, purple 100%);
-}
-div.urlsB a:hover{
-    background-image: radial-gradient(50% 176%, lightblue 80%, purple 100%);
-}
-div.urlsC a:hover{
-    background-image: radial-gradient(50% 176%, purple 80%, lightblue 100%);
-}
-div.urlsD a:hover{
-    background-image: radial-gradient(50% 176%, yellow 80%, orange 100%);
-}
-div.urlsE a:hover{
-    background-image: radial-gradient(50% 176%, purple 80%, orange 100%);
-}
-div.urlsF a:hover{
-    background-image: radial-gradient(50% 176%, green 80%, lightblue 100%);
-}
+
+
 div.page_name {
-	margin-top:50px;
+	margin-top:70px;
     border: 5px solid greenyellow;
     background-color: #09203D;
     padding-top: 0.2em;
@@ -140,12 +120,16 @@ div.page_name {
     -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
 /*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 1));
+    color:white;
 }
 div.body {
 	width: 100%;
 	overflow: scroll;
 	top: 4.5em;
 	bottom: 4.5em;
+
+
+
 }
 div.new{
     margin-left:auto;
@@ -159,31 +143,21 @@ div.new{
     padding-bottom:10px;
     overflow:scroll;
 }
-footer {
-	opacity: 1;
-    margin-bottom:5px;
-	bottom: 0;
-	width: 100%;
-	padding: 1em;
-    padding-top:0px;
-    padding-bottom:0px;
-    position:fixed;
-    list-style-type: none;
-    background-image: radial-gradient(50% 176%, lightblue 80%, #09203D 100%);
 
-}
 
 /* CATEGORIES PAGES */
 
 div.cat_text{
 	padding: 2%;
-	color: snow;
+	color: greenyellow;
 	position: relative;
-	background-color: #09203D;
+	background: rgba(100, 100, 100, 0.8);
 	text-align: center;
 	bottom: 1em;
 	font-size: 1.5em;
 	box-shadow: 3px 3px 3px lightblue;
+    border-radius:10%;
+
 }
 
 div.cat_textentry{
@@ -251,24 +225,23 @@ div.cat_bar h3{
 /* ENTRY PAGE */
 
 div.entry_page{
-	position: fixed;
 	display: grid;
-	height: 69%;
+	height: 100%;
 	width: 100%;
 	grid-template-columns: 20% 45% 20%;
-	justify-content: left;
+	justify-content: center;
 	grid-column-gap: 1em;
-	padding-left: 4em;
-	padding-right: 4em;
     overflow:scroll;
+
 }
 div.entry_title{
-    text-align: :left;
+    margin-left:auto;
+    margin-right: auto;
+    text-align:center;
     color:white;
     font-family: 'Fjalla One', sans-serif;
     font-size:50px;
     width:100%;
-    padding-top:10px;
 }
 div.entry_info img{
 	position: relative;
@@ -283,6 +256,8 @@ div.other {
 div.entry_info {
 	word-wrap: normal;
     overflow:scroll;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.reviews {
@@ -296,6 +271,8 @@ div.reviews {
     border: 5px solid greenyellow;
     margin-bottom: 100px;
 	overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
 
     
 }
@@ -327,6 +304,7 @@ div.view {
     overflow: scroll;
 }
 div.give {
+    
     width:300px;
 	overflow: scroll;
     margin-bottom: 10px;
@@ -338,7 +316,7 @@ div.give {
 div.index_page {
 	position: fixed;
 	display: grid;
-	height: 79%;
+	height:100%;
 	grid-template-columns: auto 56% auto;
 	justify-content: center;
 	grid-column-gap: 3em;
@@ -346,13 +324,9 @@ div.index_page {
 	padding-right: 4em;
     color:greenyellow;
     font-family: 'Fjalla One', sans-serif;
+    margin-top:70px;
 }
-div.latest_posts img.index-logo{
-	width: 30%;
-	background-color: rgba(220, 220, 220, 0);
-    border-radius:0%;
 
-}
 
 div.index_page img{
 	width: 100%;
@@ -390,7 +364,13 @@ div.latest_posts img.index-logo{
 }
 /*Size of image inside carousel*/
 div.latest_posts img{
-    border-radius:10%;
+    border-radius:0%;
+}
+div.latest_posts img.index-logo{
+	width: 30%;
+	background-color: rgba(220, 220, 220, 0);
+    border-radius:0%;
+
 }
 /*Size of border inside carousel*/
 div.item {
@@ -498,22 +478,43 @@ input.button {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-left:auto;
-    margin-right:auto;
+
 }
 
 
 .ParallaxContainer {
-    display: flex;
+    display: block;
     flex: 1 0 auto;
-    position: relative;
     height: 100vh;
     transform: translateZ(-1px) scale(2);
     z-index: -1;
     margin-left:auto;
-    margin-right:300px;
-    margin-top:250px;
+    margin-right: auto;
+    text-align:center;
+    margin-top:25px;
+    position:relative;
+    -webkit-animation: mymove 15s ; /* Safari 4.0 - 8.0 */
+    animation: mymove 15s ;
+    
 }
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {top: -1050px;}
+  to {top: 7px;}
+}
+
+@keyframes mymove {
+  from {top: -1050px;}
+  to {top: 7px;}
+}
+
+.ParallaxContainer img.index-logo{
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
+    display:inline-block;
+}
+
 
 .ContentContainer {
     display: block;
@@ -539,10 +540,18 @@ textarea {
 }
 
 img.scrollMessage {
-    
-    border-radius:20%; 
-    background-image:radial-gradient(50% 296%, lime 8%, greenyellow 100%); 
-    
+    padding:10px;
+    padding-top:25px;
+
+
+}
+div.backing{
+    width:250px;
+    height:250px;
+    border-radius:50%; 
+    background: rgba(0, 220, 220, 0.7);
+    display: inline-block;
+
 }
 
 div.login_page {
@@ -554,6 +563,8 @@ div.login_page {
     margin-right:auto;
     text-align: center;
     margin:auto;
+    background:rgba(50, 200, 220, 0.8);
+    background-image:url('/static/images/mosaic.jpg');
     
 }
 
@@ -596,6 +607,7 @@ div.add {
     margin-left: auto;
     margin-right:auto;
     text-align: left;
+
 }
 div.edit_class {
     width: 400px;

@@ -5,9 +5,14 @@
     Contact Us
 {% endblock %}
 
+{% block name_block %}
+    <div class="page_name">
+        Contact Us
+    </div>
+{% endblock %}
 {% block body_block %}
 <div class="contact"> 
-    <h2> Contact Us </h2>
+    <h2> Have any feedback? Let us know! </h2>
     <form id="contactus_form" method="post" action={% url 'contact' %}>
 		{% csrf_token %}
 		{% for field in form.visible_fields %}

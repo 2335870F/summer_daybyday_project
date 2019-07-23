@@ -1,4 +1,4 @@
-{% extends 'entries/baseparallax.html' %}
+{% extends 'entries/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -13,17 +13,18 @@
 <div class="MainContainer">
 
   <div class="ParallaxContainer">
-    <img class ="scrollMessage" src="{% static "images/scrollMessage.png" %}" alt="scroll message" width="300" height="190" />
-    
-
-    
-        <img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="900" height="600" />
+        <img class="index-logo" src="{% static "images/logo.png" %}" alt="Website Logo" width="800" height="500" />
+        <div class="center">
+        <div class="backing">
+            <img class ="scrollMessage" src="{% static "images/scrollMessage.png" %}" alt="scroll message" width="240" height="200" />
+        </div>
+        </div>
  
   </div>
-
+<!--/*radial-gradient(50% 296%, deeppink 8%, blue 100%)*/-->
   <div class="ContentContainer">
       <div class="Content">
-          <div style="height:700px; width:100%;background-image: radial-gradient(50% 296%, deeppink 8%, blue 100%);padding-top:400px; background-size: cover;">
+          <div style="height:700px; width:100%;background-image: radial-gradient(50% 296%, cyan 8%, blue 100%);padding-top:400px; background-size: cover;">
               <div class="login_page">
                 <h2> Login </h2>
                 <form id="login_form" method="post" action={% url 'login' %}>

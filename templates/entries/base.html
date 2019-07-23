@@ -30,53 +30,44 @@
 			
 		</div>
 
-		<footer>
+		<header>
             
 			<ul>
 			<div class="urls">
 				{% if user.is_authenticated %}
-                    <div class="urlsF">
-                        <li style="float:left; padding:5px; padding-left:10px;"><a href="{% url 'index' %}">Home</a></li>
-                    </div>
-                    <div class="urlsF">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'userprofile' user.username %}">My Account</a></li>
-                    </div>
-                    <div class="urlsB">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'widgets' %}">Widgets</a></li>
-                    </div>
-                    <div class="urlsC">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'categories' %}">Categories</a></li>
-                    </div>
-                    <div class="urlsD">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'addentry' %}">Add Entry</a></li>
-                    </div>
-                    <div class="urlsE">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'addreminder' %}">Add Reminder</a></li>
-                    </div>
-                    <div class="urlsA">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'logout' %}">Logout</a></li>
-                    </div>
-                    <div class="urlsA">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'about' %}">About Us</a> 
-                    </div>
-                    <div class="urlsA">
-				        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'contact' %}">Contact Us</a>
-                    </div>
-				    <div class="urlsA">
-                        <li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'faq' %}">FAQs</a>
-                    </div>
-				{% if user.is_authenticated %}
-					<li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'suggestion' %}">Suggest Category</a>
-				{% endif %}
+                  
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'index' %}">Home</a></li>
+                   
+
+                   
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'widgets' %}">Widgets</a></li>
+                  
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'categories' %}">Categories</a></li>
+            
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'addentry' %}">Add Entry</a></li>
+                    
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'addreminder' %}">Add Reminder</a></li>
+                    
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'about' %}">About Us</a> 
+                    
+				        <li style="float:left;padding-left: 35px;"><a href="{% url 'contact' %}">Contact Us</a>
+                   
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'faq' %}">FAQs</a>
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'userprofile' user.username %}">My Account</a></li>
+					   <li style="float:left;padding-left: 35px;"><a href="{% url 'suggestion' %}">Suggest Category</a>         
+                        <li style="float:left;padding-left: 35px;"><a href="{% url 'logout' %}">Logout</a></li>
+			
+
+                
 
 				{% else %}
-					<li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'login' %}">Login</a></li>
-					<li style="float:left; padding:5px; padding-left:5px;"><a href="{% url 'register' %}">Sign Up</a></li>
+					<li style="float:left;padding-left: 25px;"><a href="{% url 'login' %}">Login</a></li>
+					<li style="float:left;padding-left: 25px;"><a href="{% url 'register' %}">Sign Up</a></li>
 				{% endif %}
 
 			</div>
 			</ul>
 
-		</footer>
+		</header>
 	</body>
 </html>
