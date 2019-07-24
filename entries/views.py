@@ -11,6 +11,7 @@ from django.db.models import Sum
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from .forms import UploadFileForm
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -195,6 +196,33 @@ def viewentry(request, entry_name_slug):
 		context_dict["form"] = form
 	return render(request, 'entries/entry.html', context_dict)
 
+#@login_required
+#def edit_entry(request, entry_name_slug):
+#	if request.method == 'POST':
+#		edit = EditEntryForm(request.POST, request.FILES, instance=request.user)
+#		if edit.is_valid():
+#			edit.save()
+#			return redirect('/entries/')
+#		else:
+#			print(edit.errors)
+#	else:
+#		edit = EditEntryForm(request.FILES, instance=request.user)
+#
+#	context_dict = {'edit':edit}
+#	return render(request, 'entries/edit_entry.html', context_dict)
+
+@login_required
+def edit_entry(request, entry_name_slug):
+    template='entries/addentry.html'
+    post= request.user
+    if request.method == "POST":
+        form=AddEntryForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+    else:
+        form=AddEntryForm(instance=post)
+        context={'form':form, 'post':post,}
+    return render(request, template, context)
 
 
 @login_required
@@ -255,6 +283,14 @@ def edit_profile(request, username):
 
 	context_dict = {'edit':edit,'bio':bio}
 	return render(request, 'entries/edit_profile.html', context_dict)
+
+
+
+
+
+
+
+
 
 @login_required
 def change_password(request, username):

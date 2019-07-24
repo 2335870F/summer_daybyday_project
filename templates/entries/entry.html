@@ -36,6 +36,10 @@
 {% block body_block %}
     {% if user.is_authenticated %}
         {% if user.username == entry.chef.username %}
+            <div class="edit_entry"> 
+<!--                <a href="{% url 'edit_entry'  entry.name %}">Edit</a>                      -->
+                <a href="{% url 'edit_entry' entry.name %}">Edit</a>                      
+            </div>
             <div class="entry_page">
 
                 <div class="other">

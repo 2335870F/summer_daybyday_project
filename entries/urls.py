@@ -6,6 +6,10 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
 	url(r'^faq/$', views.faq, name='faq'),
 	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/$', views.viewentry, name='viewentry'),
+#    url(r'^entry/(?P<entry_name_slug>[\w\-]+)/edit_entry/$', views.edit_entry, name='edit_entry'),
+    url(r'^edit-entry/(?P<entry_name_slug>[\w\-]+)/$', views.edit_entry, name='edit_entry'),
+    
+    
 	url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/$', views.viewreminder, name='viewreminder'),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
@@ -17,6 +21,7 @@ urlpatterns = [
     url(r'^categories/$', views.categories, name='categories'),
     url(r'^categories/(?P<cat_name_slug>[\w\-]+)/$', views.show_category, name='show_category'),
     url(r'^addentry/$', views.addentry, name='addentry'),
+
     url(r'^addreminder/$', views.addreminder, name='addreminder'),
 	url(r'^profile/(?P<username>[\w\-]+)/$', views.userprofile, name='userprofile'),
 #new down here
