@@ -367,7 +367,7 @@ div.latest_posts {
 }
 div.current_reminders, div.top_rated {
     padding-top:10px;
-	/*overflow: scroll; */
+	overflow: scroll; 
     height:1000px;
     margin-bottom:100px;
     width:280px;

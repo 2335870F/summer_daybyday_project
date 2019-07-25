@@ -15,13 +15,17 @@
 			<h3> Current Reminders</h3>
 			{% if reminders %}
 				{% for post in reminders %}
-					<a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
-					<div class="cat_text">
-                        {{ post.name }}
-                    </div>
+                    {% if user.is_authenticated %}
+                        {% if user.username == post.chef.username %}
+
+                            <a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
+                            <div class="cat_text">
+                                {{ post.name }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
 				{% endfor %}
 			{% endif %}
-                
             
 		</div>
 
@@ -44,24 +48,35 @@
                     </div>
 					<h2>Latest Posts</h2>
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
+						<!-- Indicators // still goes 1 more than normal bubble count but..-->
 						<ol class="carousel-indicators">
 							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 							{% for item in latest %}
-								<li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}"></li>
+                                {% if user.username == item.chef.username %}
+								    <li data-target="#myCarousel" data-slide-to="{{ forloop.counter }}"></li>
+                                {% endif %}
 							{% endfor %}
 						</ol>
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox" style="width:800px;; height: 525px !important;">
+						<!-- Wrapper for slides for 1st one first -->
+						<div class="carousel-inner" role="listbox" style="width:800px; height: 450px !important;">
 							{% for entry in latest %}
 								{% if forloop.counter0 == 0 %}
+                                    {% if user.username == entry.chef.username %}
 									<div class="item active">
-										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:800px; height:500px;"/></a>
+                                        <h7>{{ entry.name }}</h7>
+										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:800px; height:400px;"/></a>
 									</div>
+                                    {% endif %}
 								{% else %}
+                                    {% if user.username == entry.chef.username %}
 									<div class="item">
-										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:800px; height:500px"/></a>
+                                        
+
+                                        <h7>{{ entry.name }}</h7>
+										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:800px; height:400px"/></a>
+                                        
 									</div>
+                                    {% endif %}
 								{% endif %}
 							{% endfor %}
 						</div>

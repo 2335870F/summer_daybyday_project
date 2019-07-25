@@ -37,17 +37,33 @@ def upload_file(request):
 cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions']).order_by('name')
 
 @login_required
+#def index(request, chef):
+#    chef = Chef.objects.get(user.username)
+#    #get all entries, order alphabetically by name - is recent
+#    latest = Entry.objects.order_by('-date_last_edited')[:4]
+#    #get all categories -- no order
+#    reminders = Reminder.objects.order_by('-importance')[:4]
+#    #this is filtering all entries, we want just your own.. wait you could have filter(usr=)
+#    top = Entry.objects.filter(chef=chef).order_by('-importance')
+#
+#    context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
+#    response = render(request,'entries/index.html', context=context_dict)
+#    return response
 def index(request):
-	#get all entries, order alphabetically by name - is recent
-	latest = Entry.objects.order_by('-date_last_edited')[:4]
-	#get all categories -- no order
-	reminders = Reminder.objects.order_by('-importance')[:4]
-    
-	top = Entry.objects.order_by('-importance')[:6]
+    #get all entries, order alphabetically by name - is recent
+    latest = Entry.objects.order_by('-date_last_edited')
+    #get all categories -- no order
+    #had to remove [:4] because it filters every entry existing all users
+#    reminders = Reminder.objects.order_by('-importance')[:4]
+    reminders = Reminder.objects.order_by('-importance')
+    #this is filtering ALL everyones entries, we want just your own.. the html only allows u to see ur own
+    #but its techincally way down the list and so doesnt show. or wait you could have filter(usr=), and be able to use [:4] but 
+    #ive not figured the filter thing yet!
+    top = Entry.objects.order_by('-importance')
 
-	context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
-	response = render(request,'entries/index.html', context=context_dict)
-	return response
+    context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
+    response = render(request,'entries/index.html', context=context_dict)
+    return response
 
 def about(request):
 	#get users that are chefs -- order alphabetically by username
