@@ -12,6 +12,10 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from .forms import UploadFileForm
 from django.shortcuts import get_object_or_404
+
+
+
+
 # Create your views here.
 
 
@@ -39,7 +43,7 @@ def index(request):
 	#get all categories -- no order
 	reminders = Reminder.objects.order_by('-importance')[:4]
     
-	top = Entry.objects.order_by('-importance')[:4]
+	top = Entry.objects.order_by('-importance')[:6]
 
 	context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
 	response = render(request,'entries/index.html', context=context_dict)
@@ -166,63 +170,57 @@ def addentry(request):
 
 @login_required
 def viewentry(request, entry_name_slug):
-	context_dict = {'cats_bar':cats_bar}
-	try:
-		entry = Entry.objects.get(slug=entry_name_slug)
-		reviews = Review.objects.filter(entry=entry).order_by("-date_last_edited")
+    context_dict = {'cats_bar':cats_bar}
+    try:
+        entry = Entry.objects.get(slug=entry_name_slug)
+        reviews = Review.objects.filter(entry=entry).order_by("-date_last_edited")
+        extrainformation = ExtraInformation.objects.filter(entry=entry).order_by("-date_last_edited")
 
-		if len(reviews) > 0:
-			avgRating = (Review.objects.filter(entry=entry).aggregate(Sum('rating'))["rating__sum"])/len(reviews)
-			context_dict['avgRating'] = round(avgRating,2)
-		else:
-			context_dict['avgRating'] = "No rating yet."
-		context_dict['entry'] = entry
-		context_dict['reviews'] = reviews
-	except:
-		context_dict['entry'] = None
+        if len(reviews) > 0:
+            avgRating = (Review.objects.filter(entry=entry).aggregate(Sum('rating'))["rating__sum"])/len(reviews)
+            context_dict['avgRating'] = round(avgRating,2)
+        else:
+            context_dict['avgRating'] = "No rating yet."
 
-	if request.user.is_authenticated():
-		form = ReviewForm()
-		if request.method == 'POST':
-			form = ReviewForm(request.POST)
-			if form.is_valid():
-				review = form.save(commit=False)
-				review.entry = entry
-				review.author = request.user
-				review.save()
-				return redirect('/entries/entry/'+entry_name_slug)
-		else:
-			print(form.errors)
-		context_dict["form"] = form
-	return render(request, 'entries/entry.html', context_dict)
 
-#@login_required
-#def edit_entry(request, entry_name_slug):
-#	if request.method == 'POST':
-#		edit = EditEntryForm(request.POST, request.FILES, instance=request.user)
-#		if edit.is_valid():
-#			edit.save()
-#			return redirect('/entries/')
-#		else:
-#			print(edit.errors)
-#	else:
-#		edit = EditEntryForm(request.FILES, instance=request.user)
-#
-#	context_dict = {'edit':edit}
-#	return render(request, 'entries/edit_entry.html', context_dict)
+        context_dict['entry'] = entry
+        context_dict['reviews'] = reviews
+        context_dict['extrainformation'] = extrainformation
+    except:
+        context_dict['entry'] = None
 
-@login_required
-def edit_entry(request, entry_name_slug):
-    template='entries/addentry.html'
-    post= request.user
-    if request.method == "POST":
-        form=AddEntryForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-    else:
-        form=AddEntryForm(instance=post)
-        context={'form':form, 'post':post,}
-    return render(request, template, context)
+    if request.user.is_authenticated():
+        form = ReviewForm()
+        form2 = ExtraInformationForm()
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            form2 = ExtraInformationForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.entry = entry
+                review.author = request.user
+                review.save()
+                return redirect('/entries/entry/'+entry_name_slug)
+            if form2.is_valid():
+                extrainformation = form2.save(commit=False)
+                extrainformation.entry = entry
+                extrainformation.save()
+                return redirect('/entries/entry/'+entry_name_slug)
+        else:
+            print(form.errors)
+
+
+        context_dict["form"] = form
+        context_dict["form2"] = form2
+    return render(request, 'entries/entry.html', context_dict)
+
+
+
+
+
+
+
+
 
 
 @login_required

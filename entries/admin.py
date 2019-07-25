@@ -17,6 +17,9 @@ class SuggestionAdmin(admin.ModelAdmin):
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('comment','first_name','email')
+    
+class ExtraInformationAdmin(admin.ModelAdmin):
+    list_display = ('entry','comment')
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Chef)
@@ -24,3 +27,4 @@ admin.site.register(Suggestion, SuggestionAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(Review, ReviewAdmin)
+admin.site.register(ExtraInformation, ExtraInformationAdmin)

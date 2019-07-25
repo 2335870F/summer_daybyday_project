@@ -27,6 +27,13 @@ class ReviewForm(forms.ModelForm):
 	class Meta:
 		model = Review
 		exclude = ('entry','author','date_last_edited')
+        
+class ExtraInformationForm(forms.ModelForm):
+	comment = forms.CharField(widget=forms.Textarea(),label="Any additional comments")
+
+	class Meta:
+		model = ExtraInformation
+		exclude = ('entry','date_last_edited')
 
 class SuggestForm(forms.ModelForm):
 	comment = forms.CharField(widget=forms.Textarea(), label="Leave a suggestion for a new cuisine or occasion!", required=False)
@@ -122,10 +129,10 @@ class EditBioForm(UserChangeForm):
 	def clean_password(self):
 		return ""
     
-class EditEntryForm(UserChangeForm):
-    class Meta:
-        model = Entry
-        fields = ('name','photo','key_info','to_do','content','categories','importance')
-
-    def clean_password(self):
-        return ""
+#class EditEntryForm(UserChangeForm):
+#    class Meta:
+#        model = Entry
+#        fields = ('name','photo','key_info','to_do','content','categories','importance')
+#
+#    def clean_password(self):
+#        return ""

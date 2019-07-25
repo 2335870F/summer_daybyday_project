@@ -52,15 +52,15 @@
 							{% endfor %}
 						</ol>
 						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox" style="width:100%; height: 525px !important;">
+						<div class="carousel-inner" role="listbox" style="width:800px;; height: 525px !important;">
 							{% for entry in latest %}
 								{% if forloop.counter0 == 0 %}
 									<div class="item active">
-										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:100%; height:500px;"/></a>
+										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:800px; height:500px;"/></a>
 									</div>
 								{% else %}
 									<div class="item">
-										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:100%; height:500px"/></a>
+										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:800px; height:500px"/></a>
 									</div>
 								{% endif %}
 							{% endfor %}

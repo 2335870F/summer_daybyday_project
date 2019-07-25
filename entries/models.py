@@ -82,6 +82,11 @@ class Review(models.Model):
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
+    
+class ExtraInformation(models.Model):
+	entry = models.ForeignKey(Entry)
+	comment = models.TextField(default="")
+	date_last_edited = models.DateTimeField(default=timezone.now)
 
 class Suggestion(models.Model):
 	author = models.ForeignKey(User)

@@ -6,8 +6,7 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
 	url(r'^faq/$', views.faq, name='faq'),
 	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/$', views.viewentry, name='viewentry'),
-#    url(r'^entry/(?P<entry_name_slug>[\w\-]+)/edit_entry/$', views.edit_entry, name='edit_entry'),
-    url(r'^edit-entry/(?P<entry_name_slug>[\w\-]+)/$', views.edit_entry, name='edit_entry'),
+
     
     
 	url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/$', views.viewreminder, name='viewreminder'),

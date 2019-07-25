@@ -21,13 +21,13 @@ img.profile {
 
 h11, h12{
     font-size: 30px;
-    color: lightblue;
+    color: greenyellow;
 }
 h12{
     font-size: 17px;
 }
 h7 {
-	font-size: 40px;
+	font-size: 20px;
 	color: lightblue;
 
 }
@@ -75,6 +75,9 @@ header {
     position:fixed;
     list-style-type: none;
     background: rgba(0, 200, 220, 0.5);
+
+    height: auto;
+
 }
 
 header ul {
@@ -273,6 +276,24 @@ div.reviews {
 	overflow: scroll;
     margin-left: auto;
     margin-right: auto;
+    font-size: 17px;
+
+    
+}
+div.addinformation {
+    width: 556px;
+    height: 550px;
+	text-align: left;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+	overflow: scroll;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
 
     
 }
@@ -301,8 +322,9 @@ pre {
 
 }
 div.view {
-	max-height: 10em;
+	max-height: 20em;
     overflow: scroll;
+    color:white;
 }
 div.give {
     
@@ -310,6 +332,11 @@ div.give {
 	overflow: scroll;
     margin-bottom: 10px;
     padding: 20px;
+}
+div.give2 {
+    
+	overflow: scroll;
+    margin-bottom: 10px;
 }
 
 /* HOMEPAGE */
@@ -343,6 +370,8 @@ div.current_reminders, div.top_rated {
 	/*overflow: scroll; */
     height:1000px;
     margin-bottom:100px;
+    width:280px;
+    height:1050px;
 
 }
 
@@ -431,9 +460,21 @@ div.entry {
 	line-height: 1.2em;
 	margin-bottom: 8px;
 	height: 60px;
-	background-color: white;
+	background-color: #09203D;
+    border: 1px solid greenyellow;
 	overflow: scroll;
 	font-size: 0.9em;
+    padding:10px;
+}
+div.entry2 {
+	line-height: 1.2em;
+	margin-bottom: 8px;
+	height: 100px;
+	background-color: #09203D;
+	overflow: scroll;
+	font-size: 0.9em;
+    border: 1px solid white;
+    padding:10px;
 }
 div.entry img{
 	padding-right: 0.25em;

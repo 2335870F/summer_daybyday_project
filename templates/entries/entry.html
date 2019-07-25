@@ -36,10 +36,7 @@
 {% block body_block %}
     {% if user.is_authenticated %}
         {% if user.username == entry.chef.username %}
-            <div class="edit_entry"> 
-<!--                <a href="{% url 'edit_entry'  entry.name %}">Edit</a>                      -->
-                <a href="{% url 'edit_entry' entry.name %}">Edit</a>                      
-            </div>
+
             <div class="entry_page">
 
                 <div class="other">
@@ -77,8 +74,63 @@
                     {% else %}
                         <strong>This is not an entry.</strong>
                     {% endif %}
+                    <div class="addinformation">
+                    
+                    
+                        <h11>Extra Information</h11>
+                        
+                        <div class="view">
+                            {% if extrainformation %}
+                                {% for extra in extrainformation %}
+                                    <div class="entry2">
+                                        
+                                        <div>
+                                           <h7> <strong>{{ extra.date_last_edited }}</strong></h7><br/>
+                                                    {{ extra.comment }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <h12><strong>There is no extra information yet for this entry.</strong></h12>
+                            {% endif %}
+                        </div>
+
+
+                        {% if user.is_authenticated %}
+                            {% if entry %}
+                                <div class="give2">
+                                    <br><h11 style="text-decoration-line: overline;">Add Additional Information to your entry!</h11>
+                                    <form id="extrainformation_form" method="post" action={% url 'viewentry' entry.slug %}>
+                                        {% csrf_token %}
+                                        {% for field in form2.visible_fields %}
+                                            {{ field.errors }}
+                                        <h12>{{ field.label }}</h12><br/>
+                                            {{ field }}<br/>
+                                        {% endfor %}
+                                        <button type="submit" name="submit" value="Submit">Submit</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        
+                        
+                        
+                    </div>
                 </div>
 
+                </div>
+                
+                
+                
+                
+                
+    
+
+                
+
+
+
+                
                 <div class="reviews">
 
                         <h11>Progress Reports</h11>
@@ -87,8 +139,9 @@
                                 {% for review in reviews %}
                                     <div class="entry">
                                         <a href="{% url 'userprofile' review.author.username %}"><img src="{{ MEDIA_URL }}{{ review.author.chef.photo }}" alt="Picture of {{ review.author }}" width="80"/></a>
+                                        
                                         <div>
-                                            <strong>{{ review.rating }}, {{ review.author }}</strong> -- {{ review.title }}<br/>
+                                            <h7><strong>{{ review.rating }}, {{ review.date_last_edited }}</strong> -- {{ review.title }}</h7><br/>
                                             {{ review.comment }}
                                         </div>
                                     </div>
