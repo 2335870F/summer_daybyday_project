@@ -38,6 +38,7 @@
             {% if entries %}
                 <div class="row">
                     {% for entry in entries %}
+                     hey!
                         {% if user.is_authenticated %}
                             {% if user.username == entry.chef.username %}
                                 <div class="cat">

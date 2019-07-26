@@ -228,10 +228,8 @@ div.cat_bar h3{
 /* ENTRY PAGE */
 
 div.entry_page{
-	display: grid;
-	height: 100%;
-	width: 100%;
-	grid-template-columns: 20% 45% 20%;
+	display: grid ;
+	grid-template-columns: [first] 20% [line2] 45% [line3] 20%[end];
 	justify-content: center;
 	grid-column-gap: 1em;
     overflow:scroll;
@@ -252,6 +250,7 @@ div.entry_info img{
     margin-left:0px;
 	width: 600px;
     height: 330px;
+    
 }
 div.other {
 	overflow: scroll;
@@ -260,7 +259,7 @@ div.entry_info {
 	word-wrap: normal;
     overflow:scroll;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;    
 }
 
 div.reviews {
@@ -277,6 +276,7 @@ div.reviews {
     margin-left: auto;
     margin-right: auto;
     font-size: 17px;
+    grid-column-start: line3;
 
     
 }
@@ -314,7 +314,7 @@ div.reviews2 {
 
 pre {
 	white-space: pre-wrap;
-	display: block;
+/*	display: block;*/
 	width: auto;
 	font-size: 1.4em;
     color: white;
@@ -703,6 +703,7 @@ div.chef_info{
     margin: 0 auto;
     margin-bottom:100px;
     text-align: left;
+    
 }
 
 
