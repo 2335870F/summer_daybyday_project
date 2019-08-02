@@ -1,6 +1,25 @@
 {% extends 'entries/base.html' %}
 {% load staticfiles %}
 
+
+
+
+
+{% block js %}
+    <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
+    </script>
+        
+    <script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script><script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
+    </script>
+
+    <script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+
+{% endblock %}
+
+
+
+
+
 {% block title_block %}
 	Index
 {% endblock %}
@@ -10,6 +29,8 @@
 {% block body_block %}
 
 	<div class="index_page" style="overflow: scroll;">
+
+        
 		<div class="current_reminders">
             
 			<h3> Current Reminders</h3>
@@ -33,10 +54,18 @@
     
 
 		<div class="latest_posts" style="overflow:scroll;">
-
-                <div class="page_name">
-                    Welcome {{ user.username }}
-                </div>
+            
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="font-size: 20px; list-style-type: none;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            <div class="page_name">
+                 Welcome {{ user.username }}
+            </div>
 			<div class="carousel">
 				<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -46,7 +75,7 @@
                     <div class="new">
                         <img src="{% static "images/logo.png" %}" alt="Website Logo" width="250" />
                     </div>
-					<h2>Latest Posts</h2>
+					<h2>Latest Entries</h2>
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators // still goes 1 more than normal bubble count but..-->
 						<ol class="carousel-indicators">
@@ -68,6 +97,7 @@
 									</div>
                                     {% endif %}
 								{% else %}
+                                <!-- Wrapper for slides for 2nd entry to infinityth entry -->
                                     {% if user.username == entry.chef.username %}
 									<div class="item">
                                         
@@ -78,7 +108,13 @@
 									</div>
                                     {% endif %}
 								{% endif %}
+                            {% empty %}
+                                <div class="item active">
+                                        <h7>hello</h7>
+										<img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:800px; height:400px;"/>
+								</div>
 							{% endfor %}
+                            
 						</div>
 						<!-- Left and right controls -->
 						<a class="left carousel-control" href="#myCarousel" data-slide="prev">

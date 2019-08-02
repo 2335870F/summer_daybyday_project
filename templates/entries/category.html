@@ -35,11 +35,10 @@
 					{% endfor %}
 				</div>
 			{% endif %}
-            {% if entries %}
-                <div class="row">
-                    {% for entry in entries %}
-                     hey!
-                        {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
+                {% if entries %}
+                    <div class="row">
+                        {% for entry in entries %}
                             {% if user.username == entry.chef.username %}
                                 <div class="cat">
                                     <div class="entrycat">
@@ -48,11 +47,9 @@
                                     </div>
                                 </div>
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% else %}
-                <strong>No entries currently in category.</strong>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             {% endif %}
 			
 		{% else %}

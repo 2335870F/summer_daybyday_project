@@ -297,6 +297,23 @@ div.addinformation {
 
     
 }
+div.delete {
+    width: 126px;
+    height: 25px;
+	text-align: left;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+	overflow: scroll;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+
+    
+}
 div.reviews2 {
     width: 350px;
     margin-left: 1000px;

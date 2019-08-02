@@ -12,8 +12,43 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from .forms import UploadFileForm
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 
+def entries_delete_view(request, entry_name_slug):
+
+    entry = Entry.objects.get(slug=entry_name_slug)
+
+    creator= entry.chef.username
+
+    if request.method == "POST" and request.user.is_authenticated and request.user.username == creator:
+        entry.delete()
+        messages.success(request, "Entry successfully deleted!")
+        return HttpResponseRedirect(reverse('index'))
+
+    context= {'entry': entry,
+              'creator': creator,
+             }
+
+    return render(request, 'entries/entries-delete-view.html', context)
+
+
+def reminders_delete_view(request, reminder_name_slug):
+
+    reminder = Reminder.objects.get(slug=reminder_name_slug)
+
+    creator= reminder.chef.username
+
+    if request.method == "POST" and request.user.is_authenticated and request.user.username == creator:
+        reminder.delete()
+        messages.success(request, "Reminder successfully deleted!")
+        return HttpResponseRedirect(reverse('index'))
+
+    context= {'reminder': reminder,
+              'creator': creator,
+             }
+
+    return render(request, 'entries/reminders-delete-view.html', context)
 
 
 # Create your views here.
