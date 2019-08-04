@@ -61,7 +61,7 @@ class Reminder(models.Model):
     chef = models.ForeignKey(User)
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=128, unique=True)
-    photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.png')
+    photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.svg')
     importance = models.IntegerField(default=0)
     date_last_edited = models.DateTimeField(default=timezone.now)
     content = models.TextField(default='No content yet!')

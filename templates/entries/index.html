@@ -39,7 +39,7 @@
                     {% if user.is_authenticated %}
                         {% if user.username == post.chef.username %}
 
-                            <a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"/></a>
+                            <a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}" style="background: greenyellow;"/></a>
                             <div class="cat_text">
                                 {{ post.name }}
                             </div>

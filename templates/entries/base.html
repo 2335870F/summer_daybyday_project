@@ -63,6 +63,11 @@
 				{% else %}
 					<li style="float:left;padding-left: 25px;"><a href="{% url 'login' %}">Login</a></li>
 					<li style="float:left;padding-left: 25px;"><a href="{% url 'register' %}">Sign Up</a></li>
+                				
+                    
+					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'contact' %}" >Contact Us</a></li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'faq' %}" >FAQs</a> </li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'about' %}">About Us</a> </li>
 				{% endif %}
 
 			</div>

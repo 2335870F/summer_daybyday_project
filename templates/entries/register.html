@@ -42,7 +42,10 @@
         </div>
         <div class="banner4">
             <div class="register">
-                <h2> Register Below! </h2>
+               <div class="page_name" style="margin:0; width:95%; margin-bottom: 30px;">
+                    Register Below! 
+                </div> 
+                
                 <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
 
                     {% csrf_token %}

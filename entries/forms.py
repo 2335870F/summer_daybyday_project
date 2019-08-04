@@ -36,7 +36,7 @@ class ExtraInformationForm(forms.ModelForm):
 		exclude = ('entry','date_last_edited')
 
 class SuggestForm(forms.ModelForm):
-	comment = forms.CharField(widget=forms.Textarea(), label="Leave a suggestion for a new cuisine or occasion!", required=False)
+	comment = forms.CharField(widget=forms.Textarea(), label="Can't find the right category to describe your entry? Leave a suggestion for a new category!", required=True)
 
 	class Meta:
 		model = Suggestion

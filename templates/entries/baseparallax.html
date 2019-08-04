@@ -42,8 +42,12 @@
                     <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'index' %}">Home</a></li>
                     </div>
 				{% else %}
-					<li style="float:right; padding-top:12px; padding-left:5px; padding-right:30px;"><a href="{% url 'login' %}">Login</a></li>
-					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'register' %}">Sign Up</a></li>
+					<li style="float:left; padding-top:12px; padding-left:5px;"><a href="{% url 'register' %}">Sign Up</a></li>
+                    <li style="float:left; padding-top:12px; padding-left:5px; padding-right:30px;"><a href="{% url 'login' %}">Login</a></li>
+                    
+					<li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'contact' %}" >Contact Us</a></li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'faq' %}" >FAQs</a> </li>
+                    <li style="float:right; padding-top:12px; padding-left:5px;"><a href="{% url 'about' %}">About Us</a> </li>
 				{% endif %}
 
 			</div>
@@ -60,9 +64,8 @@
 		
 		<footer>
 			<div class="urls">
-				<a href="{% url 'about' %}" style="background-color:white;">About Us</a>                
-				<a href="{% url 'contact' %}" style="background-color:white;">Contact Us</a>
-				<a href="{% url 'faq' %}" style="background-color:white;">FAQs</a>
+				
+				
 				{% if user.is_authenticated %}
 					<a href="{% url 'suggestion' %}" style="background-color:white;">Suggest Category</a>
 				{% endif %}
