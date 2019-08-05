@@ -84,6 +84,8 @@ cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions
 #    context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
 #    response = render(request,'entries/index.html', context=context_dict)
 #    return response
+
+
 def index(request):
     #get all entries, order alphabetically by name - is recent
     latest = Entry.objects.order_by('-date_last_edited')
@@ -110,9 +112,11 @@ def about(request):
 
 def faq(request):
 	return render(request,'entries/faq.html', {})
+
 @login_required
 def widgets(request):
 	return render(request,'entries/widgets.html', {})
+
 @login_required
 def categories(request):
 	#get all categories -- no order
@@ -199,25 +203,22 @@ def contact(request):
 
 @login_required
 def addentry(request):
-	form = AddEntryForm(request.FILES)
-	if request.method == 'POST':
-		form = AddEntryForm(request.POST, request.FILES)
-		if form.is_valid():
-			entry = form.save(request.user.username)
-			entry.chef = request.user
-			cats = form.cleaned_data.get('categories')
-			if(len(cats) > 3):
-				raise forms.ValidationError("You can't select more than 3 items.")
-			else:
-				entry.save()
-				for cat in cats:
-					category = Category.objects.get(id=cat)
-					entry.categories.add(category)
-			entry.save()
-			return HttpResponseRedirect(reverse('index'))
-		else:
-			print(form.errors)
-	return render(request, 'entries/addentry.html', {'form':form})
+    form = AddEntryForm(request.FILES)
+    if request.method == 'POST':
+        form = AddEntryForm(request.POST, request.FILES)
+        if form.is_valid():
+            entry = form.save(request.user.username)
+            entry.chef = request.user
+            cats = form.cleaned_data.get('categories')
+            entry.save()
+            for cat in cats:
+                category = Category.objects.get(id=cat)
+                entry.categories.add(category)
+            entry.save()
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            print(form.errors)
+    return render(request, 'entries/addentry.html', {'form':form})
 
 @login_required
 def viewentry(request, entry_name_slug):
@@ -301,19 +302,21 @@ def viewreminder(request, reminder_name_slug):
 
 
 def userprofile(request, username):
-	context_dict = {}
-	try:
-		user = User.objects.get(username=username)
-		chef = Chef.objects.get(user=user)
-		entries = Entry.objects.filter(chef=user)
-		reviews = Review.objects.filter(author=user)
-		context_dict['reviews'] = reviews
-		context_dict['entries'] = entries
-		context_dict['chef'] = chef
-	except:
-		context_dict['chef'] = None
+    context_dict = {}
+    try:
+        user = User.objects.get(username=username)
+        chef = Chef.objects.get(user=user)
+        entries = Entry.objects.filter(chef=user).order_by('name')
+        #		reviews = Review.objects.filter(author=user)
+        reminders = Reminder.objects.filter(chef=user).order_by('name')
+        #       context_dict['reviews'] = reviews
+        context_dict['entries'] = entries
+        context_dict['reminders'] = reminders
+        context_dict['chef'] = chef
+    except:
+        context_dict['chef'] = None
 
-	return render(request, 'entries/profile.html', context_dict)
+    return render(request, 'entries/profile.html', context_dict)
 
 @login_required
 def edit_profile(request, username):

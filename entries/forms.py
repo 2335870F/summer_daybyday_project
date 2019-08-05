@@ -58,14 +58,14 @@ class AddEntryForm(forms.ModelForm):
     ("2","My Work"),
     ("3","My Weekends"),
     ("4","My Holidays"),
-    ("6","My Hobbies"),
-    ("7","My Home"),
-    ("8","Other"),
-    ("9","Degree Courses"),
-    ("10","Electives"),
-    ("11","Grocery Lists"),
-    ("12","Personal"),
-    ("13","Family"),
+    ("5","My Hobbies"),
+    ("6","My Home"),
+    ("7","Other"),
+    ("8","Degree Courses"),
+    ("9","Electives"),
+    ("10","Grocery Lists"),
+    ("11","Personal"),
+    ("12","Family"),
     )
     name = forms.CharField(widget=forms.TextInput(), max_length=40, label="Title Your Entry", help_text="up to 40 characters", required=True)
     photo = forms.ImageField(label="Upload a Picture", required=False)
@@ -74,7 +74,7 @@ class AddEntryForm(forms.ModelForm):
     key_info = forms.CharField(widget=forms.Textarea(), label="Key Information", help_text="e.g. Lecture times, Professor email, etc.", initial="hello", required=False)
     to_do = forms.CharField(widget=forms.Textarea(), label="To-Do", required=False)
     #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    categories = forms.MultipleChoiceField(widget=forms.SelectMultiple(),choices=CATEGORIES, required=True, help_text="Hold Down Control (Command on Mac) to choose up to three categories!")
+    categories = forms.MultipleChoiceField(widget=forms.SelectMultiple(),choices=CATEGORIES, required=True, help_text="Hold Down Control (Command on Mac) to choose several categories!")
 
     class Meta:
         model = Entry

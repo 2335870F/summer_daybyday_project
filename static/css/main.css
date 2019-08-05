@@ -1,45 +1,77 @@
 
-/* website colors: light bule - 467DA2, dark blue - 09203D,
-				   light brown - 8E7262, medium brown - 773D1B,
+/* website colors: green - greenyellow, dark blue - 09203D,
+				   white - white, light blue - lightblue,
 				   dark brown - 3A1003
 */
 /* GENERIC */
 
-
-
-
-/* INDEX */
-/* LOGIN */
-/* SIGN UP */
-/* ABOUT US */
-/* CONTACT US */
-/* FAQS */
-/* HOME */
-/* WIDGETS */
-/* GENERIC */
-/* CATEGORIES */
-/* ADD ENTRY */
-/* ADD REMINDER */
-/* MY ACCOUNT */
-/* SUGGEST CATEGORY */
-/* INVALID LOGIN */
-/* LOGOUT */
-/* DELETE ENTRY */
-/* DELETE REMINDER */
-
-/* HEADER */
+/* ------------------------------------------HEADER---------------------------------------------- */
 a {
 	color: lightcyan;
 	text-decoration: none;
 }
+
 a:hover, a:active {
 	color: lightcyan;
 	cursor: pointer;
 }
 
-img.profile {
-	min-width: 4.3em;
-	max-width: 30em;
+header {
+	width: 100%;
+    position:fixed;
+    list-style-type: none;
+    background: rgba(0, 200, 220, 0.5);
+    height: auto;
+}
+
+header ul {
+    opacity: 0.9;
+	overflow: scroll;
+}
+
+header ul li {
+    padding:1em;
+    list-style-type: none;
+}
+
+div.urls a {
+	font-size: 1.6em;
+    font-family: 'Fjalla One', sans-serif;
+	color: black;
+}
+
+div.urls a:hover{
+    -webkit-filter: drop-shadow(12px 12px 20px white);
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 20px white);
+    color:white;
+    text-decoration: none;
+}
+/* ------------------------------------------------HEADER------------------------------------------------ */
+
+
+
+
+
+/*------------------------------------------ IN SEVERAL PAGES-------------------------------------------- */
+div.row {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 4%;
+	justify-content: center;
+	align-items: center;
+}
+
+textarea {
+	max-width: 515px;
+	min-width: 515px;
+    min-height: 170px;  
+    background-color:aliceblue;
+}
+
+h2{
+    font-size: 20px;
+    color:#09203D;
 }
 
 h11, h12{
@@ -49,24 +81,24 @@ h11, h12{
 h12{
     font-size: 17px;
 }
+
 h7 {
 	font-size: 20px;
-	color: lightblue;
-
+	color: white;
 }
+
 h8 {
 	font-size: 20px;
 	color: lightblue;
 	font-style: italic;
 	font-family: inherit;
 }
+
 h13{
     font-size:50px;
     color:greenyellow;
     background-color: white;
 }
-
-/* BASE */
 
 body { 
 	background-image: url('/static/images/mosaic.jpg');
@@ -93,40 +125,6 @@ body.registerpage {
     overflow:scroll;
 }
 
-header {
-	width: 100%;
-    position:fixed;
-    list-style-type: none;
-    background: rgba(0, 200, 220, 0.5);
-
-    height: auto;
-
-}
-
-header ul {
-    opacity: 0.9;
-	overflow: scroll;
-}
-header ul li {
-    padding:1em;
-    list-style-type: none;
-}
-
-div.urls a{
-	font-size: 1.6em;
-    font-family: 'Fjalla One', sans-serif;
-	color: black;
-}
-
-div.urls a:hover{
-    -webkit-filter: drop-shadow(12px 12px 20px white);
-/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
-    filter: drop-shadow(12px 12px 20px white);
-    color:white;
-    text-decoration: none;
-}
-
-
 div.page_name {
 	margin-top:90px;
     border: 5px solid greenyellow;
@@ -148,239 +146,25 @@ div.page_name {
     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 1));
     color:white;
 }
+
 div.body {
 	width: 100%;
 	overflow: scroll;
 	top: 4.5em;
 	bottom: 4.5em;
+}
+/* -----------------------------------------IN SEVERAL PAGES-------------------------------------------- */
 
 
 
-}
-div.new{
-    margin-left:auto;
-    width:450px;
-    margin-right: auto;
-    text-align:right;
-    bottom:0;
-    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
-/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
-    filter: drop-shadow(12px 12px 7px rgba(0, 250, 120, 0.9));
-    padding-bottom:10px;
-    overflow:scroll;
-}
 
 
-/* CATEGORIES PAGES */
-
-div.cat_text{
-	padding: 2%;
-	color: greenyellow;
-	position: relative;
-	background: rgba(100, 100, 100, 0.8);
-	text-align: center;
-	bottom: 1em;
-	font-size: 1.5em;
-	box-shadow: 3px 3px 3px lightblue;
-    border-radius:10%;
+/* ----------------------------------------------INDEX--------------------------------------------------- */
+h7 {
+	font-size: 20px;
+	color: white;
 
 }
-
-div.cat_textentry{
-    width:10em;
-    height:2.5em;
-}
-div.cat_text:hover {
-}
-div.cat img{
-    margin-top:20px;
-	position: relative;
-	width: 12.5em;
-	height: 11em;
-    border-radius:50%;
-
-}
-div.entrycat img{
-
-	width: 15.7em;
-	height: 12em;
-    border-radius:10%;
-}
-div.cat img:hover{
-    top:7px;
-
-}
-div.row {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
-	grid-gap: 4%;
-	justify-content: center;
-	align-items: center;
-}
-div.show_categories {
-    padding:15px;
-	font-family: 'Fjalla One', sans-serif;
-	display: grid;
-	grid-template-columns: 9em auto;
-	grid-gap: 1%;
-}
-div.cat_bar a{
-	margin-left: 0.9em;
-    margin-top: 250px;
-    margin-bottom: 10px;
-    position: fixed;
-	font-size: 1em;
-    color:aliceblue;
-    padding-bottom: 70px;
-    font-family: 'Fjalla One', sans-serif;
-    overflow:scroll;
-}
-div.cat_bar a:hover{
-    font-size:1.2em;
-    color:greenyellow;
-}
-div.cat_bar h3{
-    margin-top: 225px;
-    position: fixed;
-	line-height: 10%;
-	font-weight: bold;
-    font-family: 'Fjalla One', sans-serif;
-
-}
-
-/* ENTRY PAGE */
-
-div.entry_page{
-	display: grid ;
-	grid-template-columns: [first] 20% [line2] 45% [line3] 20%[end];
-	justify-content: center;
-	grid-column-gap: 1em;
-    overflow:scroll;
-
-}
-div.entry_title{
-    margin-left:auto;
-    margin-right: auto;
-    text-align:center;
-    color:white;
-    font-family: 'Fjalla One', sans-serif;
-    font-size:50px;
-    width:100%;
-}
-div.entry_info img{
-    text-align: center;
-    margin-top: 10px;
-    margin-left:0px;
-	width: 600px;
-    height: 330px;
-    
-}
-div.other {
-	overflow: scroll;
-}
-div.entry_info {
-	word-wrap: normal;
-    overflow:scroll;
-    margin-left: auto;
-    margin-right: auto;    
-}
-
-div.reviews {
-    width: 350px;
-    height: 450px;
-	text-align: right;
-    word-wrap: normal;
-    background-color: #09203D;
-    opacity: 0.95;
-    padding:15px;
-    border: 5px solid greenyellow;
-    margin-bottom: 100px;
-	overflow: scroll;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 17px;
-    grid-column-start: line3;
-
-    
-}
-div.addinformation {
-    width: 556px;
-    height: 550px;
-	text-align: left;
-    word-wrap: normal;
-    background-color: #09203D;
-    opacity: 0.95;
-    padding:15px;
-    border: 5px solid greenyellow;
-	overflow: scroll;
-    color:white;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-
-    
-}
-div.delete {
-    width: 126px;
-    height: 25px;
-	text-align: left;
-    word-wrap: normal;
-    background-color: #09203D;
-    opacity: 0.95;
-    padding:15px;
-    border: 5px solid greenyellow;
-	overflow: scroll;
-    color:white;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-
-    
-}
-div.reviews2 {
-    width: 350px;
-    margin-left: 1000px;
-	text-align: right;
-    word-wrap: normal;
-    background-color: #09203D;
-    opacity: 0.95;
-    padding:15px;
-    border: 5px solid greenyellow;
-    margin-bottom: auto;
-	overflow: scroll;
-}
-
-
-
-pre {
-	white-space: pre-wrap;
-/*	display: block;*/
-	width: auto;
-	font-size: 1.4em;
-    color: white;
-    font-family: 'Fjalla One', sans-serif;
-
-}
-div.view {
-	max-height: 20em;
-    overflow: scroll;
-    color:white;
-}
-div.give {
-    
-    width:300px;
-	overflow: scroll;
-    margin-bottom: 10px;
-    padding: 20px;
-}
-div.give2 {
-    
-	overflow: scroll;
-    margin-bottom: 10px;
-}
-
-/* HOMEPAGE */
-
 div.index_page {
 	position: fixed;
 	display: grid;
@@ -395,16 +179,16 @@ div.index_page {
     margin-top:70px;
 }
 
-
 div.index_page img{
 	width: 100%;
 	position: relative;
 }
+
 div.latest_posts {
 	text-align: center;
     margin-bottom:100px;
-    
 }
+
 div.current_reminders, div.top_rated {
     padding-top:10px;
 	overflow: scroll; 
@@ -412,10 +196,7 @@ div.current_reminders, div.top_rated {
     margin-bottom:100px;
     width:280px;
     height:1050px;
-
 }
-
-/*INDEX PAGE Current Reminders& Latest Posts & Important Entries Columns*/ 
 /* hot purple: 50117d or purple */
 div.current_reminders, div.top_rated, div.item {
    /* background-image: radial-gradient(50% 176%, #09203D 80%, white 100%); */
@@ -429,34 +210,35 @@ div.current_reminders, div.top_rated, div.item {
     font-size: 20px;
     border-radius: 10%;
 }
+
 div.latest_posts img.index-logo{
     /*background-image: radial-gradient(50% 296%, white 80%, white 100%); */
     opacity:0.9;
-
 }
+
 /*Size of image inside carousel*/
 div.latest_posts img{
     border-radius:0%;
 }
+
 div.latest_posts img.index-logo{
 	width: 30%;
 	background-color: rgba(220, 220, 220, 0);
     border-radius:0%;
-
 }
+
 /*Size of border inside carousel*/
 div.item {
     margin-top:0px;
     border-radius:5%;
     background-image: radial-gradient(50% 296%, #09203D 80%, lightblue 100%);
-
 }
 
 div.current_reminders h3, div.top_rated h3{
     font-size:30px;
-    padding-left:18px;
-    
+    padding-left:18px; 
 }
+
  div.top_rated h3{
      padding-left:30px;
 }
@@ -474,87 +256,40 @@ div.top_rated img:hover, div.current_reminders img:hover{
     opacity:1;
     bottom: 2px;
 }
+/*------------------------------------------------INDEX-------------------------------------------------- */
 
 
-/* PROFILE PAGE*/
 
-div.account {
-	position: fixed;
-	display: grid;
-	height: 77%;
-	grid-template-columns: 25em auto;
-	justify-content: left;
-	grid-column-gap: 3em;
-	padding-left: 4em;
-	padding-right: 4em;
-    color:#09203D;
-}
 
-div.user_info img{
-	width: 100%;
-}
-div.user_entries {
-	overflow: scroll;
-}
-div.entry {
-	line-height: 1.2em;
-	margin-bottom: 8px;
-	height: 60px;
-	background-color: #09203D;
-    border: 1px solid greenyellow;
-	overflow: scroll;
-	font-size: 0.9em;
-    padding:10px;
-}
-div.entry2 {
-	line-height: 1.2em;
-	margin-bottom: 8px;
-	height: 100px;
-	background-color: #09203D;
-	overflow: scroll;
-	font-size: 0.9em;
-    border: 1px solid white;
-    padding:10px;
-}
-div.entry img{
-	padding-right: 0.25em;
-	float: left;
-}
-div.entry img:hover{
-	opacity: 0.7;
-}
 
-/* FAQS */
-
-input.button {
-    background-color: greenyellow;
-    color: #09203D;
+/*----------------------------------------------LOGIN-----------------------------------------------------*/
+div.login_page {
+    width: 400px;
+    border: 15px solid #09203D;
+    padding: 15px;
+    margin-bottom: 240px;
+    margin-left:auto;
+    margin-right:auto;
     text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: 2px solid #09203D;
-    padding: 3px;
-    width: 90px;
-    height: 35px;
-}
-.btn1, .btn2, .btn4, .btn3 {
-    background-color: greenyellow;
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: 2px solid #09203D;
-    padding: 3px;
-    width: 100px;
-    height: 45px;
+    margin:auto;
+    background:rgba(50, 200, 220, 0.8);
+    background-image:url('/static/images/mosaic.jpg');
+    font-size: 17px;
+    color:white; 
 }
 
-/* FORMS */
+img.scrollMessage {
+    padding:10px;
+    padding-top:25px;
+}
 
-
-
+div.backing{
+    width:250px;
+    height:250px;
+    border-radius:50%; 
+    background: rgba(0, 220, 220, 0.7);
+    display: inline-block;
+}
 
 .MainContainer {
     perspective: 1px;
@@ -562,9 +297,7 @@ input.button {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-
 }
-
 
 .ParallaxContainer {
     display: block;
@@ -578,9 +311,16 @@ input.button {
     margin-top:195px;
     position:relative;
     -webkit-animation: mymove 15s ; /* Safari 4.0 - 8.0 */
-    animation: mymove 15s ;
-    
+    animation: mymove 15s ; 
 }
+
+.ParallaxContainer img.index-logo{
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
+    display:inline-block;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes mymove {
   from {top: -1050px;}
@@ -591,14 +331,6 @@ input.button {
   from {top: -1050px;}
   to {top: 4px;}
 }
-
-.ParallaxContainer img.index-logo{
-    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
-/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
-    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
-    display:inline-block;
-}
-
 
 .ContentContainer {
     display: block;
@@ -618,46 +350,26 @@ input.button {
 div.center {
     text-align: center;
 }
+/*--------------------------------------------LOGIN -------------------------------------------------------*/
 
-textarea {
-	max-width: 515px;
-	min-width: 515px;
-    min-height: 170px;
-    
-    background-color:aliceblue;
+
+
+
+
+/* --------------------------------------INVALID LOGIN---------------------------------------------------- */
+div.invalidLogin{
+    padding:auto;
+    margin-top:50px;
+    margin-bottom:50px;
+    font-size: 30px;
 }
-
-img.scrollMessage {
-    padding:10px;
-    padding-top:25px;
+/* --------------------------------------INVALID LOGIN---------------------------------------------------- */
 
 
-}
-div.backing{
-    width:250px;
-    height:250px;
-    border-radius:50%; 
-    background: rgba(0, 220, 220, 0.7);
-    display: inline-block;
 
-}
 
-div.login_page {
-    width: 400px;
-    border: 15px solid #09203D;
-    padding: 15px;
-    margin-bottom: 240px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: center;
-    margin:auto;
-    background:rgba(50, 200, 220, 0.8);
-    background-image:url('/static/images/mosaic.jpg');
-    font-size: 17px;
-    color:white;
-    
-}
 
+/*------------------------------------ SIGN UP / REGISTER -------------------------------------------------*/
 div.register{
     width: 523px;
     border: 15px solid #09203D;
@@ -667,20 +379,197 @@ div.register{
     text-align: left;
     color:#09203D;
     background-color:white;
+    margin-top:70px;
 }
-div.steps {
-    width: 570px;
-    border: 5px solid greenyellow;
-    padding: 10px;
-    margin-bottom: 140px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: left; 
-    background-color: #09203D;
-    opacity:0.95;
-}
-div.contact {
+
+.banner, .banner2, .banner3, .banner4 {
+    background-image: url('/static/images/mosaic.jpg');
+	background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+}
+
+.banner2{
+    background-image: url('/static/images/m.jpg');
+}
+
+.banner3{
+    background-image: url('/static/images/k.jpg');
+}
+
+.banner4{
+    background-image: url('/static/images/j.jpg');
+}
+
+div.banner img{
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
+}
+
+h144 {
+    font-size: 5rem;
+    font-family: 'Fjalla One', sans-serif;
+    padding:10px;
+}
+
+h144 p{
+    font-size: 1.9rem;
+    font-weight:bold;
+    color:white;
+    text-align: center;
+    font-family: 'Fjalla One', sans-serif;
+    padding:150px;
+}
+
+div.ifregistered{
+    padding: 55px;
+    font-size: 40px;
+    margin-top:200px;
+    margin: 0 auto;
+	overflow: scroll;
+    text-align: center;
+    color:#09203D;
+    background-image: url('/static/images/m.jpg');
+}
+/* ---------------------------------------------SIGN UP / REGISTER---------------------------------------------- */
+
+
+
+
+
+/* -----------------------------------------------ABOUT US------------------------------------------------------ */
+div.about{
+    padding:30px;
+    font-size: 30px;
+    background-color: rgba(0, 200, 200, 0.7);
+    border: 10px solid greenyellow;
+    border-style: outset;
+}
+
+div.about p{
+    margin:auto;
+    color:#09203D;
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+
+.hero {
+	/*background-image: radial-gradient(50% 176%, #253854 80%, #061922 100%);*/
+	// min-height: 100vh;
+	min-height: 30rem;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	
+	&__content {
+		position: relative;
+		align-self: center;
+		padding: 3rem 0;
+	}
+}
+
+div.hero__content {
+    color:blue;
+    padding:3em;
+    padding-top:1em;
+}
+
+.snow {
+	position: absolute;
+	min-width: 150vw;
+	min-height: 150vh;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+    
+}
+
+.snow .svg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#snow-top-layer {
+	will-change: transform;
+	transform: translateX(-768px);
+	animation: fall 32.5s infinite linear;
+
+}
+
+#snow-bottom-layer {
+	will-change: transform;
+	transform: translateX(-768px);
+	animation: fall 45s infinite linear;
+
+}
+
+@keyframes fall {
+	100% {
+		transform: translateY(0);
+	}
+}
+/* --------------------------------------------ABOUT US---------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------WIDGETS------------------------------------------------------- */
+
+/* --------------------------------------------WIDGETS------------------------------------------------------- */
+/* GENERIC */
+
+
+/*----------------------------------------- ADD ENTRY-------------------------------------------------------- */
+div.add, div.suggest {
+    width: 520px;
+    color:#09203D;
+    border: 15px solid #09203D;
+    background-color:white;
+    padding: 25px;
+    margin: 30px;
+    margin-top:10px;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: left;
+
+}
+
+/*----------------------------------------- ADD ENTRY-------------------------------------------------------- */
+
+
+
+
+
+/* ---------------------------------------SUGGEST CATEGORY--------------------------------------------------- */
+div.suggest{
+    width: 400px;
+}
+/* ---------------------------------------SUGGEST CATEGORY--------------------------------------------------- */
+
+
+
+
+
+/* ------------------------------------------CONTACT US----------------------------------------------------- */
+div.contact {
     width: 523px;
     border: 15px solid #09203D;
     background-color:white;
@@ -690,29 +579,16 @@ div.contact {
     text-align: left;
     color:#09203D;
 }
-div.add, div.suggest {
-    width: 520px;
-    color:#09203D;
-    border: 15px solid #09203D;
-    background-color:white;
-    padding: 25px;
-    margin: 50px;
-    margin-top:10px;
-    margin-left: auto;
-    margin-right:auto;
-    text-align: left;
+/* ------------------------------------------CONTACT US------------------------------------------------------ */
 
-}
-div.edit_class {
-    width: 400px;
-    border: 15px solid #09203D;
-    padding: 25px;
-    margin: 0 auto;
-    text-align: center;
 
-}
-.edit {
-    background-color: #467DA2;
+
+
+
+/*---------------------------------------------FAQS----------------------------------------------------------- */
+
+input.button {
+    background-color: greenyellow;
     color: white;
     text-align: center;
     font-size: 16px;
@@ -720,34 +596,46 @@ div.edit_class {
     border-radius: 15px;
     border: 2px solid #09203D;
     padding: 3px;
-    width: 120px;
-    height: 50px;
-}
-div.suggest{
-    width: 400px;
+    width: 90px;
+    height: 35px;
+    font-family: 'Fjalla One', sans-serif;    
 
 }
+
+.btn1, .btn2, .btn4, .btn3, .btn5, .btn6{
+    background-color: greenyellow;
+    color: white;
+    font-family: 'Fjalla One', sans-serif;    
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid #09203D;
+    padding: 3px;
+    width: 100px;
+    height: 45px;
+}
+
 div.faq_class {
     width: 523px;
     border: 15px solid #09203D;
     padding: 25px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     margin-top:10px;
     background-color: white;
-    color:#09203D;
+    color: #09203D;
+    margin-bottom:30px;
 }
-div.chef_info{
-    width: 75%;
-    border: 10px solid greenyellow;
-    background-color: #09203D;
-    opacity:0.95;
-    padding: 15px;
-    margin: 0 auto;
-    margin-bottom:100px;
-    text-align: left;
-    
-}
+
+
+/*---------------------------------------------- FAQS---------------------------------------------------------- */
+
+
+
+
+
+/* -------------------------------------DELETE ENTRY or REMINDER------------------------------------------------*/
 #tv {
     position: relative;
     width: 400px;
@@ -764,6 +652,7 @@ div.chef_info{
     background-position:50% 50%;
     background-repeat:no-repeat;
 }
+
 .entryimage{
     position: absolute;
     top: 11%;
@@ -810,139 +699,411 @@ div.areyousure{
     text-align: center; 
     font-size:20px;
 }
+/* -------------------------------------------DELETE ENTRY or REMINDER--------------------------------------------- */
 
 
-div.invalidLogin{
-    padding:auto;
-    margin-top:50px;
-    margin-bottom:50px;
-    font-size: 30px;
-}
-/*About page*/
 
-div.about{
-    padding:30px;
-    font-size: 20px;
-}
-div.about h1{
-    padding:20px;
-    color:#09203D;
-    text-decoration: underline;
-    text-decoration-color: #09203D;
-    text-decoration-style: wavy;
-    font-size: 40px;
-}
 
-div.about p{
-    margin:auto;
-    color:white;
-    font-size: 25px;
-    font-weight: bold;
-    opacity:0.8;
-}
 
-.hero {
-	/*background-image: radial-gradient(50% 176%, #253854 80%, #061922 100%);*/
-	// min-height: 100vh;
-	min-height: 30rem;
+/* --------------------------------------------------CATEGORIES PAGES----------------------------------------------- */
+
+div.cat_text{
+	padding: 2%;
+	color: greenyellow;
 	position: relative;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	
-	&__content {
-		position: relative;
-		align-self: center;
-		padding: 3rem 0;
-	}
-}
-
-.snow {
-	position: absolute;
-	min-width: 150vw;
-	min-height: 150vh;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-    
-}
-
-.snow .svg {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-
-#snow-top-layer {
-	will-change: transform;
-	transform: translateX(-768px);
-	animation: fall 32.5s infinite linear;
-
-}
-div.hero__content {
-    color:blue;
-    padding:3em;
-    padding-top:1em;
-}
-
-#snow-bottom-layer {
-	will-change: transform;
-	transform: translateX(-768px);
-	animation: fall 45s infinite linear;
+	background: rgba(100, 100, 100, 0.8);
+	text-align: center;
+	bottom: 1em;
+	font-size: 1.5em;
+	box-shadow: 3px 3px 3px lightblue;
+    border-radius:10%;
 
 }
 
-@keyframes fall {
-	
-	100% {
-		transform: translateY(0);
-
-	}
-	
+div.cat_textentry{
+    width:10em;
+    height:2.5em;
 }
-
-
-.banner, .banner2, .banner3, .banner4 {
-    background-image: url('/static/images/mosaic.jpg');
-	background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+div.cat_text:hover {
 }
-.banner2{
-    background-image: url('/static/images/m.jpg');
+div.cat img{
+    margin-top:20px;
+	position: relative;
+	width: 12.5em;
+	height: 11em;
+    border-radius:50%;
+
+}
+div.entrycat img{
+	width: 15.7em;
+	height: 12em;
+    border-radius:10%;
+}
+div.cat img:hover{
+    top:7px;
 
 }
 
-.banner3{
-    background-image: url('/static/images/k.jpg');
+div.show_categories {
+    padding:15px;
+	font-family: 'Fjalla One', sans-serif;
+	display: grid;
+	grid-template-columns: 9em auto;
+	grid-gap: 1%;
 }
-.banner4{
-    background-image: url('/static/images/j.jpg');
-    
-
-}
-div.banner img{
-    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
-/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
-    filter: drop-shadow(12px 12px 7px rgba(0, 150, 220, 0.9));
-}
-h144 {
-    font-size: 5rem;
+div.cat_bar a{
+	margin-left: 0.9em;
+    margin-top: 250px;
+    margin-bottom: 10px;
+    position: fixed;
+	font-size: 1em;
+    color:aliceblue;
+    padding-bottom: 70px;
     font-family: 'Fjalla One', sans-serif;
+    overflow:scroll;
+}
+div.cat_bar a:hover{
+    font-size:1.2em;
+    color:greenyellow;
+}
+div.cat_bar h3{
+    margin-top: 225px;
+    position: fixed;
+	line-height: 10%;
+	font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+
+}
+/* ---------------------------------------------------CATEGORIES PAGES--------------------------------------------------- */
+
+
+
+
+
+/*----------------------------------------------------- ENTRY PAGE-------------------------------------------------------- */
+div.entry_page{
+	display: grid ;
+	grid-template-columns: [first] 20% [line2] 45% [line3] 20%[end];
+	justify-content: center;
+	grid-column-gap: 1em;
+    overflow:scroll;
+
+}
+
+div.entry_title{
+    margin-left:auto;
+    margin-right: auto;
+    text-align:center;
+    color:white;
+    font-family: 'Fjalla One', sans-serif;
+    font-size:50px;
+    width:100%;
+}
+
+div.entry_info img{
+    text-align: center;
+    margin-top: 10px;
+    margin-left:0px;
+	width: 600px;
+    height: 330px;   
+}
+
+div.chef_info{
+    width: 75%;
+    border: 10px solid greenyellow;
+    background-color: #09203D;
+    opacity:0.95;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom:100px;
+    text-align: left;
+    
+}
+
+div.other {
+	overflow: scroll;
+}
+
+div.entry_info {
+	word-wrap: normal;
+    overflow:scroll;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+
+div.entry2 {
+	line-height: 1.2em;
+	margin-bottom: 8px;
+	height: 100px;
+	background-color: #09203D;
+	overflow: scroll;
+	font-size: 0.9em;
+    border: 1px solid white;
     padding:10px;
 }
-h144 p{
-    font-size: 1.9rem;
-    font-weight:bold;
-    color:white;
-    text-align: center;
-    font-family: 'Fjalla One', sans-serif;
-    padding:150px;
+
+div.entry img{
+	padding-right: 0.25em;
+	float: left;
 }
+
+div.entry img:hover{
+	opacity: 0.7;
+}
+
+div.reviews {
+    width: 350px;
+    height: 450px;
+	text-align: right;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+    margin-bottom: 100px;
+	overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+    grid-column-start: line3;
+}
+
+div.addinformation {
+    width: 556px;
+    height: 550px;
+	text-align: left;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+	overflow: scroll;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+div.delete {
+    width: 126px;
+    height: 25px;
+	text-align: left;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+	overflow: scroll;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px; 
+}
+
+div.steps {
+    width: 570px;
+    border: 5px solid greenyellow;
+    padding: 10px;
+    margin-bottom: 140px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: left; 
+    background-color: #09203D;
+    opacity:0.95;
+}
+
+div.reviews2 {
+    width: 350px;
+    margin-left: 1000px;
+	text-align: right;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    border: 5px solid greenyellow;
+    margin-bottom: auto;
+	overflow: scroll;
+}
+
+pre {
+	white-space: pre-wrap;
+/*	display: block;*/
+	width: auto;
+	font-size: 1.4em;
+    color: white;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+div.view {
+	max-height: 20em;
+    overflow: scroll;
+    color:white;
+}
+
+div.give { 
+    width:300px;
+	overflow: scroll;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+div.give2 {
+	overflow: scroll;
+    margin-bottom: 10px;
+}
+
+/*----------------------------------------------------- ENTRY PAGE------------------------------------------------------------ */
+
+
+
+
+
+/* -------------------------------------------------MY ACCOUNT---------------------------------------------------------------*/
+
+
+div.account {
+	position: absolute;
+	display: grid;
+	height: 77%;
+	grid-template-columns: 25em 50em;
+	justify-content: left;
+	grid-column-gap: 4em;
+	padding-left: 4em;
+	padding-right: 4em;
+    color:white;
+    font-size:15px;
+}
+div.surroundentries{
+    height: 540px;
+    overflow:scroll;
+}
+div.user_info img{
+	width: 100%;
+}
+div.user_info {
+	color: white;
+}
+
+div.remindersdisplay{
+    float:right;
+}
+div.entriesdisplay{
+    float: left;
+}
+div.user_entries {
+	overflow: scroll;
+}
+
+div.user_entries h2{
+	color: white;
+    font-size: 35px;
+}
+
+div.entry {
+	line-height: 1.2em;
+	margin-bottom: 8px;
+    width:310px;
+	height: 60px;
+	background-color: #09203D;
+    border: 1px solid greenyellow;
+	overflow: scroll;
+	font-size: 0.9em;
+    padding:10px;
+    color:white;
+}
+
+img.profile {
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 320px;
+    max-height: 450px;
+    border: 15px solid antiquewhite ;
+    border-style: ridge;
+}
+/* -------------------------------------------------MY ACCOUNT---------------------------------------------------------------*/
+
+
+
+
+
+/* --------------------------------------------EDIT MY ACCOUNT PROFILE--------------------------------------------------------*/
+div.edit_class {
+    width: 523px;
+    border: 10px solid greenyellow;
+    margin: 0 auto;
+    margin-top:12px;
+	overflow: scroll;
+    text-align: left;
+    color:white;
+    padding: 25px;
+    font-size: 18px;
+    margin-bottom:30px;
+    background-color: rgba(9, 32, 61, 0.8);
+}
+
+.edit {
+    background-color: greenyellow;
+    color: #09203D;
+    font-family: 'Fjalla One', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid #09203D;
+    padding: 3px;
+    width: 120px;
+    height: 50px;
+}
+/* --------------------------------------------EDIT MY ACCOUNT PROFILE----------------------------------------------------------*/
+
+
+
+
+
+/* --------------------------------------------CHANGE PASSWORD----------------------------------------------------------*/
+
+div.containerPassword{
+    width: 523px;
+    border: 10px solid greenyellow;
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 12px;
+    text-align: left;
+    color:white;
+    font-size:17px;
+    font-weight: lighter;
+    background-color: rgba(9, 32, 61, 0.8);
+
+}
+/* --------------------------------------------CHANGE PASSWORD----------------------------------------------------------*/
+
+
+div.new{
+    margin-left:auto;
+    width:450px;
+    margin-right: auto;
+    text-align:right;
+    bottom:0;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));
+/*     filter: drop-shadow(12px 12px 7px rgba(120, 220, 0, 0.5));*/
+    filter: drop-shadow(12px 12px 7px rgba(0, 250, 120, 0.9));
+    padding-bottom:10px;
+    overflow:scroll;
+}
+
+
+
+
+
+/* ADD REMINDER */
+/* ADD REMINDER */
+
+
+
+/* CATEGORIES */
+/* CATEGORIES */
+
+
+/* LOGOUT *//* LOGOUT */
+

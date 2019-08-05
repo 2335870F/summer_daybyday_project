@@ -1,70 +1,90 @@
 {% extends 'entries/base.html' %}
 {% load staticfiles %}
 
+
 {% block title_block %}
-  {{ chef.user.username }}
+    {{ chef.user.username }}
 {% endblock %}
 
 {% block name_block %}
     <div class="page_name">
-        My Account {{ chef.user }}
+        My Account 
     </div>
 {% endblock %} 
 
 {% block body_block %}
 	<div class="account">
+        
 		<div class ="user_info">
-			<div>
-				<img class="profile" src="{{ MEDIA_URL }}{{ chef.photo }}" alt="Picture of {{ chef.user.first_name }}"/><br/>
-				<strong>Username :</strong>   {{ chef.user.username }}<br>
-				<strong>  Full name :</strong> {{ chef.user.get_full_name }}<br>
-				<strong> Date joined :</strong> {{ chef.user.date_joined }}
-			</div>
-			<br/>
-			{% if user.username == chef.username %}
-				<div class="urls">
-					{% if user.is_authenticated %}
-						<a href="{% url 'edit_profile' user.username %}">Edit Profile</a>
-					{% endif %}
-                    edit
-					 <br>
-				</div>
-				<br>
-			{% endif %}
-		</div>
+            {% if user.username == chef.user.username %}
+                <div class="urls">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'edit_profile' user.username %}" style="color:white; ">Edit Profile</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+			<br>
+            <img class="profile" src="{{ MEDIA_URL }}{{ chef.photo }}" alt="Picture of {{ chef.user.first_name }}"/><br/>
+            <strong>Username :</strong>   {{ chef.user.username }}<br>
+            <strong>  Full name :</strong> {{ chef.user.get_full_name }}<br>
+            <strong> Date joined :</strong> {{ chef.user.date_joined }} <br>
+            <strong> Bio :</strong> {{ chef.bio }} <br>
+            <br>
+            
+        </div>
 
 		<div class="user_entries">
-			<h3>Bio</h3>
-				{{ Chef.bio }}
-			<h3>Entries</h3>
-			{% if entries %}
-				{% for entry in entries %}
-					<div class="entry">
-						<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" width="90"/></a>
-						<div>
-							<strong>{{ entry.name }}</strong><br/>
-							{{ entry.about }}
-						</div>
-					</div>
-				{% endfor %}
-			{% else %}
-				<strong>User has not created any entries.</strong>
-			{% endif %}
+            
+            <div class="entriesdisplay">
+                
+                <h2>My Entries</h2>
+                
+                <div class="surroundentries">  
+                    {% if entries %}
+                    
+                        {% for entry in entries %}
+                    
+                            {% if entry.chef.username == chef.user.username %}
+                    
+                                <div class="entry">
+                                    <a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" width="90" height="60" style="margin-right:3px;"/></a>
+                                    <div>
+                                        <strong>{{ entry.name }}</strong><br/>
+                                        {{ entry.about }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <strong>User has not created any entries.</strong>
+                    {% endif %}
+                    </div>
 
-			<h3>Reviews</h3>
-			{% if reviews %}
-				{% for review in reviews %}
-					<div class="entry">
-						<a href="{% url 'viewentry' review.entry.slug %}"><img src="{{ MEDIA_URL }}{{ review.entry.photo }}" alt="Picture of {{ review.entry }}" width="90"/></a>
-						<div>
-							<strong>{{ review.rating }}, {{ review.title }}</strong> -- {{ review.date_posted }}<br/>
-							{{ review.comment }}
-						</div>
-					</div>
-				{% endfor %}
-			{% else %}
-				<strong>User has not given any reviews.</strong>
-			{% endif %}
-		</div>
+                </div>
+            
+                <div class="remindersdisplay">
+                    <h2>My Reminders</h2>
+                    <div class="surroundentries">
+                        {% if reminders %}
+
+                            {% for post in reminders %}
+                                    {% if chef.user.username == post.chef.username %}
+                                        <div class="entry">
+                                            <a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"  style="background: greenyellow; width:90px; height:60px; margin-right: 3px;"/></a>
+                                            <div>
+                                                <strong>{{ post.name }}</strong><br/>
+                                            </div>
+                                        </div>
+
+                                    {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <strong>User has not created any reminders.</strong>
+                        {% endif %}
+                    </div>
+                </div>
+
+        </div>
+        
 	</div>
 {% endblock %}

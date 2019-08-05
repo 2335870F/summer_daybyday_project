@@ -31,17 +31,29 @@
 
 {% block body_block %}
     {%if request.user.is_authenticated and request.user.username == creator %}
-        <h1>Delete {{ reminder.title }}?</h1>
-        <form method="POST" action="">
-            {% csrf_token %}
-            Are you sure you want to delete this reminder? 
-            <input type="submit" value="Yes"/>
-            <a href="/entries/reminder/{{ reminder.slug }}/">Cancel </a>
-        </form>
+        
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div style="position: relative; left: 200; top: 200;">
+                    <div id="tv">
+                    </div>
+
+                    <img src="{{ MEDIA_URL }}{{ reminder.photo }}" alt="Picture of {{ reminder.name }}" class="entryimage" />
+                </div>
+                   
+                
+                <div class="areyousure">
+                    Are you sure you want to delete this entry: {{ entry.name }}? 
+                    <input type="submit" value="Yes"/>
+                    <a href="/entries/reminder/{{ reminder.slug }}/">Cancel </a>
+                </div>
+               
+            </form>
+        
     {% endif %}
 
     {%if request.user.username != creator %}
-        <h1>You cannot delete this reminder</h1>
+        <h1>You cannot delete this entry</h1>
     {% endif %}
 
 {% endblock %}

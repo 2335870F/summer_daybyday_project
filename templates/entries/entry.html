@@ -52,6 +52,7 @@
                             <strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
                             <strong> Date Last Edited: </strong>{{ entry.date_last_edited }}<br/>
                             <strong> Importance: </strong>{{ entry.importance }} / 5<br/>
+                            <strong> Categories: </strong>{{ entry.categories.name }}<br/>
                             <strong> Overall Rating: </strong>{{ avgRating }}<br/> 
                             <br><strong> Key Information:</strong>
                             <pre>{{ entry.key_info }}</pre>
