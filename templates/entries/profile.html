@@ -63,17 +63,25 @@
                 </div>
             
                 <div class="remindersdisplay">
+                    
                     <h2>My Reminders</h2>
+                    
                     <div class="surroundentries">
+                        
                         {% if reminders %}
 
                             {% for post in reminders %}
+                        
                                     {% if chef.user.username == post.chef.username %}
+                        
                                         <div class="entry">
+                                            
                                             <a href="{% url 'viewreminder' post.slug %}"><img src="{{ MEDIA_URL }}{{ post.photo }}" alt="Picture of {{ post.photo }}"  style="background: greenyellow; width:90px; height:60px; margin-right: 3px;"/></a>
+                                            
                                             <div>
                                                 <strong>{{ post.name }}</strong><br/>
                                             </div>
+                                            
                                         </div>
 
                                     {% endif %}

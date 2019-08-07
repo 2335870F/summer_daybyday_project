@@ -11,12 +11,13 @@
 {% block body_block %}
     <body class="registerpage">
         {% if registered %}
-    
-            <div class="ifregistered">
+           
+            <div class="ifregistered" style="margin-top:200px;">
                 <strong> Thank You for Registering! </strong>
-                <a href="{% url 'index' %}">Return to the homepage.</a>
+                <a href="{% url 'index' %}">Return to the login page.</a>
                 <br />
             </div>
+            
         
         {% else %}
 

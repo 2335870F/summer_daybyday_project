@@ -69,6 +69,8 @@ textarea {
     background-color:aliceblue;
 }
 
+
+
 h2{
     font-size: 20px;
     color:#09203D;
@@ -121,7 +123,7 @@ body {
 
 }
 body.registerpage {
-    background-image:none; 
+    background-image:url('/static/images/mosaic.jpg'); 
     overflow:scroll;
 }
 
@@ -416,6 +418,7 @@ h144 {
     font-size: 5rem;
     font-family: 'Fjalla One', sans-serif;
     padding:10px;
+    color:white;
 }
 
 h144 p{
@@ -781,56 +784,73 @@ div.cat_bar h3{
 
 
 /*----------------------------------------------------- ENTRY PAGE-------------------------------------------------------- */
+
 div.entry_page{
-	display: grid ;
-	grid-template-columns: [first] 20% [line2] 45% [line3] 20%[end];
-	justify-content: center;
-	grid-column-gap: 1em;
+    position: absolute;
+	display: grid;
+    height:85%;
+	grid-template-columns: 25em 80em;
+	justify-content: left;
+	grid-column-gap: 4em;
+	padding-left: 4em;
+	padding-right: 4em;
     overflow:scroll;
-
 }
 
-div.entry_title{
-    margin-left:auto;
-    margin-right: auto;
-    text-align:center;
-    color:white;
-    font-family: 'Fjalla One', sans-serif;
-    font-size:50px;
-    width:100%;
+div.user_entries_page {
+    margin-left: 39px;
 }
 
-div.entry_info img{
-    text-align: center;
-    margin-top: 10px;
-    margin-left:0px;
-	width: 600px;
-    height: 330px;   
-}
 
 div.chef_info{
     width: 75%;
+    height: 450px;
+    overflow:scroll;
     border: 10px solid greenyellow;
     background-color: #09203D;
     opacity:0.95;
     padding: 15px;
     margin: 0 auto;
-    margin-bottom:100px;
+    margin-bottom:30px;
     text-align: left;
     
-}
-
-div.other {
-	overflow: scroll;
 }
 
 div.entry_info {
 	word-wrap: normal;
     overflow:scroll;
-    margin-left: auto;
-    margin-right: auto;    
+   
 }
 
+div.entry_info img{
+    margin-top: 10px;
+	width: 600px;
+    height: 330px;   
+}
+
+div.steps {
+
+    width: 570px;
+    border: 5px solid greenyellow;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: left; 
+    background-color: #09203D;
+    opacity:0.95;
+}
+
+div.view {
+	max-height: 20em;
+    overflow: scroll;
+    color:white;
+    width: 400px;
+}
+div.view img{
+	height: 60px;
+    width:80px;
+}
 
 div.entry2 {
 	line-height: 1.2em;
@@ -843,8 +863,28 @@ div.entry2 {
     padding:10px;
 }
 
+div.give2 {
+	overflow: scroll;
+    margin-bottom: 10px;
+}
+
+div.reviews {
+    width: 350px;
+    height: 450px;
+	text-align: left;
+    word-wrap: normal;
+    background-color: #09203D;
+    opacity: 0.95;
+    padding:15px;
+    padding-left:10px;
+    border: 5px solid greenyellow;
+    margin-bottom: 50px;
+	overflow: scroll;
+    font-size: 17px;
+}
+
 div.entry img{
-	padding-right: 0.25em;
+	padding-right: 0.5em;
 	float: left;
 }
 
@@ -852,21 +892,9 @@ div.entry img:hover{
 	opacity: 0.7;
 }
 
-div.reviews {
-    width: 350px;
-    height: 450px;
-	text-align: right;
-    word-wrap: normal;
-    background-color: #09203D;
-    opacity: 0.95;
-    padding:15px;
-    border: 5px solid greenyellow;
-    margin-bottom: 100px;
-	overflow: scroll;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 17px;
-    grid-column-start: line3;
+div.give { 
+    margin-bottom: 10px;
+    float:left;  
 }
 
 div.addinformation {
@@ -894,23 +922,10 @@ div.delete {
     opacity: 0.95;
     padding:15px;
     border: 5px solid greenyellow;
-	overflow: scroll;
     color:white;
     margin-left: auto;
     margin-right: auto;
     font-size: 20px; 
-}
-
-div.steps {
-    width: 570px;
-    border: 5px solid greenyellow;
-    padding: 10px;
-    margin-bottom: 140px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: left; 
-    background-color: #09203D;
-    opacity:0.95;
 }
 
 div.reviews2 {
@@ -935,23 +950,11 @@ pre {
     font-family: 'Fjalla One', sans-serif;
 }
 
-div.view {
-	max-height: 20em;
-    overflow: scroll;
-    color:white;
-}
 
-div.give { 
-    width:300px;
-	overflow: scroll;
-    margin-bottom: 10px;
-    padding: 20px;
-}
 
-div.give2 {
-	overflow: scroll;
-    margin-bottom: 10px;
-}
+
+
+
 
 /*----------------------------------------------------- ENTRY PAGE------------------------------------------------------------ */
 
@@ -1003,7 +1006,7 @@ div.user_entries h2{
 div.entry {
 	line-height: 1.2em;
 	margin-bottom: 8px;
-    width:310px;
+    width:330px;
 	height: 60px;
 	background-color: #09203D;
     border: 1px solid greenyellow;
