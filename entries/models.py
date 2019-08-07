@@ -18,7 +18,7 @@ class Category(models.Model):
 	type = models.CharField(max_length=25, choices=TYPES)
 	likes = models.IntegerField(default=0)
 	slug = models.SlugField(unique=True)
-	supercat = models.ForeignKey('self', null=True, related_name='category')
+	supercat = models.ForeignKey('self', null=True, related_name='category', on_delete=models.PROTECT)
 	photo = models.ImageField(upload_to='cat_pics', blank=True)
 
 	def save(self, *args, **kwargs):
@@ -40,7 +40,7 @@ class Chef(models.Model):
 		return self.user.username
 
 class Entry(models.Model):
-    chef = models.ForeignKey(User)
+    chef = models.ForeignKey(User, on_delete=models.PROTECT)
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category)
     name = models.CharField(max_length=128, unique=True)
@@ -60,7 +60,7 @@ class Entry(models.Model):
         return self.name
     
 class Reminder(models.Model):
-    chef = models.ForeignKey(User)
+    chef = models.ForeignKey(User, on_delete=models.PROTECT)
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=128, unique=True)
     photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.svg')
@@ -78,20 +78,20 @@ class Reminder(models.Model):
 
 
 class Review(models.Model):
-	entry = models.ForeignKey(Entry)
-	author = models.ForeignKey(User)
+	entry = models.ForeignKey(Entry, on_delete=models.PROTECT)
+	author = models.ForeignKey(User, on_delete=models.PROTECT)
 	title = models.CharField(max_length=50, default="My Rating")
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
     
 class ExtraInformation(models.Model):
-	entry = models.ForeignKey(Entry)
+	entry = models.ForeignKey(Entry, on_delete=models.PROTECT)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
 
 class Suggestion(models.Model):
-	author = models.ForeignKey(User)
+	author = models.ForeignKey(User, on_delete=models.PROTECT)
 	comment = models.TextField(default="I love this website!")
 
 class Contact(models.Model):
