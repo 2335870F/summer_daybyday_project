@@ -161,6 +161,40 @@ div.body {
 
 
 
+/* -----------------------------------------REMINDER PAGE-------------------------------------------- */
+
+div.chef_info_reminders{
+    width: 75%;
+    height: 100px;
+    overflow:scroll;
+    border: 10px solid greenyellow;
+    background-color: #09203D;
+    opacity:0.95;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom:30px;
+    text-align: left;
+    
+}
+
+div.reminder_page{
+    position: absolute;
+	display: grid;
+    height:85%;
+	grid-template-columns: 25em 48.5em;
+	justify-content: left;
+	grid-column-gap: 4em;
+	padding-left: 4em;
+	padding-right: 4em;
+    overflow:scroll;
+}
+
+/* -----------------------------------------REMINDER PAGE-------------------------------------------- */
+
+
+
+
+
 /* ----------------------------------------------INDEX--------------------------------------------------- */
 h7 {
 	font-size: 20px;
@@ -836,6 +870,7 @@ div.steps {
     margin-bottom: 10px;
     margin-left:auto;
     margin-right:auto;
+    margin-top:10px;
     text-align: left; 
     background-color: #09203D;
     opacity:0.95;
@@ -845,8 +880,17 @@ div.view {
 	max-height: 20em;
     overflow: scroll;
     color:white;
-    width: 400px;
+    width: 348px;
+    border: 5px groove mediumpurple;
 }
+
+div.viewextra {
+	max-height: 20em;
+    overflow: scroll;
+    color:white;
+    width: 500px;
+}
+
 div.view img{
 	height: 60px;
     width:80px;
@@ -861,6 +905,7 @@ div.entry2 {
 	font-size: 0.9em;
     border: 1px solid white;
     padding:10px;
+    width: 450px;
 }
 
 div.give2 {
@@ -908,8 +953,6 @@ div.addinformation {
     border: 5px solid greenyellow;
 	overflow: scroll;
     color:white;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 20px;
 }
 
@@ -1006,7 +1049,7 @@ div.user_entries h2{
 div.entry {
 	line-height: 1.2em;
 	margin-bottom: 8px;
-    width:330px;
+    width:325px;
 	height: 60px;
 	background-color: #09203D;
     border: 1px solid greenyellow;

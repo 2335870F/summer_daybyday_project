@@ -20,7 +20,7 @@ class ChefForm(forms.ModelForm):
 
 #asks for title of rating, actual rating 0-5 decimal, and any additional comments
 class ReviewForm(forms.ModelForm):
-	title = forms.CharField(widget=forms.TextInput(),max_length=128, label="Title")
+	title = forms.CharField(widget=forms.TextInput(),max_length=20, label="Title")
 	rating = forms.DecimalField(widget=forms.NumberInput(), min_value=0, max_value=5, required=True, label="Rating 1 to 5")
 	comment = forms.CharField(widget=forms.Textarea(),label="Any additional comments")
 
