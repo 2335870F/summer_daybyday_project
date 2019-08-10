@@ -32,6 +32,47 @@ def entries_delete_view(request, entry_name_slug):
 
     return render(request, 'entries/entries-delete-view.html', context)
 
+@login_required
+def edit_profile(request, username):
+	if request.method == 'POST':
+		edit = EditProfileForm(request.POST, instance=request.user)
+		bio  = EditBioForm(request.POST, instance=request.user.chef)
+		if edit.is_valid() and bio.is_valid():
+			edit.save()
+			bio.save()
+			return redirect('/entries/profile/'+username)
+		else:
+			print(edit.errors, bio.errors)
+	else:
+		edit = EditProfileForm(instance=request.user)
+		bio = EditBioForm(instance=request.user.chef)
+
+	context_dict = {'edit':edit,'bio':bio}
+	return render(request, 'entries/edit_profile.html', context_dict)
+
+
+def edit_entry(request, entry_name_slug):
+
+    entry = Entry.objects.get(slug=entry_name_slug)
+
+    creator= entry.chef.username
+
+    if request.method == 'POST':
+        editentry = EditEntryForm(request.POST, instance=entry)
+        if editentry.is_valid():
+            editentry.save()
+
+            return redirect('/entries/entry/'+entry.slug)
+        else:
+            print(editentry.errors)
+    else:
+        editentry = EditEntryForm(instance=entry)
+
+    context= {'entry': entry,
+              'creator': creator,
+              'editentry':editentry
+             }
+    return render(request, 'entries/edit_entry.html', context)
 
 def reminders_delete_view(request, reminder_name_slug):
 
@@ -92,11 +133,11 @@ def index(request):
     #get all categories -- no order
     #had to remove [:4] because it filters every entry existing all users
 #    reminders = Reminder.objects.order_by('-importance')[:4]
-    reminders = Reminder.objects.order_by('-importance')
+    reminders = Reminder.objects.order_by('importance')
     #this is filtering ALL everyones entries, we want just your own.. the html only allows u to see ur own
     #but its techincally way down the list and so doesnt show. or wait you could have filter(usr=), and be able to use [:4] but 
     #ive not figured the filter thing yet!
-    top = Entry.objects.order_by('-importance')
+    top = Entry.objects.order_by('importance')
 
     context_dict = {'latest':latest, 'reminders':reminders, 'top':top}
     response = render(request,'entries/index.html', context=context_dict)
@@ -317,32 +358,6 @@ def userprofile(request, username):
         context_dict['chef'] = None
 
     return render(request, 'entries/profile.html', context_dict)
-
-@login_required
-def edit_profile(request, username):
-	if request.method == 'POST':
-		edit = EditProfileForm(request.POST, request.FILES, instance=request.user)
-		bio  = EditBioForm(request.POST, request.FILES, instance=request.user.chef)
-		if edit.is_valid() and bio.is_valid():
-			edit.save()
-			bio.save()
-			return redirect('/entries/profile/'+username)
-		else:
-			print(edit.errors, bio.errors)
-	else:
-		edit = EditProfileForm(request.FILES, instance=request.user)
-		bio = EditBioForm(request.FILES, instance=request.user.chef)
-
-	context_dict = {'edit':edit,'bio':bio}
-	return render(request, 'entries/edit_profile.html', context_dict)
-
-
-
-
-
-
-
-
 
 @login_required
 def change_password(request, username):

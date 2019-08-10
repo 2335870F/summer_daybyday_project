@@ -6,9 +6,11 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
 	url(r'^faq/$', views.faq, name='faq'),
 	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/$', views.viewentry, name='viewentry'),
-	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/delete/$', views.entries_delete_view, name='delete'),    
+	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/delete/$', views.entries_delete_view, name='delete'),
 
-    url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/delete/$', views.reminders_delete_view, name='deleteR'),    
+    url(r'^entry/(?P<entry_name_slug>[\w\-]+)/edit/$', views.edit_entry, name='edit_entry'),
+
+    url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/delete/$', views.reminders_delete_view, name='deleteR'),
 
 	url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/$', views.viewreminder, name='viewreminder'),
     url(r'^register/$', views.register, name='register'),
@@ -27,6 +29,8 @@ urlpatterns = [
 #new down here
     #editprofile
     url(r'^profile/(?P<username>[\w\-]+)/edit/$', views.edit_profile, name='edit_profile'),
+
+
     #change password
     url(r'^profile/(?P<username>[\w\-]+)/password/$', views.change_password, name='change_password'),
 ]

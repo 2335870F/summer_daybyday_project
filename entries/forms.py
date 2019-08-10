@@ -116,7 +116,7 @@ class UploadFileForm(forms.Form):
 class EditProfileForm(UserChangeForm):
 	class Meta:
 		model = User
-		fields = ('email','first_name','last_name',)
+		fields = ('first_name','last_name',)
 
 	def clean_password(self):
 		return ""
@@ -128,11 +128,11 @@ class EditBioForm(UserChangeForm):
 
 	def clean_password(self):
 		return ""
-    
-#class EditEntryForm(UserChangeForm):
-#    class Meta:
-#        model = Entry
-#        fields = ('name','photo','key_info','to_do','content','categories','importance')
-#
-#    def clean_password(self):
-#        return ""
+
+class EditEntryForm(UserChangeForm):
+    class Meta:
+        model = Entry
+        fields = ('name','photo','key_info','to_do','content','categories','importance')
+        
+    def clean_password(self):
+        return ""

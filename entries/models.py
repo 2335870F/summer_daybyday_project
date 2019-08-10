@@ -40,7 +40,7 @@ class Chef(models.Model):
 		return self.user.username
 
 class Entry(models.Model):
-    chef = models.ForeignKey(User, on_delete=models.PROTECT)
+    chef = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category)
     name = models.CharField(max_length=128, unique=True)
@@ -60,7 +60,7 @@ class Entry(models.Model):
         return self.name
     
 class Reminder(models.Model):
-    chef = models.ForeignKey(User, on_delete=models.PROTECT)
+    chef = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=128, unique=True)
     photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.svg')
@@ -78,15 +78,15 @@ class Reminder(models.Model):
 
 
 class Review(models.Model):
-	entry = models.ForeignKey(Entry, on_delete=models.PROTECT)
-	author = models.ForeignKey(User, on_delete=models.PROTECT)
+	entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50, default="My Rating")
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
     
 class ExtraInformation(models.Model):
-	entry = models.ForeignKey(Entry, on_delete=models.PROTECT)
+	entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
 

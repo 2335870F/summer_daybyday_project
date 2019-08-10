@@ -35,7 +35,7 @@ header ul li {
 }
 
 div.urls a {
-	font-size: 1.6em;
+	font-size: 1.4em;
     font-family: 'Fjalla One', sans-serif;
 	color: black;
 }
@@ -65,7 +65,7 @@ div.row {
 textarea {
 	max-width: 515px;
 	min-width: 515px;
-    min-height: 170px;  
+    min-height: 170px;
     background-color:aliceblue;
 }
 
@@ -77,7 +77,7 @@ h2{
 }
 
 h11, h12{
-    font-size: 30px;
+    font-size: 15px;
     color: greenyellow;
 }
 h12{
@@ -102,7 +102,7 @@ h13{
     background-color: white;
 }
 
-body { 
+body {
 	background-image: url('/static/images/mosaic.jpg');
 	height: 100%;
 	width: 100%;
@@ -114,7 +114,7 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-    
+
 	display: grid;
 	grid-column-gap: 3em;
 
@@ -123,7 +123,7 @@ body {
 
 }
 body.registerpage {
-    background-image:url('/static/images/mosaic.jpg'); 
+    background-image:url('/static/images/mosaic.jpg');
     overflow:scroll;
 }
 
@@ -174,7 +174,7 @@ div.chef_info_reminders{
     margin: 0 auto;
     margin-bottom:30px;
     text-align: left;
-    
+
 }
 
 div.reminder_page{
@@ -184,7 +184,7 @@ div.reminder_page{
 	grid-template-columns: 25em 48.5em;
 	justify-content: left;
 	grid-column-gap: 4em;
-	padding-left: 4em;
+	padding-left: 1em;
 	padding-right: 4em;
     overflow:scroll;
 }
@@ -227,7 +227,7 @@ div.latest_posts {
 
 div.current_reminders, div.top_rated {
     padding-top:10px;
-	overflow: scroll; 
+	overflow: scroll;
     height:1000px;
     margin-bottom:100px;
     width:280px;
@@ -272,7 +272,7 @@ div.item {
 
 div.current_reminders h3, div.top_rated h3{
     font-size:30px;
-    padding-left:18px; 
+    padding-left:18px;
 }
 
  div.top_rated h3{
@@ -301,17 +301,17 @@ div.top_rated img:hover, div.current_reminders img:hover{
 /*----------------------------------------------LOGIN-----------------------------------------------------*/
 div.login_page {
     width: 400px;
-    border: 15px solid #09203D;
+    border: 10px solid #09203D;
     padding: 15px;
-    margin-bottom: 240px;
     margin-left:auto;
     margin-right:auto;
     text-align: center;
     margin:auto;
+    margin-top:200px;
     background:rgba(50, 200, 220, 0.8);
     background-image:url('/static/images/mosaic.jpg');
     font-size: 17px;
-    color:white; 
+    color:white;
 }
 
 img.scrollMessage {
@@ -322,7 +322,7 @@ img.scrollMessage {
 div.backing{
     width:250px;
     height:250px;
-    border-radius:50%; 
+    border-radius:50%;
     background: rgba(0, 220, 220, 0.7);
     display: inline-block;
 }
@@ -347,7 +347,7 @@ div.backing{
     margin-top:195px;
     position:relative;
     -webkit-animation: mymove 15s ; /* Safari 4.0 - 8.0 */
-    animation: mymove 15s ; 
+    animation: mymove 15s ;
 }
 
 .ParallaxContainer img.index-logo{
@@ -408,8 +408,8 @@ div.invalidLogin{
 /*------------------------------------ SIGN UP / REGISTER -------------------------------------------------*/
 div.register{
     width: 523px;
-    border: 15px solid #09203D;
-    padding: 55px;
+    border: 10px solid #09203D;
+    padding: 15px;
     margin: 0 auto;
 	overflow: scroll;
     text-align: left;
@@ -418,7 +418,7 @@ div.register{
     margin-top:70px;
 }
 
-.banner, .banner2, .banner3, .banner4 {
+.banner, .banner2, .banner3, .banner4, .banner5, .banner6{
     background-image: url('/static/images/mosaic.jpg');
 	background-size: cover;
     background-attachment: fixed;
@@ -427,11 +427,16 @@ div.register{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .banner2{
     background-image: url('/static/images/m.jpg');
+}
+
+.banner2 .cat img:hover{
+    top:0px;
+
 }
 
 .banner3{
@@ -439,7 +444,14 @@ div.register{
 }
 
 .banner4{
-    background-image: url('/static/images/j.jpg');
+    background-image: url('/static/images/m.jpg');
+}
+.banner5{
+    background-image: url('/static/images/k.jpg');
+}
+
+.banner6{
+    background-image: url('/static/images/mosaic.jpg');
 }
 
 div.banner img{
@@ -456,12 +468,12 @@ h144 {
 }
 
 h144 p{
-    font-size: 1.9rem;
+    font-size: 1.4rem;
     font-weight:bold;
     color:white;
     text-align: center;
     font-family: 'Fjalla One', sans-serif;
-    padding:150px;
+    padding:100px;
 }
 
 div.ifregistered{
@@ -494,7 +506,7 @@ div.about p{
     color:#09203D;
     font-size: 25px;
     font-weight: bold;
-    
+
 }
 
 .hero {
@@ -506,7 +518,7 @@ div.about p{
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	
+
 	&__content {
 		position: relative;
 		align-self: center;
@@ -528,7 +540,7 @@ div.hero__content {
 	width: 100%;
 	top: 0;
 	left: 0;
-    
+
 }
 
 .snow .svg {
@@ -635,14 +647,14 @@ input.button {
     padding: 3px;
     width: 90px;
     height: 35px;
-    font-family: 'Fjalla One', sans-serif;    
+    font-family: 'Fjalla One', sans-serif;
 
 }
 
 .btn1, .btn2, .btn4, .btn3, .btn5, .btn6{
     background-color: greenyellow;
     color: white;
-    font-family: 'Fjalla One', sans-serif;    
+    font-family: 'Fjalla One', sans-serif;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -709,7 +721,7 @@ div.faq_class {
     left: -5%;
     background: inherit;
     border-radius: 5% / 50%;
-    
+
 }
 
 div.circ{
@@ -721,7 +733,7 @@ div.circ{
     padding: 15px;
     margin: 0 auto;
     margin-bottom:100px;
-    text-align: left; 
+    text-align: left;
 }
 
 div.areyousure{
@@ -733,7 +745,7 @@ div.areyousure{
     padding: 15px;
     margin: 0 auto;
     margin-bottom:100px;
-    text-align: center; 
+    text-align: center;
     font-size:20px;
 }
 /* -------------------------------------------DELETE ENTRY or REMINDER--------------------------------------------- */
@@ -823,16 +835,15 @@ div.entry_page{
     position: absolute;
 	display: grid;
     height:85%;
-	grid-template-columns: 25em 80em;
+	grid-template-columns: 20em 80em;
 	justify-content: left;
-	grid-column-gap: 4em;
-	padding-left: 4em;
-	padding-right: 4em;
-    overflow:scroll;
+	grid-column-gap: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 div.user_entries_page {
-    margin-left: 39px;
+    margin-left: 110px;
 }
 
 
@@ -847,19 +858,19 @@ div.chef_info{
     margin: 0 auto;
     margin-bottom:30px;
     text-align: left;
-    
+
 }
 
 div.entry_info {
 	word-wrap: normal;
     overflow:scroll;
-   
+
 }
 
 div.entry_info img{
     margin-top: 10px;
 	width: 600px;
-    height: 330px;   
+    height: 330px;
 }
 
 div.steps {
@@ -868,10 +879,8 @@ div.steps {
     border: 5px solid greenyellow;
     padding: 10px;
     margin-bottom: 10px;
-    margin-left:auto;
-    margin-right:auto;
     margin-top:10px;
-    text-align: left; 
+    text-align: left;
     background-color: #09203D;
     opacity:0.95;
 }
@@ -899,11 +908,9 @@ div.view img{
 div.entry2 {
 	line-height: 1.2em;
 	margin-bottom: 8px;
-	height: 100px;
 	background-color: #09203D;
 	overflow: scroll;
 	font-size: 0.9em;
-    border: 1px solid white;
     padding:10px;
     width: 450px;
 }
@@ -937,9 +944,9 @@ div.entry img:hover{
 	opacity: 0.7;
 }
 
-div.give { 
+div.give {
     margin-bottom: 10px;
-    float:left;  
+    float:left;
 }
 
 div.addinformation {
@@ -968,7 +975,7 @@ div.delete {
     color:white;
     margin-left: auto;
     margin-right: auto;
-    font-size: 20px; 
+    font-size: 20px;
 }
 
 div.reviews2 {
@@ -988,7 +995,7 @@ pre {
 	white-space: pre-wrap;
 /*	display: block;*/
 	width: auto;
-	font-size: 1.4em;
+	font-size: 1.2em;
     color: white;
     font-family: 'Fjalla One', sans-serif;
 }
@@ -1152,4 +1159,3 @@ div.new{
 
 
 /* LOGOUT *//* LOGOUT */
-

@@ -32,11 +32,11 @@
         {% if user.username == entry.chef.username %}
 
             <div class="page_name">
-                         
+
                     {% if entry %}
                         {{ entry.name }}
                     {% endif %}
-                                    
+
             </div>
 
         {% endif %}
@@ -53,14 +53,25 @@
         {% if user.username == entry.chef.username %}
 
             <div class="entry_page">
-                
+
+
+
                 <div class="chef_info">
+                    {% if user.username == entry.chef.username %}
+                        <div class="urls">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'edit_entry' entry.slug %}" style="color:white; ">Edit Entry</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+
                     {% if entry %}
                         <strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
                         <strong> Date Created: </strong>{{ entry.date_last_edited }}<br/>
                         <strong> Importance: </strong>{{ entry.importance }} / 5<br/>
                         <strong> Categories: </strong>{{ entry.categories.name }}<br/>
-                        <strong> Overall Progress Rating: </strong>{{ avgRating }}<br/> 
+                        <strong> Overall Progress Rating: </strong>{{ avgRating }}<br/>
                         <br><strong> Key Information:</strong>
                         <pre>{{ entry.key_info }}</pre>
                         <strong> To-Do:</strong>
@@ -77,16 +88,16 @@
                     {% if user.is_authenticated and user.username == entry.chef.username %}
                         <div class="delete"> <a href="/entries/entry/{{ entry.slug }}/delete/">Delete this post </a> </div>
                     {% endif %}
-                
+
                 </div>
-                
-                
-                
-                
+
+
+
+
                 <div class="user_entries_page">
-                    
+
                     <div class="entriesdisplay">
-                    
+
                             <div class="entry_info">
                                 {% if entry %}
                                     <img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
@@ -99,11 +110,11 @@
                                 {% else %}
                                     <strong>This is not an entry.</strong>
                                 {% endif %}
-                                
+
 
                                 <div class="addinformation">
 
-                                    <h11>Extra Information</h11>
+                                    <h11>Futher Content:</h11>
 
                                     <div class="viewextra">
                                         {% if extrainformation %}
@@ -111,9 +122,9 @@
                                                 <div class="entry2">
 
                                                     <div>
-                                                       <h7 style="font-size:14px; text-decoration: underline;"> <strong>{{ extra.date_last_edited }}</strong></h7><br/>
+                                                       <h7 style="text-decoration: underline; font-size: 12px;"> <strong>{{ extra.date_last_edited }}</strong></h7><br/>
                                                         {{ extra.comment }}
-                                                        
+
                                                     </div>
                                                 </div>
                                             {% endfor %}
@@ -126,37 +137,37 @@
                                     {% if user.is_authenticated %}
                                         {% if entry %}
                                             <div class="give2">
-                                                
-                                                <br><h11 style="text-decoration-line: overline;">Add Additional Information to your entry!</h11>
+
+                                                <br><h11 style="text-decoration-line: overline; font-size:20px;">Add Additional Information to your entry!</h11>
                                                 <form id="extrainformation_form" method="post" action={% url 'viewentry' entry.slug %}>
                                                     {% csrf_token %}
                                                     {% for field in form2.visible_fields %}
-                                                    
+
                                                         {{ field.errors }}
                                                     <h12>{{ field.label }}</h12><br/>
                                                         {{ field }}<br/>
-                                                    
+
                                                     {% endfor %}
                                                     <button type="submit" name="submit" value="Submit">Submit</button>
                                                 </form>
-                                                
+
                                             </div>
-                                    
+
                                         {% endif %}
-                                    
+
                                     {% endif %}
 
                                 </div>
-                                
+
                             </div>
                             <br>
 
                     </div>
-                    
+
                     <div class="remindersdisplay">
-                        
+
                         <div class="reviews">
-                            
+
                                 <h11>Progress Reports</h11>
                                 <div class="view">
                                     {% if reviews %}
