@@ -14,7 +14,7 @@ from .forms import UploadFileForm
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
-
+@login_required
 def entries_delete_view(request, entry_name_slug):
 
     entry = Entry.objects.get(slug=entry_name_slug)
@@ -31,6 +31,7 @@ def entries_delete_view(request, entry_name_slug):
              }
 
     return render(request, 'entries/entries-delete-view.html', context)
+
 
 @login_required
 def edit_profile(request, username):
@@ -74,6 +75,8 @@ def edit_entry(request, entry_name_slug):
              }
     return render(request, 'entries/edit_entry.html', context)
 
+
+
 def reminders_delete_view(request, reminder_name_slug):
 
     reminder = Reminder.objects.get(slug=reminder_name_slug)
@@ -99,8 +102,8 @@ def handle_uploaded_file(f):
     with open('entries/uploads.txt', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-            
-            
+
+
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -135,7 +138,7 @@ def index(request):
 #    reminders = Reminder.objects.order_by('-importance')[:4]
     reminders = Reminder.objects.order_by('importance')
     #this is filtering ALL everyones entries, we want just your own.. the html only allows u to see ur own
-    #but its techincally way down the list and so doesnt show. or wait you could have filter(usr=), and be able to use [:4] but 
+    #but its techincally way down the list and so doesnt show. or wait you could have filter(usr=), and be able to use [:4] but
     #ive not figured the filter thing yet!
     top = Entry.objects.order_by('importance')
 
@@ -341,7 +344,7 @@ def viewreminder(request, reminder_name_slug):
 
     return render(request, 'entries/reminders.html', context_dict)
 
-
+@login_required
 def userprofile(request, username):
     context_dict = {}
     try:
@@ -358,6 +361,16 @@ def userprofile(request, username):
         context_dict['chef'] = None
 
     return render(request, 'entries/profile.html', context_dict)
+
+
+
+
+
+
+
+
+
+
 
 @login_required
 def change_password(request, username):
