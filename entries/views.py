@@ -94,7 +94,28 @@ def reminders_delete_view(request, reminder_name_slug):
 
     return render(request, 'entries/reminders-delete-view.html', context)
 
+def edit_reminder(request, reminder_name_slug):
 
+    reminder = Reminder.objects.get(slug=reminder_name_slug)
+
+    creator= reminder.chef.username
+
+    if request.method == 'POST':
+        editreminder = EditReminderForm(request.POST, instance=reminder)
+        if editreminder.is_valid():
+            editreminder.save()
+
+            return redirect('/entries/reminder/'+reminder.slug)
+        else:
+            print(editreminder.errors)
+    else:
+        editreminder = EditReminderForm(instance=reminder)
+
+    context= {'reminder': reminder,
+              'creator': creator,
+              'editreminder':editreminder
+             }
+    return render(request, 'entries/edit_reminder.html', context)
 # Create your views here.
 
 
@@ -132,7 +153,11 @@ cats_bar = Category.objects.exclude(name__in=['Other Courses','Special Occasions
 
 def index(request):
     #get all entries, order alphabetically by name - is recent
-    latest = Entry.objects.order_by('-date_last_edited')
+    latest1 = Entry.objects.order_by('-date_last_edited')
+    #for entry in latest1:
+     #   if request.user.username != entry.chef.username:
+      #      latest.remove(entry)
+    latest = [entry for entry in latest1 if ((entry.chef.username)==(request.user.username))]
     #get all categories -- no order
     #had to remove [:4] because it filters every entry existing all users
 #    reminders = Reminder.objects.order_by('-importance')[:4]

@@ -77,7 +77,7 @@ class AddEntryForm(forms.ModelForm):
 
     class Meta:
         model = Entry
-        fields = ('name','photo','content','importance','key_info','to_do','categories',)
+        fields = ('name','photo','content','importance','key_info','to_do','categories')
 
     def save(self, username):
         author = User.objects.get(username=username)
@@ -120,13 +120,14 @@ class EditProfileForm(UserChangeForm):
 	def clean_password(self):
 		return ""
 
-class EditBioForm(UserChangeForm):
-	class Meta:
-		model = Chef
-		fields = ('photo', 'bio')
+class EditBioForm(UserChangeForm, forms.ModelForm):
+    #photo = forms.ImageField(required=False)
+    class Meta:
+        model = Chef
+        fields = ('photo', 'bio')
 
-	def clean_password(self):
-		return ""
+    def clean_password(self):
+        return ""
 
 class EditEntryForm(UserChangeForm):
     class Meta:
@@ -135,3 +136,12 @@ class EditEntryForm(UserChangeForm):
 
     def clean_password(self):
         return ""
+
+class EditReminderForm(UserChangeForm):
+    class Meta:
+        model = Reminder
+        fields = ('name','photo','importance','content')
+
+    def clean_password(self):
+        return ""
+

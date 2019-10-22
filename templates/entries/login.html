@@ -29,7 +29,9 @@
 
         <div class="Content">
             <div style="height:700px; width:100%;background-image: radial-gradient(50% 296%, cyan 8%, blue 100%);padding-top:400px; background-size: cover;">
-
+                {% if user.is_authenticated %}
+                    <h2 style="text-align:center;"> You are already logged in! Use the login form below to login as a different user.</h2>
+                {% endif %}
                 <div class="login_page">
                     <form id="login_form" method="post" action={% url 'login' %}>
                         {% csrf_token %}
@@ -39,13 +41,14 @@
                         <h3> Password </h3>
                         <input type="password" name="password" placeholder="Password" value="" size="50" />
                         <br />
-                        <br />
+                         <br />
                         <input type="submit" name="submit" value="Login" class="button" />
                     </form>
                     </br>
                     Or click here to <div class="urls" style="padding-top:10px;"><a style="color:white;" href={% url 'register' %}>Sign Up</a></div>
 
                 </div>
+
 
             </div>
         </div>

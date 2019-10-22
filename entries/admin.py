@@ -16,8 +16,8 @@ class SuggestionAdmin(admin.ModelAdmin):
     list_display = ('comment','author')
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('comment','first_name','email')
-    
+    list_display = ('first_name','email', 'comment')
+
 class ExtraInformationAdmin(admin.ModelAdmin):
     list_display = ('entry','comment')
 

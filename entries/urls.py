@@ -9,6 +9,7 @@ urlpatterns = [
 	url(r'^entry/(?P<entry_name_slug>[\w\-]+)/delete/$', views.entries_delete_view, name='delete'),
 
     url(r'^entry/(?P<entry_name_slug>[\w\-]+)/edit/$', views.edit_entry, name='edit_entry'),
+    url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/edit/$', views.edit_reminder, name='edit_reminder'),
 
     url(r'^reminder/(?P<reminder_name_slug>[\w\-]+)/delete/$', views.reminders_delete_view, name='deleteR'),
 

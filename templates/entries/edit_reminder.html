@@ -2,21 +2,21 @@
 {% load staticfiles %}
 
 {% block title_block %}
-   Edit an entry
+   Edit a reminder
 {% endblock %}
 
 {% block name_block %}
     <div class="page_name">
-	   Edit Entry
+	   Edit Reminder
     </div>
 {% endblock %}
 
 {% block body_block %}
 	<div class="edit_class">
 
- 		<form id="editentry" method="post" enctype="multipart/form-data" action="{% url 'edit_entry' entry.slug %}">
+ 		<form id="editreminder" method="post" enctype="multipart/form-data" action="{% url 'edit_reminder' reminder.slug %}">
 			{% csrf_token %}
-			{% for editfield in editentry.visible_fields %}
+			{% for editfield in editreminder.visible_fields %}
 				{% if editfield.label != "Password" %}
 					{{ user.editfield.label }}
 					{{ editfield.errors }}
@@ -32,4 +32,3 @@
 		<br/>
 	</div>
 {% endblock %}
-

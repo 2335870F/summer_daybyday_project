@@ -24,56 +24,62 @@
 {% endblock %}
 
 {% block name_block %}
-    <div class="page_name">
-            {% if reminder %}
-                {{ reminder.name }}
-            {% endif %}
-    </div>
+
 {% endblock %}
 
 
 {% block body_block %}
 	<div class="reminder_page">
-        
+
         <div class="entriesdisplay">
 
             <div class="chef_info_reminders">
+
+                <div class="urls" style="margin-bottom:10px;">
+
+                    {% if user.is_authenticated and user.username == reminder.chef.username %}
+                        <div class="delete"><a href="{% url 'edit_reminder' reminder.slug %}" style="color:red;">Edit Reminder</a></div>
+                        <div class="delete"> <a href="/entries/reminder/{{ reminder.slug }}/delete/" style="color:red;">Delete Reminder</a> </div>
+                    {% endif %}
+                </div>
 
                 {% if reminder %}
 
                     <strong> Name: </strong><a href="{% url 'userprofile' reminder.chef.username %}">{{ reminder.chef }}</a><br/>
                     <strong> Date Created: </strong>{{ reminder.date_last_edited }}<br/>
-                    <strong> Importance: </strong>{{ reminder.importance }} / 5<br/>
+                    <strong> Priority: </strong>{{ reminder.importance }}<br/>
 
                 {% endif %}
 
             </div>
 
-            {% if user.is_authenticated and user.username == reminder.chef.username %}
-                <div class="delete"> <a href="/entries/reminder/{{ reminder.slug }}/delete/">Delete this post </a> </div>
-            {% endif %}
         </div>
-            
+
         <div class="remindersdisplay">
-            
+
             <div class="entry_info">
-                
+                <div class="page_name">
+                    {% if reminder %}
+                        {{ reminder.name }}
+                    {% endif %}
+                </div>
+
                 {% if reminder %}
-                
-                    <img src="{{ MEDIA_URL }}{{ reminder.photo }}" alt="Picture of {{ reminder.name }}"/><br/>
-                    <div class="steps">
+
+                    <img src="{{ MEDIA_URL }}{{ reminder.photo }}" style="margin-left:40px;" alt="Picture of {{ reminder.name }}"/><br/>
+                    <div class="steps" style="margin-left:40px;">
 
                         REMINDER:<br/>
                         <pre>{{ reminder.content }}</pre>
-                        
+
                     </div>
                 {% else %}
                     <strong>This is not a reminder.</strong>
                 {% endif %}
-                
+
             </div>
-            
+
         </div>
-        
+
 	</div>
 {% endblock %}

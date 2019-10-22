@@ -31,7 +31,7 @@
 
 {% block body_block %}
     {%if request.user.is_authenticated and request.user.username == creator %}
-        
+
             <form method="POST" action="">
                 {% csrf_token %}
                 <div style="position: relative; left: 200; top: 200;">
@@ -40,16 +40,16 @@
 
                     <img src="{{ MEDIA_URL }}{{ reminder.photo }}" alt="Picture of {{ reminder.name }}" class="entryimage" />
                 </div>
-                   
-                
+
+
                 <div class="areyousure">
-                    Are you sure you want to delete this entry: {{ entry.name }}? 
+                    Are you sure you want to delete this reminder: <div style="color:red">{{ reminder.name }}</div>?
                     <input type="submit" value="Yes"/>
                     <a href="/entries/reminder/{{ reminder.slug }}/">Cancel </a>
                 </div>
-               
+
             </form>
-        
+
     {% endif %}
 
     {%if request.user.username != creator %}

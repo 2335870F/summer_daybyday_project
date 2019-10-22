@@ -15,16 +15,13 @@
 {% block body_block %}
 
 	<div class="edit_class">
-        <div style="text-align:center; font-weight: bold; font-size:20px;">
-            *Please re-fill in all fields!<br>
-        </div>
-		<form id="editprofile" method="post" enctype="multipart/form-data" action="{% url 'edit_profile' user.username %}">
+		<form id="editprofile" method="POST" action="{% url 'edit_profile' user.username %}" enctype="multipart/form-data">
 			{% csrf_token %}
 			{% for editfield in edit.visible_fields %}
 				{% if editfield.label != "Password" %}
 					{{ user.editfield.label }}
 					{{ editfield.errors }}
-                    
+
 					<strong>{{ editfield.label }}</strong><br/>
 					{{ editfield }}<br/>
                     <br>
@@ -39,7 +36,8 @@
 					{{ biofield }}<br/>
 				{% endif %}
 			{% endfor %}
-			<input type="submit" name="submit" value="Make Changes" class="edit"></input>
+
+			<input type="SUBMIT" name="submit" value="Make Changes" class="edit"></input>
 		</form>
 		<br>
 		<div class="urls">

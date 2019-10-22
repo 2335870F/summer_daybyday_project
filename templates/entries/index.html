@@ -33,7 +33,7 @@
 
 		<div class="current_reminders">
 
-			<h3> Current Reminders</h3>
+			<h3> My Reminders</h3>
 			{% if reminders %}
 				{% for post in reminders %}
                     {% if user.is_authenticated %}
@@ -87,15 +87,17 @@
 							{% endfor %}
 						</ol>
 						<!-- Wrapper for slides for 1st one first -->
-						<div class="carousel-inner" role="listbox" style="width:713px; height: 450px !important;">
+						<div class="carousel-inner" role="listbox" style="width:auto; height: 450px !important; text-align:center;">
+						  <!--  new_lst = filter(lambda x: x.attr0 == attr0 and x.attr1 == attr1, latest) -->
 							{% for entry in latest %}
 								{% if forloop.counter0 == 0 %}
                                     {% if user.username == entry.chef.username %}
 									<div class="item active">
                                         <h7>{{ entry.name }}</h7>
-										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:713px; height:400px;"/></a>
+										<a href="{% url 'viewentry' latest.0.slug %}"><img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:753px; height:400px;"/></a>
+
 									</div>
-                                    {% endif %}
+									{% endif %}
 								{% else %}
                                 <!-- Wrapper for slides for 2nd entry to infinityth entry -->
                                     {% if user.username == entry.chef.username %}
@@ -103,7 +105,7 @@
 
 
                                         <h7>{{ entry.name }}</h7>
-										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:713px; height:400px"/></a>
+										<a href="{% url 'viewentry' entry.slug %}"><img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.photo }}" style="width:753px; height:400px"/></a>
 
 									</div>
                                     {% endif %}
@@ -111,7 +113,7 @@
                             {% empty %}
                                 <div class="item active">
                                         <h7>hello</h7>
-										<img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:713px; height:400px;"/>
+										<img src="{{ MEDIA_URL }}{{ latest.0.photo }}" alt="Picture of {{ latest.0.photo }}" style="width:753px; height:400px;"/>
 								</div>
 							{% endfor %}
 
@@ -133,7 +135,7 @@
 		</div>
 
 		<div class="top_rated">
-			<h3>Important Entries</h3>
+			<h3>My Entries</h3>
 			{% if top %}
 				{% for post in top %}
                     {% if user.is_authenticated %}

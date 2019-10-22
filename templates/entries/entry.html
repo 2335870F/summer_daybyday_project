@@ -31,13 +31,7 @@
 
         {% if user.username == entry.chef.username %}
 
-            <div class="page_name">
 
-                    {% if entry %}
-                        {{ entry.name }}
-                    {% endif %}
-
-            </div>
 
         {% endif %}
 
@@ -58,19 +52,20 @@
 
                 <div class="chef_info">
                     {% if user.username == entry.chef.username %}
-                        <div class="urls">
+                        <div class="urls" style="margin-bottom:10px;">
                             {% if user.is_authenticated %}
-                                <a href="{% url 'edit_entry' entry.slug %}" style="color:white; ">Edit Entry</a>
+                                <div class="delete"><a href="{% url 'edit_entry' entry.slug %}" style="color:red;">Edit Entry</a></div>
+                                <div class="delete"> <a href="/entries/entry/{{ entry.slug }}/delete/" style="color:red;">Delete Entry </a> </div>
                             {% endif %}
                         </div>
+
                     {% endif %}
 
 
                     {% if entry %}
                         <strong> Name: </strong><a href="{% url 'userprofile' entry.chef.username %}">{{ entry.chef }}</a><br/>
                         <strong> Date Created: </strong>{{ entry.date_last_edited }}<br/>
-                        <strong> Importance: </strong>{{ entry.importance }} / 5<br/>
-                        <strong> Categories: </strong>{{ entry.categories.name }}<br/>
+                        <strong> Priority: </strong>{{ entry.importance }}<br/>
                         <strong> Overall Progress Rating: </strong>{{ avgRating }}<br/>
                         <br><strong> Key Information:</strong>
                         <pre>{{ entry.key_info }}</pre>
@@ -85,9 +80,7 @@
                             {% endfor %}
                         </div>
                     </div>-->
-                    {% if user.is_authenticated and user.username == entry.chef.username %}
-                        <div class="delete"> <a href="/entries/entry/{{ entry.slug }}/delete/">Delete this post </a> </div>
-                    {% endif %}
+
 
                 </div>
 
@@ -99,6 +92,15 @@
                     <div class="entriesdisplay">
 
                             <div class="entry_info">
+
+                                <div class="page_name">
+
+                                    {% if entry %}
+                                        {{ entry.name }}
+                                    {% endif %}
+
+                                </div>
+
                                 {% if entry %}
                                     <img src="{{ MEDIA_URL }}{{ entry.photo }}" alt="Picture of {{ entry.name }}"/><br/>
 
@@ -224,4 +226,3 @@
     {% endif %}
 
 {% endblock %}
-

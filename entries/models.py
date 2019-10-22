@@ -43,7 +43,7 @@ class Entry(models.Model):
     chef = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category)
-    name = models.CharField(max_length=128, unique=True)
+    name = models.CharField(max_length=128)
     photo = models.ImageField(upload_to='food_pics', default='cat_pics/default.png')
     importance = models.IntegerField(default=0)
     date_last_edited = models.DateTimeField(default=timezone.now)
@@ -58,11 +58,11 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Reminder(models.Model):
     chef = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
-    name = models.CharField(max_length=128, unique=True)
+    name = models.CharField(max_length=128)
     photo = models.ImageField(upload_to='reminder_pics', default='cat_pics/default1.svg')
     importance = models.IntegerField(default=0)
     date_last_edited = models.DateTimeField(default=timezone.now)
@@ -84,7 +84,7 @@ class Review(models.Model):
 	rating = models.DecimalField(decimal_places=2,max_digits=3,default=5.00)
 	comment = models.TextField(default="")
 	date_last_edited = models.DateTimeField(default=timezone.now)
-    
+
 class ExtraInformation(models.Model):
 	entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
 	comment = models.TextField(default="")
@@ -96,5 +96,6 @@ class Suggestion(models.Model):
 
 class Contact(models.Model):
 	first_name = models.CharField(max_length=50)
-	email = models.EmailField(unique=True)
+	email = models.EmailField()
 	comment = models.TextField(default="I love this website!")
+
