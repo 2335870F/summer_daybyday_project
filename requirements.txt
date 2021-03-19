@@ -1,4 +1,4 @@
 certifi==2018.11.29
 Django==1.11.23
-Pillow==5.4.1
+Pillow==8.1.1
 pytz==2018.9
